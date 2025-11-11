@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", "SF Pro Display", "SF Pro Text", "Helvetica Neue",
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --background: 175 45% 98%;
+  --foreground: 200 68% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 200 68% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 200 68% 12%;
+  --primary: 205 63% 20%;
+  --primary-foreground: 168 73% 96%;
+  --secondary: 168 52% 90%;
+  --secondary-foreground: 205 63% 20%;
+  --muted: 168 40% 92%;
+  --muted-foreground: 196 24% 40%;
+  --accent: 173 49% 80%;
+  --accent-foreground: 200 68% 12%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 190 23% 85%;
+  --input: 190 23% 85%;
+  --ring: 205 63% 20%;
+  --radius: 1.25rem;
+}
+
+.dark {
+  --background: 200 68% 12%;
+  --foreground: 175 45% 98%;
+  --card: 204 50% 16%;
+  --card-foreground: 175 45% 98%;
+  --popover: 204 50% 16%;
+  --popover-foreground: 175 45% 98%;
+  --primary: 168 73% 96%;
+  --primary-foreground: 205 63% 20%;
+  --secondary: 201 23% 25%;
+  --secondary-foreground: 168 73% 96%;
+  --muted: 201 23% 25%;
+  --muted-foreground: 168 40% 82%;
+  --accent: 201 23% 25%;
+  --accent-foreground: 168 73% 96%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 204 40% 22%;
+  --input: 204 40% 22%;
+  --ring: 168 73% 96%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+.noise-surface {
+  background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0)
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill-opacity='.04' fill='%230E2431'%3E%3Cpath d='M0 0h20v20H0zM80 80h20v20H80zM40 40h20v20H40zM120 120h20v20h-20z'/%3E%3C/g%3E%3C/svg%3E");
+}
