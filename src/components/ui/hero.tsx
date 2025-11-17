@@ -173,9 +173,9 @@ export function Hero({
           <div className="mt-3">
             <Button
               asChild
-              size="xl"
+              size="lg"
               style={{ backgroundColor: BRAND_MINT, color: "#1e3a4c" }}
-              className="group rounded-full px-8 py-4 text-2xl font-bold uppercase tracking-wide transition hover:opacity-90"
+              className="group rounded-full px-8 py-7 text-2xl font-bold uppercase tracking-wide transition hover:opacity-90"
             >
               <a href={primaryCta.href}>
                 {primaryCta.label}

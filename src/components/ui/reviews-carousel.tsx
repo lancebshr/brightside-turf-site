@@ -23,16 +23,13 @@ export function ReviewsCarousel({
   subheading,
   reviews,
 }: ReviewsCarouselProps) {
-  if (reviews.length === 0) {
-    return null;
-  }
-
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [visibleCount, setVisibleCount] = useState(() =>
     Math.min(3, reviews.length)
   );
-  const maxIndex = Math.max(reviews.length - visibleCount, 0);
+  const maxIndex =
+    visibleCount > 0 ? Math.max(reviews.length - visibleCount, 0) : 0;
   const viewportRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
 
@@ -49,6 +46,11 @@ export function ReviewsCarousel({
   useEffect(() => {
     const updateWidth = () => {
       if (!viewportRef.current) return;
+      if (visibleCount <= 0) {
+        setCardWidth(0);
+        return;
+      }
+
       const containerWidth = viewportRef.current.clientWidth;
       const totalGap = CARD_GAP * (visibleCount - 1);
       const effectiveWidth = Math.max(containerWidth - totalGap, 0);
@@ -84,6 +86,10 @@ export function ReviewsCarousel({
     });
   };
 
+  if (reviews.length === 0) {
+    return null;
+  }
+
   return (
     <section
       onMouseEnter={() => setPaused(true)}
@@ -105,7 +111,9 @@ export function ReviewsCarousel({
               className="flex gap-4 transition-transform duration-700 ease-out"
               style={{
                 transform: `translateX(-${
-                  index * (cardWidth + (visibleCount > 1 ? CARD_GAP : 0))
+                  visibleCount > 0
+                    ? index * (cardWidth + (visibleCount > 1 ? CARD_GAP : 0))
+                    : 0
                 }px)`,
               }}
             >

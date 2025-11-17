@@ -1,5 +1,5 @@
 // /components/ui/image-gallery.tsx
-import { useState } from "react";
+import Image from "next/image";
 
 export default function Example() {
   return (
@@ -31,10 +31,13 @@ export default function Example() {
               key={idx}
               className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full"
             >
-              <img
-                className="h-full w-full object-cover object-center"
+              <Image
                 src={src}
                 alt={`image-${idx}`}
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 400px"
+                priority={idx === 0}
               />
             </div>
           ))}

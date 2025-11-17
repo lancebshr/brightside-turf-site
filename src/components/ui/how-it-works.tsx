@@ -1,12 +1,10 @@
 import Image from "next/image";
-import { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 
 type Step = {
   title: string;
   copy: string;
-  icon: LucideIcon;
 };
 
 type HowItWorksProps = {
