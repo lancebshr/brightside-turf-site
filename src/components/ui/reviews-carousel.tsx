@@ -1,8 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { FadeInSection } from "@/components/ui/fade-in-section";
+
+const CARD_GAP = 16; // matches Tailwind gap-4 (1rem)
 
 export type Review = {
   name: string;
@@ -20,33 +23,79 @@ export function ReviewsCarousel({
   subheading,
   reviews,
 }: ReviewsCarouselProps) {
+  if (reviews.length === 0) {
+    return null;
+  }
+
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const trackRef = useRef<HTMLDivElement>(null);
 
+  const [visibleCount, setVisibleCount] = useState(() => {
+    if (typeof window === "undefined") return Math.min(3, reviews.length);
+    if (window.innerWidth < 768) return 1; // mobile
+    if (window.innerWidth < 1024) return Math.min(2, reviews.length); // tablet
+    return Math.min(3, reviews.length); // desktop
+  });
+
+  const maxIndex = Math.max(reviews.length - visibleCount, 0);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [cardWidth, setCardWidth] = useState(0);
+
+  // Update visibleCount on resize
   useEffect(() => {
-    if (paused) return;
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(Math.min(2, reviews.length));
+      } else {
+        setVisibleCount(Math.min(3, reviews.length));
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [reviews.length]);
+
+  // Compute card width based on viewport and visibleCount
+  useEffect(() => {
+    const updateWidth = () => {
+      if (!viewportRef.current) return;
+      const containerWidth = viewportRef.current.clientWidth;
+      const totalGap = CARD_GAP * (visibleCount - 1);
+      const effectiveWidth = Math.max(containerWidth - totalGap, 0);
+      setCardWidth(effectiveWidth / visibleCount);
+    };
+
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, [visibleCount]);
+
+  // Clamp index if maxIndex changes
+  useEffect(() => {
+    if (index > maxIndex) {
+      setIndex(maxIndex);
+    }
+  }, [index, maxIndex]);
+
+  // Autoplay
+  useEffect(() => {
+    if (paused || maxIndex === 0) return;
     const id = window.setInterval(() => {
-      setIndex((prev) => (prev + 1) % reviews.length);
+      setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
     }, 4500);
     return () => window.clearInterval(id);
-  }, [paused, reviews.length]);
-
-  useEffect(() => {
-    if (!trackRef.current) return;
-    const width = trackRef.current.clientWidth;
-    trackRef.current.scrollTo({
-      left: width * index,
-      behavior: "smooth",
-    });
-  }, [index]);
+  }, [paused, maxIndex]);
 
   const goTo = (direction: "next" | "prev") => {
+    if (maxIndex === 0) return;
     setIndex((prev) => {
       if (direction === "next") {
-        return (prev + 1) % reviews.length;
+        return prev === maxIndex ? 0 : prev + 1;
       }
-      return prev === 0 ? reviews.length - 1 : prev - 1;
+      return prev === 0 ? maxIndex : prev - 1;
     });
   };
 
@@ -57,53 +106,75 @@ export function ReviewsCarousel({
       className="space-y-8"
     >
       <FadeInSection className="flex flex-col gap-4 text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-pine/70">
-          Here&apos;s what Omaha families say
-        </p>
         <h2 className="text-4xl font-bold text-pine">{heading}</h2>
         <p className="text-lg text-slate-600">{subheading}</p>
       </FadeInSection>
 
-      <div className="relative">
-        <div
-          ref={trackRef}
-          className="flex snap-x snap-mandatory overflow-hidden rounded-3xl"
-        >
-          {reviews.map((review, i) => (
-            <article
-              key={`${review.name}-${i}`}
-              className="flex min-w-full snap-center flex-col gap-6 bg-white/90 p-8 text-left shadow-brand ring-1 ring-slate-100 lg:min-h-[260px]"
-            >
-              <div className="flex items-center gap-1 text-pine">
-                {Array.from({ length: 5 }).map((_, starIndex) => (
-                  <Star
-                    key={starIndex}
-                    className="size-4 fill-pine/90 text-pine/90"
-                  />
+      <div className="flex items-center justify-between gap-5">
+        {/* Left arrow */}
+        <CarouselButton
+          direction="prev"
+          onClick={() => goTo("prev")}
+          ariaLabel="Previous review"
+          disabled={maxIndex === 0}
+        />
+
+        {/* Carousel viewport - spans most of the page, responsive card count */}
+        <div className="flex-1 px-4">
+          <div className="mx-auto w-full max-w-6xl">
+            <div className="overflow-hidden" ref={viewportRef}>
+              <div
+                className="flex gap-4 transition-transform duration-700 ease-out"
+                style={{
+                  transform: `translateX(-${
+                    index * (cardWidth + (visibleCount > 1 ? CARD_GAP : 0))
+                  }px)`,
+                }}
+              >
+                {reviews.map((review, i) => (
+                  <div
+                    key={`${review.name}-${i}`}
+                    className="flex-shrink-0"
+                    style={{
+                      width: cardWidth ? `${cardWidth}px` : "100%",
+                    }}
+                  >
+                    <article className="flex h-full flex-col gap-6 rounded-3xl p-8 text-left bg-white/90">
+                      <div className="flex items-center gap-2">
+                        {Array.from({ length: 5 }).map((_, starIndex) => (
+                          <Star
+                            key={starIndex}
+                            className="size-4 text-[#FABB05]"
+                            fill="#FABB05"
+                          />
+                        ))}
+                        <Image
+                          src="/icons8-google-48.png"
+                          alt="Google"
+                          width={20}
+                          height={20}
+                          className="shrink-0"
+                        />
+                      </div>
+                      <p className="text-lg text-ink/90">{review.quote}</p>
+                      <span className="text-sm font-semibold uppercase tracking-[0.2em] text-pine/70">
+                        {review.name}
+                      </span>
+                    </article>
+                  </div>
                 ))}
               </div>
-              <p className="text-lg text-ink/90">{review.quote}</p>
-              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-pine/70">
-                {review.name}
-              </span>
-            </article>
-          ))}
+            </div>
+          </div>
         </div>
 
-        <div className="absolute inset-y-0 left-0 flex items-center">
-          <CarouselButton
-            direction="prev"
-            onClick={() => goTo("prev")}
-            ariaLabel="Previous review"
-          />
-        </div>
-        <div className="absolute inset-y-0 right-0 flex items-center">
-          <CarouselButton
-            direction="next"
-            onClick={() => goTo("next")}
-            ariaLabel="Next review"
-          />
-        </div>
+        {/* Right arrow */}
+        <CarouselButton
+          direction="next"
+          onClick={() => goTo("next")}
+          ariaLabel="Next review"
+          disabled={maxIndex === 0}
+        />
       </div>
     </section>
   );
@@ -113,17 +184,20 @@ type CarouselButtonProps = {
   direction: "next" | "prev";
   onClick: () => void;
   ariaLabel: string;
+  disabled?: boolean;
 };
 
 const CarouselButton = ({
   direction,
   onClick,
   ariaLabel,
+  disabled = false,
 }: CarouselButtonProps) => (
   <button
     onClick={onClick}
     aria-label={ariaLabel}
-    className="rounded-full border border-white/70 bg-white/80 p-3 text-pine shadow-brand backdrop-blur hover:bg-white"
+    disabled={disabled}
+    className="pointer-events-auto rounded-full border border-white/70 bg-white/80 p-3 text-pine shadow-brand backdrop-blur transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-50"
   >
     {direction === "prev" ? (
       <ChevronLeft className="size-5" />

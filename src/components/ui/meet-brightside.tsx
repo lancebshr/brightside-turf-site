@@ -18,12 +18,9 @@ export function MeetBrightside({
   return (
     <section
       id="about"
-      className="grid gap-10 rounded-[2.5rem] bg-mint/40 p-6 md:grid-cols-[1.1fr_0.9fr] md:p-12"
+      className="grid gap-10 rounded-[2.5rem] bg-mint/40 p-6 scroll-mt-32 md:grid-cols-[1.1fr_0.9fr] md:p-12"
     >
       <FadeInSection className="space-y-6 text-ink">
-        <p className="text-sm font-semibold uppercase tracking-[0.4em] text-pine/80">
-          About Us
-        </p>
         <h2 className="text-4xl font-bold text-pine">{heading}</h2>
         <p className="text-lg text-ink/80">{body}</p>
         <Button

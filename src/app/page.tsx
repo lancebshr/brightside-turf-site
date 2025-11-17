@@ -1,4 +1,3 @@
-import { ClipboardList, Sparkles, Truck } from "lucide-react";
 import { Hero } from "@/components/ui/hero";
 import { LeadForm } from "@/components/ui/lead-form";
 import { MeetBrightside } from "@/components/ui/meet-brightside";
@@ -8,76 +7,111 @@ import { ServicesGrid } from "@/components/ui/services-grid";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { HowItWorks } from "@/components/ui/how-it-works";
 import { ContactStrip } from "@/components/ui/contact-strip";
-
-const NAV_LINKS = [
-  { label: "Our Services", href: "#services" },
-  { label: "About Us", href: "#about" },
-  { label: "Reviews", href: "#reviews" },
-];
+import { NAV_LINKS } from "@/lib/nav-links";
 
 const SERVICE_CARDS = [
   {
     title: "Fertilization & Weed Control",
     description:
       "We give your lawn what it needs to keep the grass green without weeds.",
-    image:
-      "https://images.unsplash.com/photo-1441974231531-c6227db76b6b?auto=format&fit=crop&w=1200&q=80",
+    image: "/fertilization.JPG",
     slug: "fertilization-and-weed-control",
   },
   {
     title: "Core Aeration",
     description:
       "We give your lawn a breath of fresh air so the grass can grow the way it should.",
-    image:
-      "https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=1200&q=80",
+    image: "/aeration.JPG",
     slug: "core-aeration",
   },
   {
     title: "Overseeding",
     description:
       "We refresh your lawn with new seed so it can grow thicker and healthier again.",
-    image:
-      "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1200&q=80",
+    image: "/overseeding.JPG",
     slug: "overseeding",
   },
   {
     title: "Sprinkler Winterization",
     description:
       "We blow out your sprinkler system before the freeze so it’s ready to go come spring.",
-    image:
-      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
+    image: "/winterization.JPG",
     slug: "sprinkler-winterization",
   },
   {
     title: "Holiday Lighting",
     description:
       "We design, install, and store custom holiday lights your family will love.",
-    image:
-      "https://images.unsplash.com/photo-1455656755113-9c046f7e0c68?auto=format&fit=crop&w=1200&q=80",
+    image: "/lighting.webp",
     slug: "holiday-lighting",
   },
 ];
 
 const REVIEWS = [
   {
-    name: "Avery L.",
+    name: "Petet Vargas Mas",
     quote:
-      "We could see a difference after the first visit. Fast responses, spotless uniforms, and real pride in their work.",
+      "Luke, Ben & Grant were excellent! Professional, friendly service. They did an awesome job with the lights. Clean lines, even spacing, and the lights look great. Best part is I didn't have to do a damn thing! 5 Star service. A+",
   },
   {
-    name: "Sam & Taylor R.",
+    name: "Josh Usewicz",
     quote:
-      "Brightside’s crew shows up when they say they will—even during the busy season. Our yard has never looked better.",
+      "Brightside Turf (Brightside Holiday Lighting) did an outstanding job with our holiday lighting! The team was communicative, professional, and easy to work with from start to finish. They delivered high-quality work with great attention to detail, and the end result looks fantastic.",
   },
   {
-    name: "Dev & Priya M.",
+    name: "Glen Tramp",
     quote:
-      "They handled fertilizing, aeration, and holiday lights in one plan. It felt like working with friends.",
+      "Did a nice job with our aeration and came back to ensure we were satisfied. Took soil samples and met to discuss the results. Paying through a link was handy and the communication was top-notch.",
   },
   {
-    name: "Lauren O.",
+    name: "Doug Adams",
     quote:
-      "Getting a quote took minutes and there was zero pressure. The follow-up service was just as easy.",
+      "Brightside Turf offers several services but I’ve only used them for aeration. Two friendly, clean-cut young men showed up and did a great job. Great communication and I was extremely satisfied.",
+  },
+  {
+    name: "David Fry",
+    quote:
+      "Luke and team were phenomenal from start to finish. We booked far out and really appreciated the reminders—they kept us on track! Hopefully more services coming soon?!",
+  },
+  {
+    name: "Nhung Nguyen",
+    quote:
+      "I would recommend Brightside to anyone in Omaha. They’re a local company that does things right. When we noticed issues in our lawn they came back the next day to spot treat.",
+  },
+  {
+    name: "Thomas Norway",
+    quote:
+      "Very quick and great communication. They arrived on time for the aeration and just sent the invoice—could not have been easier. Definitely looking forward to working with them next season.",
+  },
+  {
+    name: "Marlene Riva",
+    quote:
+      "They did a very good aeration job at my house. Communication was great and even though they were running late, they kept me informed. I’ll definitely use them again next year!",
+  },
+  {
+    name: "When In AZ",
+    quote:
+      "Brightside Turf handled aeration, overseeding, and fertilization for us. Fair pricing, easy to work with, and I could text to set everything up. Super happy to have found them.",
+  },
+  {
+    name: "Duy Tran",
+    quote:
+      "Excellent job aerating my lawn. New company but they did everything exceptionally. Email/text reminders were great, pricing was unbeatable, and they even picked up markers and left a thank you gift.",
+  },
+  {
+    name: "Sally S",
+    quote:
+      "The crew arrived on time, even on a weekend. They worked quickly, cleaned up afterward, and I was very happy with the aeration and overseeding they did.",
+  },
+  {
+    name: "Jill Eli",
+    quote:
+      "Brightside is amazing! They just aerated and overseeded my yard. Everyone was professional, prompt, and gracious—can’t wait to see it next spring!",
+  },
+  {
+    name: "Anthony Podany",
+    quote:
+      "Hired Brightside to handle fall aeration and was very impressed with the work and communication. Price was good and they’ve followed up twice to make sure I’m satisfied. Highly recommend.",
   },
 ];
 
@@ -85,17 +119,14 @@ const HOW_IT_WORKS_STEPS = [
   {
     title: "Get Your Quote",
     copy: "Tell us what you need and we’ll give you a clear and fair price.",
-    icon: ClipboardList,
   },
   {
     title: "We Show Up",
     copy: "We do what we say we will and knock it out of the park.",
-    icon: Truck,
   },
   {
     title: "Enjoy Your Lawn",
     copy: "If anything is ever off, we come back and make it right.",
-    icon: Sparkles,
   },
 ];
 
@@ -124,7 +155,7 @@ export default function Home() {
           navLinks={NAV_LINKS}
         />
       </div>
-      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-20 pt-16 sm:px-6 lg:px-0">
+      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-6 pt-16 sm:px-6 lg:px-0">
         <section className="space-y-16">
           <ServicesGrid
             heading="Brightside’s Services"
@@ -136,10 +167,10 @@ export default function Home() {
             heading="Meet Brightside"
             body="We aren’t reinventing the wheel. We just really care about making your lawn look good… because that’s what you hired us to do. We show up, we do things right, and we never say “good enough”."
             cta={{ label: "Get Your Quote", href: "#lead" }}
-            image={{ src: "/team-truck.jpg", alt: "Brightside Turf crew" }}
+            image={{ src: "/newhero.png", alt: "Brightside Turf crew" }}
           />
 
-          <div id="reviews">
+          <div id="reviews" className="scroll-mt-32">
             <ReviewsCarousel
               heading="Here’s what the families of Omaha have to say"
               subheading="Friendly crews, thoughtful service, and the mint trucks everyone recognizes."
@@ -151,32 +182,33 @@ export default function Home() {
             heading="It’s really easy to get started"
             subheading="We keep it simple, fast, and without pressure."
             steps={HOW_IT_WORKS_STEPS}
-            image="/tech-solo.jpg"
+            image="/newhero.png"
             cta={{ href: "#lead", label: "Get Your Quote" }}
           />
 
-          <div id="lead">
+          <div id="lead" className="scroll-mt-32">
             <LeadForm services={SERVICE_CARDS.map((service) => service.title)} />
           </div>
 
           <ServiceArea
             title="Serving our neighbors across the Omaha Metro"
-            description="We’re proud to care for lawns in Omaha, Papillion, Gretna, Elkhorn, Ralston, Bennington, La Vista, Bellevue, Waterloo, and Valley."
+            description="We’re proud to care for lawns throughout the greater Omaha metro."
             areas={SERVICE_AREAS}
-          />
-
-          <ContactStrip
-            phone="(402) 810-8692"
-            email="hello@brightsideturf.com"
-            note="Brightside is locally owned and operated in Omaha."
           />
         </section>
       </main>
-      <div className="mx-auto w-full max-w-6xl px-4 pb-12 sm:px-6 lg:px-0">
-        <SiteFooter
-          links={[...NAV_LINKS, { label: "Get Quote", href: "#lead" }]}
-        />
-      </div>
+      <ContactStrip
+        phone="(402) 810-8692"
+        email="hello@brightsideturf.com"
+        note="Brightside is locally owned and operated in Omaha."
+      />
+      <SiteFooter
+        links={[
+          ...NAV_LINKS,
+          { label: "Privacy Policy", href: "/privacy" },
+          { label: "Get Quote", href: "/#lead" },
+        ]}
+      />
     </div>
   );
 }

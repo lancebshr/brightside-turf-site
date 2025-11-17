@@ -12,6 +12,16 @@ type LeadFormProps = {
   services: string[];
 };
 
+const REFERRAL_SOURCES = [
+  "Referral",
+  "Google",
+  "Facebook",
+  "Personal Connection",
+  "Door Hanger",
+  "Yard Sign",
+  "Vehicles",
+];
+
 export function LeadForm({ services }: LeadFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -30,9 +40,6 @@ export function LeadForm({ services }: LeadFormProps) {
   return (
     <div className="rounded-[2.5rem] bg-white p-6 shadow-brand md:p-10">
       <div className="space-y-3 text-center md:text-left">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-pine/70">
-          Ready to get started?
-        </p>
         <h2 className="text-4xl font-bold text-pine">
           Tell us about your lawn.
         </h2>
@@ -52,11 +59,12 @@ export function LeadForm({ services }: LeadFormProps) {
           <Field label="Name" htmlFor="name" required>
             <Input id="name" name="name" placeholder="Jane Smith" required />
           </Field>
-          <Field label="Address (optional)" htmlFor="address">
+          <Field label="Address" htmlFor="address" required>
             <Input
               id="address"
               name="address"
               placeholder="1234 Pine Street"
+              required
             />
           </Field>
         </div>
@@ -82,32 +90,47 @@ export function LeadForm({ services }: LeadFormProps) {
           </Field>
         </div>
 
-        <Field label="Services interested in" htmlFor="services" required>
+        <Field label="Services interested in" required>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {services.map((service, index) => {
+              const id = `service-${service
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")}`;
+              return (
+                <label
+                  key={service}
+                  htmlFor={id}
+                  className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm font-medium text-ink shadow-sm"
+                >
+                  <input
+                    type="checkbox"
+                    id={id}
+                    name="services"
+                    value={service}
+                    className="size-4 rounded border-slate-300 text-pine focus:ring-pine"
+                    required={index === 0}
+                  />
+                  {service}
+                </label>
+              );
+            })}
+          </div>
+        </Field>
+
+        <Field label="How did you find us?" htmlFor="referralSource" required>
           <select
-            id="services"
-            name="services"
-            multiple
+            id="referralSource"
+            name="referralSource"
             required
-            className="min-h-[140px] rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+            className="rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
           >
-            {services.map((service) => (
-              <option key={service} value={service}>
-                {service}
+            <option value="">Select one</option>
+            {REFERRAL_SOURCES.map((source) => (
+              <option key={source} value={source}>
+                {source}
               </option>
             ))}
           </select>
-          <p className="text-sm text-slate-500">
-            Hold Command (⌘) or Control to select multiple.
-          </p>
-        </Field>
-
-        <Field label="How can we help?" htmlFor="message">
-          <Textarea
-            id="message"
-            name="message"
-            placeholder="Share any details or timing we should know about."
-            rows={5}
-          />
         </Field>
 
         <Button
@@ -137,7 +160,7 @@ export function LeadForm({ services }: LeadFormProps) {
 
 type FieldProps = {
   label: string;
-  htmlFor: string;
+  htmlFor?: string;
   required?: boolean;
   children: ReactNode;
 };
