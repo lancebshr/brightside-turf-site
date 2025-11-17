@@ -133,7 +133,7 @@ export function Hero({
         </div>
 
         <div className="flex flex-1 flex-col justify-center px-6 pb-16 text-white md:px-12 lg:px-16">
-          <div className="mt-20 mb-8 flex flex-wrap items-center gap-2 text-glow">
+          <div className="mt-16 mb-8 flex flex-wrap items-center gap-2 text-glow">
             {Array.from({ length: 5 }).map((_, index) => (
               <Star
                 key={index}
@@ -153,30 +153,30 @@ export function Hero({
             </span>
           </div>
 
-          <h1 className="text-glow mb-6 max-w-4xl text-balance text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
+          <h1 className="text-glow mb-7 max-w-7xl text-balance text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
             {heading}
           </h1>
 
-          <p className="text-glow mb-8 max-w-3xl text-balance text-xl font-medium md:text-2xl">
+          <p className="text-glow mb-9 max-w-7xl text-balance text-xl font-medium md:text-2xl">
             {subheading}
           </p>
 
           {showPhone && (
             <a
               href={`tel:${phone.replace(/[^0-9]/g, "")}`}
-              className="text-glow mb-10 inline-flex text-2xl font-bold underline-offset-4 hover:underline md:text-3xl"
+              className="text-glow mb-2 inline-flex text-2xl font-bold underline-offset-4 hover:underline md:text-3xl"
             >
               {phone}
             </a>
           )}
 
-          <div>
-              <Button
-                asChild
-                size="lg"
-                style={{ backgroundColor: BRAND_MINT, color: "#1e3a4c" }}
-                className="group rounded-full px-8 py-7 text-xl font-bold uppercase tracking-wide transition hover:opacity-90"
-              >
+          <div className="mt-3">
+            <Button
+              asChild
+              size="xl"
+              style={{ backgroundColor: BRAND_MINT, color: "#1e3a4c" }}
+              className="group rounded-full px-8 py-4 text-2xl font-bold uppercase tracking-wide transition hover:opacity-90"
+            >
               <a href={primaryCta.href}>
                 {primaryCta.label}
                 <ArrowRight className="ml-2 size-6 transition-transform group-hover:translate-x-1" />

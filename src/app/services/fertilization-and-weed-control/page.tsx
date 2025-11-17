@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/ui/site-footer";
 import { NAV_LINKS } from "@/lib/nav-links";
 import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
+import { CtaStrip } from "@/components/ui/cta-strip";
 
 const EXPECTATION_POINTS = [
   {
@@ -152,7 +153,7 @@ export default function FertilizationAndWeedControlPage() {
 
         <section className="space-y-10">
           <FadeInSection className="space-y-2 text-center">
-          <h2 className="text-3xl font-bold text-pine">
+          <h2 className="text-4xl font-bold text-pine">
           At Brightside, the Grass Really is Greener
             </h2>
             
@@ -177,9 +178,7 @@ export default function FertilizationAndWeedControlPage() {
 
         <section className="space-y-6 rounded-[2.5rem] bg-white p-6 shadow-brand md:p-12">
           <FadeInSection className="space-y-3 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-pine/70">
-              Questions We Hear A Lot
-            </p>
+            
             <h2 className="text-4xl font-bold text-pine">Fertilization & Weed Control FAQs</h2>
           </FadeInSection>
           <div className="space-y-4">
@@ -198,26 +197,10 @@ export default function FertilizationAndWeedControlPage() {
           </div>
         </section>
 
-        <section className="rounded-[2.5rem] bg-ink px-6 py-12 text-center text-white md:px-12">
-          <FadeInSection className="space-y-4">
-          
-            <h2 className="text-4xl font-bold">Ready to get started?</h2>
-            <p className="text-lg text-white/80">
-            Healthy, weed-free lawns don’t happen by accident. Tell us what you need, and we’ll
-            reach out within 24 hours.
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="rounded-full bg-mint px-8 py-6 text-base font-semibold text-pine hover:bg-mint/90"
-            >
-              <Link href="/#lead">Get Your Quote</Link>
-            </Button>
-          </FadeInSection>
-        </section>
+        
       </main>
       <section className="w-screen bg-background py-16">
-        <div className="space-y-10 px-4 sm:px-10">
+        <div className="space-y-6 px-4 sm:px-10">
   
           <div className="w-full">
             <ReviewsCarousel
@@ -228,6 +211,7 @@ export default function FertilizationAndWeedControlPage() {
           </div>
         </div>
       </section>
+      <CtaStrip />
       <SiteFooter
         links={[
           ...NAV_LINKS,

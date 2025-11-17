@@ -29,28 +29,16 @@ export function ReviewsCarousel({
 
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-
-  const [visibleCount, setVisibleCount] = useState(() => {
-    if (typeof window === "undefined") return Math.min(3, reviews.length);
-    if (window.innerWidth < 768) return 1; // mobile
-    if (window.innerWidth < 1024) return Math.min(2, reviews.length); // tablet
-    return Math.min(3, reviews.length); // desktop
-  });
-
+  const [visibleCount, setVisibleCount] = useState(() =>
+    Math.min(3, reviews.length)
+  );
   const maxIndex = Math.max(reviews.length - visibleCount, 0);
   const viewportRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
 
-  // Update visibleCount on resize
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setVisibleCount(1);
-      } else if (window.innerWidth < 1024) {
-        setVisibleCount(Math.min(2, reviews.length));
-      } else {
-        setVisibleCount(Math.min(3, reviews.length));
-      }
+      setVisibleCount(Math.min(3, reviews.length));
     };
 
     handleResize();
@@ -58,7 +46,6 @@ export function ReviewsCarousel({
     return () => window.removeEventListener("resize", handleResize);
   }, [reviews.length]);
 
-  // Compute card width based on viewport and visibleCount
   useEffect(() => {
     const updateWidth = () => {
       if (!viewportRef.current) return;
@@ -73,14 +60,12 @@ export function ReviewsCarousel({
     return () => window.removeEventListener("resize", updateWidth);
   }, [visibleCount]);
 
-  // Clamp index if maxIndex changes
   useEffect(() => {
     if (index > maxIndex) {
       setIndex(maxIndex);
     }
   }, [index, maxIndex]);
 
-  // Autoplay
   useEffect(() => {
     if (paused || maxIndex === 0) return;
     const id = window.setInterval(() => {
@@ -110,71 +95,72 @@ export function ReviewsCarousel({
         <p className="text-lg text-slate-600">{subheading}</p>
       </FadeInSection>
 
-      <div className="flex items-center justify-between gap-5">
-        {/* Left arrow */}
-        <CarouselButton
-          direction="prev"
-          onClick={() => goTo("prev")}
-          ariaLabel="Previous review"
-          disabled={maxIndex === 0}
-        />
-
-        {/* Carousel viewport - spans most of the page, responsive card count */}
-        <div className="flex-1 px-4">
-          <div className="mx-auto w-full max-w-6xl">
-            <div className="overflow-hidden" ref={viewportRef}>
-              <div
-                className="flex gap-4 transition-transform duration-700 ease-out"
-                style={{
-                  transform: `translateX(-${
-                    index * (cardWidth + (visibleCount > 1 ? CARD_GAP : 0))
-                  }px)`,
-                }}
-              >
-                {reviews.map((review, i) => (
-                  <div
-                    key={`${review.name}-${i}`}
-                    className="flex-shrink-0"
-                    style={{
-                      width: cardWidth ? `${cardWidth}px` : "100%",
-                    }}
-                  >
-                    <article className="flex h-full flex-col gap-6 rounded-3xl p-8 text-left bg-white/90">
-                      <div className="flex items-center gap-2">
-                        {Array.from({ length: 5 }).map((_, starIndex) => (
-                          <Star
-                            key={starIndex}
-                            className="size-4 text-[#FABB05]"
-                            fill="#FABB05"
-                          />
-                        ))}
-                        <Image
-                          src="/icons8-google-48.png"
-                          alt="Google"
-                          width={20}
-                          height={20}
-                          className="shrink-0"
+      <div className="relative">
+        <div
+          className="mx-auto px-4"
+          style={{ width: "calc(100vw - 220px)", maxWidth: "1100px" }}
+        >
+          <div className="overflow-hidden" ref={viewportRef}>
+            <div
+              className="flex gap-4 transition-transform duration-700 ease-out"
+              style={{
+                transform: `translateX(-${
+                  index * (cardWidth + (visibleCount > 1 ? CARD_GAP : 0))
+                }px)`,
+              }}
+            >
+              {reviews.map((review, i) => (
+                <div
+                  key={`${review.name}-${i}`}
+                  className="flex-shrink-0"
+                  style={{
+                    width: cardWidth ? `${cardWidth}px` : "100%",
+                  }}
+                >
+                  <article className="flex h-full flex-col gap-6 rounded-3xl p-8 text-left">
+                    <div className="flex items-center gap-2">
+                      {Array.from({ length: 5 }).map((_, starIndex) => (
+                        <Star
+                          key={starIndex}
+                          className="size-4 text-[#FABB05]"
+                          fill="#FABB05"
                         />
-                      </div>
-                      <p className="text-lg text-ink/90">{review.quote}</p>
-                      <span className="text-sm font-semibold uppercase tracking-[0.2em] text-pine/70">
-                        {review.name}
-                      </span>
-                    </article>
-                  </div>
-                ))}
-              </div>
+                      ))}
+                      <Image
+                        src="/icons8-google-48.png"
+                        alt="Google"
+                        width={20}
+                        height={20}
+                        className="shrink-0"
+                      />
+                    </div>
+                    <p className="text-lg text-ink/90">{review.quote}</p>
+                    <span className="text-sm font-semibold uppercase tracking-[0.2em] text-pine/70">
+                      {review.name}
+                    </span>
+                  </article>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Right arrow */}
-        <CarouselButton
-          direction="next"
-          onClick={() => goTo("next")}
-          ariaLabel="Next review"
-          disabled={maxIndex === 0}
-        />
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center -translate-x-1/2 pl-10">
+          <CarouselButton
+            direction="prev"
+            onClick={() => goTo("prev")}
+            ariaLabel="Previous review"
+            disabled={maxIndex === 0}
+          />
+        </div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center translate-x-1/2 pr-10">
+          <CarouselButton
+            direction="next"
+            onClick={() => goTo("next")}
+            ariaLabel="Next review"
+            disabled={maxIndex === 0}
+          />
+        </div>
       </div>
     </section>
   );

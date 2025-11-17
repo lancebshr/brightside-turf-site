@@ -173,7 +173,7 @@ export default function Home() {
           <div id="reviews" className="scroll-mt-32">
             <ReviewsCarousel
               heading="Here’s what the families of Omaha have to say"
-              subheading="Friendly crews, thoughtful service, and the mint trucks everyone recognizes."
+              subheading=""
               reviews={REVIEWS}
             />
           </div>
