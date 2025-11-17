@@ -40,7 +40,7 @@ export function LeadForm({ services }: LeadFormProps) {
   return (
     <div className="rounded-[2.5rem] bg-white p-6 shadow-brand md:p-10">
       <div className="space-y-3 text-center md:text-left">
-        <h2 className="text-4xl font-bold text-pine">
+        <h2 className="text-5xl font-bold text-pine">
           Tell us about your lawn.
         </h2>
         <p className="text-lg text-slate-600">

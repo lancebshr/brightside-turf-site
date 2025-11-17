@@ -104,7 +104,7 @@ export default function PrivacyPolicyPage() {
         <div className="space-y-8 rounded-[2.5rem] bg-white p-8 shadow-brand">
           {POLICY_SECTIONS.map((section) => (
             <section key={section.title} className="space-y-3">
-              <h2 className="text-2xl font-bold text-pine">{section.title}</h2>
+              <h2 className="text-5xl font-bold text-pine">{section.title}</h2>
               <div className="space-y-3 text-base text-ink/80">
                 {section.body.map((paragraph, idx) => (
                   <p key={`${section.title}-${idx}`}>{paragraph}</p>

@@ -50,7 +50,7 @@ export function CoreValues({
             {eyebrow}
           </p>
         )}
-        <h2 className="text-3xl font-bold text-pine">{heading}</h2>
+        <h2 className="text-5xl font-bold text-pine">{heading}</h2>
         {description && <p className="text-lg text-ink/80">{description}</p>}
       </div>
       <div className="grid gap-8 md:grid-cols-3">

@@ -212,7 +212,7 @@ export default function AboutPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-pine/70">
               Our Story
             </p>
-            <h2 className="text-4xl font-bold text-pine">
+            <h2 className="text-5xl font-bold text-pine">
               We built Brightside to raise the bar for Omaha homeowners.
             </h2>
             <p className="text-lg text-ink/80">
@@ -279,10 +279,8 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-ink/60" />
               <div className="relative z-10 flex h-full w-full items-center justify-center text-center">
                 <div className="space-y-3 px-6">
-                  <p className="text-sm font-semibold uppercase tracking-[0.4em] text-mint">
-                    Blog
-                  </p>
-                  <h2 className="text-4xl font-bold text-white">The Brightside Blog</h2>
+                  
+                  <h2 className="text-5xl font-bold text-white">The Brightside Blog</h2>
                 </div>
               </div>
             </div>
@@ -311,7 +309,7 @@ export default function AboutPage() {
 
         <section id="faqs" className="space-y-6 scroll-mt-32">
           <FadeInSection className="space-y-3 text-center">
-            <h2 className="text-4xl font-bold text-pine">Questions about Brightside?</h2>
+            <h2 className="text-5xl font-bold text-pine">Questions about Brightside?</h2>
             <p className="text-lg text-slate-600">
               Below are some of the most common questions we are asked about the company.
             </p>

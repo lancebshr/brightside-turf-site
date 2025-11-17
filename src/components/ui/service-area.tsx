@@ -10,7 +10,7 @@ export function ServiceArea({ title, description, areas }: ServiceAreaProps) {
   return (
     <section className="grid gap-8 rounded-[2.5rem] bg-slate-50 px-6 py-12 md:grid-cols-2 md:px-12">
       <FadeInSection className="space-y-4">
-        <h2 className="text-4xl font-bold text-pine">{title}</h2>
+        <h2 className="text-5xl font-bold text-pine">{title}</h2>
         <p className="text-lg text-slate-600">{description}</p>
         {areas && areas.length > 0 && (
           <ul className="grid gap-3 text-base text-ink/90 sm:grid-cols-2">

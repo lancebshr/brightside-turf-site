@@ -115,7 +115,7 @@ export default function FertilizationAndWeedControlPage() {
             />
           </div>
           <div className="space-y-5">
-            <h2 className="text-3xl font-bold text-pine">
+            <h2 className="text-5xl font-bold text-pine">
               A simple plan that gives your lawn exactly what it needs.
             </h2>
             <p className="text-lg text-ink/80">
@@ -153,11 +153,9 @@ export default function FertilizationAndWeedControlPage() {
 
         <section className="space-y-10">
           <FadeInSection className="space-y-2 text-center">
-          <h2 className="text-4xl font-bold text-pine">
-          At Brightside, the Grass Really is Greener
+            <h2 className="text-5xl font-bold text-pine">
+              At Brightside, the Grass Really is Greener
             </h2>
-            
-            
           </FadeInSection>
           <FadeInSection>
             <div className="grid gap-4 md:grid-cols-3">
@@ -178,8 +176,7 @@ export default function FertilizationAndWeedControlPage() {
 
         <section className="space-y-6 rounded-[2.5rem] bg-white p-6 shadow-brand md:p-12">
           <FadeInSection className="space-y-3 text-center">
-            
-            <h2 className="text-4xl font-bold text-pine">Fertilization & Weed Control FAQs</h2>
+            <h2 className="text-5xl font-bold text-pine">Fertilization & Weed Control FAQs</h2>
           </FadeInSection>
           <div className="space-y-4">
             {FAQ_ITEMS.map((faq) => (

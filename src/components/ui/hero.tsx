@@ -15,6 +15,8 @@ type HeroProps = {
   navLinks: { label: string; href: string }[];
   phone?: string;
   showPhone?: boolean;
+  centerContent?: boolean;
+  starPlacement?: "top" | "aboveCta";
 };
 
 export function Hero({
@@ -25,6 +27,8 @@ export function Hero({
   navLinks,
   phone = "(402) 810-8692",
   showPhone = true,
+  centerContent = false,
+  starPlacement = "top",
 }: HeroProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
   const SERVICE_OPTIONS = [
@@ -41,7 +45,7 @@ export function Hero({
     <section className="relative min-h-screen w-full overflow-hidden bg-ink text-white">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/team-truck.jpg')" }}
+        style={{ backgroundImage: "url('/testhero.jpg')" }}
       />
       <div className="absolute inset-0 bg-black/25" />
 

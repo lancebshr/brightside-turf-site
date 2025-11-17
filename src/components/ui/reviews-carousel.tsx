@@ -97,7 +97,7 @@ export function ReviewsCarousel({
       className="space-y-8"
     >
       <FadeInSection className="flex flex-col gap-4 text-center">
-        <h2 className="text-4xl font-bold text-pine">{heading}</h2>
+        <h2 className="text-5xl font-bold text-pine">{heading}</h2>
         <p className="text-lg text-slate-600">{subheading}</p>
       </FadeInSection>
 

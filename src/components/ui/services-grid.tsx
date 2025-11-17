@@ -26,7 +26,7 @@ export function ServicesGrid({
   return (
     <section id="services" className="space-y-6 scroll-mt-32">
       <FadeInSection className="mx-auto max-w-3xl space-y-4 text-center">
-        <h2 className="text-4xl font-bold text-pine">{heading}</h2>
+        <h2 className="text-5xl font-bold text-pine">{heading}</h2>
         <p className="text-lg text-slate-600">{subheading}</p>
       </FadeInSection>
 
