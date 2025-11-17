@@ -67,7 +67,7 @@ export function SiteHeader({ links }: SiteHeaderProps) {
             </a>
           ))}
           <Button asChild className="shadow-brand">
-            <a href="#lead">Get Quote</a>
+            <a href="/get-quote">Get Quote</a>
           </Button>
         </nav>
 
@@ -103,7 +103,7 @@ export function SiteHeader({ links }: SiteHeaderProps) {
               ))}
             </nav>
             <Button asChild className="w-full">
-              <a href="#lead" onClick={() => setOpen(false)}>
+              <a href="/get-quote" onClick={() => setOpen(false)}>
                 Get Your Quote
               </a>
             </Button>

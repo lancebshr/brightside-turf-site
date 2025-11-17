@@ -117,7 +117,7 @@ export default function PrivacyPolicyPage() {
         <div className="text-center text-sm text-ink/60">
           <p>
             Need something else?{" "}
-            <Link href="/#lead" className="text-pine underline-offset-4 hover:underline">
+            <Link href="/get-quote" className="text-pine underline-offset-4 hover:underline">
               Get in touch with the Brightside team
             </Link>
             .
@@ -128,7 +128,7 @@ export default function PrivacyPolicyPage() {
         links={[
           ...NAV_LINKS,
           { label: "Privacy Policy", href: "/privacy" },
-          { label: "Get Quote", href: "/#lead" },
+          { label: "Get Quote", href: "/get-quote" },
         ]}
       />
     </div>

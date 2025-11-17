@@ -97,9 +97,11 @@ export default function FertilizationAndWeedControlPage() {
         heading="Local Lawn Fertilization and Weed Control Services in Omaha, NE"
         subheading="Keep your lawn healthy, green, and weed-free all season long."
         statLabel="5.0 stars on Google"
-        primaryCta={{ href: "/#lead", label: "Get Your Quote" }}
+        primaryCta={{ href: "/get-quote", label: "Get Your Quote" }}
         navLinks={NAV_LINKS}
         showPhone={false}
+        centerContent
+        starPlacement="aboveCta"
       />
       <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-16 pt-10 sm:px-6 lg:px-0">
 
@@ -139,7 +141,7 @@ export default function FertilizationAndWeedControlPage() {
               ))}
             </div>
             <Button asChild className="rounded-full bg-pine text-white hover:bg-pine/90">
-              <Link href="/#lead">Get Your Quote</Link>
+              <Link href="/get-quote">Get Your Quote</Link>
             </Button>
           </div>
         </section>
@@ -213,7 +215,7 @@ export default function FertilizationAndWeedControlPage() {
         links={[
           ...NAV_LINKS,
           { label: "Privacy Policy", href: "/privacy" },
-          { label: "Get Quote", href: "/#lead" },
+          { label: "Get Quote", href: "/get-quote" },
         ]}
       />
     </div>

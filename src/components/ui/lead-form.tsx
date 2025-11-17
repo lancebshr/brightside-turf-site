@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, ReactNode, useState } from "react";
+import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -25,9 +26,17 @@ const REFERRAL_SOURCES = [
 export function LeadForm({ services }: LeadFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [serviceError, setServiceError] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const selectedServices = formData.getAll("services");
+    if (selectedServices.length === 0) {
+      setServiceError(true);
+      return;
+    }
+    setServiceError(false);
     setIsSubmitting(true);
 
     setTimeout(() => {
@@ -38,20 +47,10 @@ export function LeadForm({ services }: LeadFormProps) {
   };
 
   return (
-    <div className="rounded-[2.5rem] bg-white p-6 shadow-brand md:p-10">
-      <div className="space-y-3 text-center md:text-left">
-        <h2 className="text-5xl font-bold text-pine">
-          Tell us about your lawn.
-        </h2>
-        <p className="text-lg text-slate-600">
-          We&apos;d love to take care of your home. Tell us what you want
-          information on, and we&apos;ll reach out within 24 hours.
-        </p>
-      </div>
-
+    <div className="rounded-[2.5rem] bg-white p-6 text-ink shadow-brand md:p-5">
       <form
         onSubmit={handleSubmit}
-        className="mt-8 grid gap-6"
+        className="mt-2 grid gap-4"
         action="#"
         method="post"
       >
@@ -91,8 +90,11 @@ export function LeadForm({ services }: LeadFormProps) {
         </div>
 
         <Field label="Services interested in" required>
+          <p className="text-sm text-slate-500">
+            Select at least one service that you&apos;re interested in.
+          </p>
           <div className="grid gap-3 sm:grid-cols-2">
-            {services.map((service, index) => {
+            {services.map((service) => {
               const id = `service-${service
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, "-")}`;
@@ -107,14 +109,19 @@ export function LeadForm({ services }: LeadFormProps) {
                     id={id}
                     name="services"
                     value={service}
-                    className="size-4 rounded border-slate-300 text-pine focus:ring-pine"
-                    required={index === 0}
+                    className="service-checkbox size-4 rounded border-slate-300 text-pine focus:ring-pine"
+                    onChange={() => setServiceError(false)}
                   />
                   {service}
                 </label>
               );
             })}
           </div>
+          {serviceError && (
+            <p className="text-sm font-semibold text-red-500">
+              Please choose at least one service.
+            </p>
+          )}
         </Field>
 
         <Field label="How did you find us?" htmlFor="referralSource" required>
@@ -145,13 +152,22 @@ export function LeadForm({ services }: LeadFormProps) {
       <div
         aria-live="polite"
         className={cn(
-          "pointer-events-none fixed inset-x-0 bottom-6 flex justify-center transition opacity-0",
+          "pointer-events-none fixed inset-0 flex items-center justify-center transition opacity-0",
           showToast && "opacity-100"
         )}
       >
-        <div className="flex items-center gap-3 rounded-full bg-ink px-5 py-3 text-sm text-white shadow-xl">
-          <CheckCircle2 className="size-4 text-mint" />
-          Thanks! We&apos;ll get back to you within 24 hours.
+        <div className="flex flex-col items-center gap-4 rounded-[2rem] bg-ink px-10 py-8 text-center text-white shadow-2xl">
+          <Image
+            src="/Brightside%20Black.png"
+            alt="Brightside Turf"
+            width={280}
+            height={80}
+            className="h-auto w-60 object-contain"
+          />
+          <div className="flex items-center gap-3 text-lg font-semibold">
+            <CheckCircle2 className="size-6 text-mint" />
+            Thanks! We&apos;ll get back to you within 24 hours.
+          </div>
         </div>
       </div>
     </div>

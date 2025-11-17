@@ -77,7 +77,7 @@ export function CoreValues({
           style={{ backgroundColor: BRAND_MINT, color: "#1e3a4c" }}
           className="rounded-full px-8 py-6 text-base font-semibold hover:opacity-90"
         >
-          <Link href="/#lead">Get Your Quote</Link>
+          <Link href="/get-quote">Get Your Quote</Link>
         </Button>
         <p className="text-lg text-ink/80">
           Tell us about your lawn and we’ll reach out within 24 hours.

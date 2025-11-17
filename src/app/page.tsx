@@ -151,7 +151,7 @@ export default function Home() {
           heading="Top-Rated Fertilization and Aeration Services In Omaha"
           subheading="It shouldn’t be hard to love your lawn. At Brightside, the grass really is greener."
           statLabel="5.0 stars on Google"
-          primaryCta={{ label: "Get Your Quote", href: "#lead" }}
+          primaryCta={{ label: "Get Your Quote", href: "/get-quote" }}
           navLinks={NAV_LINKS}
         />
       </div>
@@ -166,7 +166,7 @@ export default function Home() {
           <MeetBrightside
             heading="Meet Brightside"
             body="We aren’t reinventing the wheel. We just really care about making your lawn look good… because that’s what you hired us to do. We show up, we do things right, and we never say “good enough”."
-            cta={{ label: "Get Your Quote", href: "#lead" }}
+            cta={{ label: "Get Your Quote", href: "/get-quote" }}
             image={{ src: "/newhero.png", alt: "Brightside Turf crew" }}
           />
 
@@ -183,10 +183,19 @@ export default function Home() {
             subheading="We keep it simple, fast, and without pressure."
             steps={HOW_IT_WORKS_STEPS}
             image="/newhero.png"
-            cta={{ href: "#lead", label: "Get Your Quote" }}
+            cta={{ href: "/get-quote", label: "Get Your Quote" }}
           />
 
-          <div id="lead" className="scroll-mt-32">
+          <div id="lead" className="scroll-mt-32 space-y-6 pt-12">
+            <div className="space-y-3 text-center">
+              <h2 className="text-5xl font-bold text-pine">
+                Tell us about your lawn.
+              </h2>
+              <p className="text-lg text-slate-600">
+                We&apos;d love to take care of your home. Tell us what you want
+                information on, and we&apos;ll reach out within 24 hours.
+              </p>
+            </div>
             <LeadForm services={SERVICE_CARDS.map((service) => service.title)} />
           </div>
 
@@ -206,7 +215,7 @@ export default function Home() {
         links={[
           ...NAV_LINKS,
           { label: "Privacy Policy", href: "/privacy" },
-          { label: "Get Quote", href: "/#lead" },
+          { label: "Get Quote", href: "/get-quote" },
         ]}
       />
     </div>

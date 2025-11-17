@@ -23,8 +23,8 @@ export function HowItWorks({
   cta,
 }: HowItWorksProps) {
   return (
-    <section className="grid gap-10 rounded-[2.5rem] bg-white p-6 shadow-brand md:grid-cols-2 md:p-10">
-      <FadeInSection className="relative overflow-hidden rounded-3xl">
+    <section className="grid gap-10 rounded-[2.5rem] bg-white p-48 pb-48 shadow-brand md:grid-cols-2 md:p-7 md:pb-12">
+      <FadeInSection className="relative overflow-hidden rounded-xl">
         <Image
           src={image}
           alt="Brightside technician"

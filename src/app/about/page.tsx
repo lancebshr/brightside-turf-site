@@ -200,6 +200,8 @@ export default function AboutPage() {
           primaryCta={{ label: "Get Your Quote", href: "#contact" }}
           navLinks={NAV_LINKS}
           showPhone={false}
+          centerContent
+          starPlacement="aboveCta"
         />
       </div>
 
@@ -369,7 +371,7 @@ export default function AboutPage() {
         links={[
           ...NAV_LINKS,
           { label: "Privacy Policy", href: "/privacy" },
-          { label: "Get Quote", href: "/#lead" },
+          { label: "Get Quote", href: "/get-quote" },
         ]}
       />
     </div>

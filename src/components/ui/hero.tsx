@@ -41,6 +41,29 @@ export function Hero({
     { label: "Sprinkler Winterization", href: "/services/sprinkler-winterization" },
     { label: "Holiday Lighting", href: "/services/holiday-lighting" },
   ];
+  const renderStarRow = (className = "", alignCenter = centerContent) => (
+    <div
+      className={`flex flex-wrap items-center gap-2 text-glow ${
+        alignCenter ? "justify-center" : ""
+      } ${className}`}
+    >
+      {Array.from({ length: 5 }).map((_, index) => (
+        <Star key={index} className="size-6 flex-shrink-0 fill-yellow-400 text-yellow-400" />
+      ))}
+      <span className="ml-2 flex items-center gap-2 whitespace-nowrap text-base font-semibold md:text-lg">
+        {statLabel}
+        <Image
+          src="/icons8-google-48.png"
+          alt="Google"
+          width={20}
+          height={20}
+          className="h-5 w-5 flex-shrink-0"
+          priority
+        />
+      </span>
+    </div>
+  );
+
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-ink text-white">
       <div
@@ -120,7 +143,7 @@ export function Hero({
                   className="rounded-full bg-[#1e3a4c] px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-[#2a4f66]"
                   asChild
                 >
-                  <a href="#lead">Get Quote</a>
+                  <a href="/get-quote">Get Quote</a>
                 </Button>
               </div>
               <div className="flex items-center gap-3 md:hidden">
@@ -129,33 +152,19 @@ export function Hero({
                   size="lg"
                   className="rounded-full bg-[#1e3a4c] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white hover:bg-[#2a4f66]"
                 >
-                  <a href="#lead">Get Quote</a>
+                  <a href="/get-quote">Get Quote</a>
                 </Button>
               </div>
             </nav>
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col justify-center px-6 pb-16 text-white md:px-12 lg:px-16">
-          <div className="mt-16 mb-8 flex flex-wrap items-center gap-2 text-glow">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <Star
-                key={index}
-                className="size-6 flex-shrink-0 fill-yellow-400 text-yellow-400"
-              />
-            ))}
-            <span className="ml-2 flex items-center gap-2 text-base font-semibold whitespace-nowrap md:text-lg">
-              {statLabel}
-              <Image
-                src="/icons8-google-48.png"
-                alt="Google"
-                width={20}
-                height={20}
-                className="h-5 w-5 flex-shrink-0"
-                priority
-              />
-            </span>
-          </div>
+        <div
+          className={`flex flex-1 flex-col justify-center px-6 pb-16 text-white md:px-12 lg:px-16 ${
+            centerContent ? "items-center text-center" : ""
+          }`}
+        >
+          {starPlacement === "top" && renderStarRow("mt-16 mb-8")}
 
           <h1 className="text-glow mb-7 max-w-7xl text-balance text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
             {heading}
@@ -168,18 +177,25 @@ export function Hero({
           {showPhone && (
             <a
               href={`tel:${phone.replace(/[^0-9]/g, "")}`}
-              className="text-glow mb-2 inline-flex text-2xl font-bold underline-offset-4 hover:underline md:text-3xl"
+              className={`text-glow mb-2 inline-flex text-2xl font-bold underline-offset-4 hover:underline md:text-3xl ${
+                centerContent ? "justify-center" : ""
+              }`}
             >
               {phone}
             </a>
           )}
 
-          <div className="mt-3">
+          <div
+            className={`mt-3 ${centerContent ? "flex flex-col items-center gap-4" : ""}`}
+          >
+            {starPlacement === "aboveCta" && renderStarRow("mb-2", true)}
             <Button
               asChild
               size="lg"
               style={{ backgroundColor: BRAND_MINT, color: "#1e3a4c" }}
-              className="group rounded-full px-8 py-7 text-2xl font-bold uppercase tracking-wide transition hover:opacity-90"
+              className={`group rounded-full px-8 py-7 text-2xl font-bold uppercase tracking-wide transition hover:opacity-90 ${
+                centerContent ? "mx-auto" : ""
+              }`}
             >
               <a href={primaryCta.href}>
                 {primaryCta.label}

@@ -12,7 +12,7 @@ type CtaStripProps = {
 export function CtaStrip({
   heading = "Ready To Get Started?",
   subtext = "Healthy, weed-free lawns don’t happen by accident. Tell us what you need, and we’ll reach out within 24 hours.",
-  ctaHref = "/#lead",
+  ctaHref = "/get-quote",
   ctaLabel = "Get Your Quote",
 }: CtaStripProps) {
   return (
