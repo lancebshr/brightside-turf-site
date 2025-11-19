@@ -25,12 +25,12 @@ export function MeetBrightside({
   return (
     <section
       id="about"
-      className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 scroll-mt-32 bg-mint/40"
+      className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 scroll-mt-32 bg-pine text-white"
     >
-      <div className="mx-auto grid w-full max-w-[1600px] gap-10 px-6 py-16 text-ink md:grid-cols-[1.1fr_0.9fr] md:pl-16 md:pr-7 lg:pl-24">
-        <FadeInSection className="flex flex-col items-center justify-center space-y-6 text-center md:items-start md:text-left">
-          <h2 className="text-5xl font-bold text-pine">{heading}</h2>
-          <p className="text-lg text-ink/80">{body}</p>
+      <div className="mx-auto grid w-full max-w-[1600px] gap-8 px-6 py-12 md:grid-cols-[1.1fr_0.9fr] md:pl-16 md:pr-7 lg:pl-24">
+        <FadeInSection className="flex flex-col items-center justify-center space-y-6 text-center text-white md:items-start md:text-left">
+          <h2 className="text-5xl font-bold text-white">{heading}</h2>
+          <p className="text-lg text-white/80">{body}</p>
           <Button
             asChild
             size="lg"

@@ -155,20 +155,22 @@ export default function Home() {
           navLinks={NAV_LINKS}
         />
       </div>
-      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-6 pt-16 sm:px-6 lg:px-0">
-        <section className="space-y-16">
-          <ServicesGrid
-            heading="Brightside’s Services"
-            subheading="We’re redefining the way families experience lawn care. And really, it’s nothing too crazy. It’s just friendly people who show up when they say they will, in clean uniforms, ready to do the job right. That’s it."
-            services={SERVICE_CARDS}
-          />
+      <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f6fbf8] to-[#c7f0de]">
+        <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-12 pt-16 sm:px-6 lg:px-0">
+          <section className="space-y-16">
+            <ServicesGrid
+              heading="Brightside’s Services"
+              subheading="We’re redefining the way families experience lawn care. And really, it’s nothing too crazy. It’s just friendly people who show up when they say they will, in clean uniforms, ready to do the job right. That’s it."
+              services={SERVICE_CARDS}
+            />
 
-          <MeetBrightside
-            heading="Meet Brightside"
-            body="We aren’t reinventing the wheel. We just really care about making your lawn look good… because that’s what you hired us to do. We show up, we do things right, and we never say “good enough”."
-            cta={{ label: "Get Your Quote", href: "/get-quote" }}
-            image={{ src: "/newhero.png", alt: "Brightside Turf crew" }}
-          />
+            <MeetBrightside
+              heading="Meet Brightside"
+              body="We aren’t reinventing the wheel. We just really care about making your lawn look good… because that’s what you hired us to do. We show up, we do things right, and we never say “good enough”."
+              cta={{ label: "Get Your Quote", href: "/get-quote" }}
+              image={{ src: "/newhero.png", alt: "Brightside Turf crew" }}
+            />
+          </section>
 
           <div id="reviews" className="scroll-mt-32">
             <ReviewsCarousel
@@ -204,20 +206,21 @@ export default function Home() {
             description="We’re proud to care for lawns throughout the greater Omaha metro."
             areas={SERVICE_AREAS}
           />
-        </section>
-      </main>
-      <ContactStrip
-        phone="(402) 810-8692"
-        email="hello@brightsideturf.com"
-        note="Brightside is locally owned and operated in Omaha."
-      />
-      <SiteFooter
-        links={[
-          ...NAV_LINKS,
-          { label: "Privacy Policy", href: "/privacy" },
-          { label: "Get Quote", href: "/get-quote" },
-        ]}
-      />
+        </div>
+
+        <ContactStrip
+          phone="(402) 810-8692"
+          email="hello@brightsideturf.com"
+          note="Brightside is locally owned and operated in Omaha."
+        />
+        <SiteFooter
+          links={[
+            ...NAV_LINKS,
+            { label: "Privacy Policy", href: "/privacy" },
+            { label: "Get Quote", href: "/get-quote" },
+          ]}
+        />
+      </div>
     </div>
   );
 }

@@ -287,6 +287,11 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+        </section>
+      </main>
+
+      <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f5fbf7] to-[#c7f0de]">
+        <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-0 pt-12 sm:px-6 lg:px-0">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {BLOG_POSTS.map((title) => (
               <article
@@ -307,71 +312,70 @@ export default function AboutPage() {
               </article>
             ))}
           </div>
-        </section>
 
-        <section id="faqs" className="space-y-6 scroll-mt-32">
-          <FadeInSection className="space-y-3 text-center">
-            <h2 className="text-5xl font-bold text-pine">Questions about Brightside?</h2>
-            <p className="text-lg text-slate-600">
-              Below are some of the most common questions we are asked about the company.
-            </p>
-          </FadeInSection>
+          <section id="faqs" className="space-y-6 scroll-mt-32">
+            <FadeInSection className="space-y-3 text-center">
+              <h2 className="text-5xl font-bold text-pine">Questions about Brightside?</h2>
+              <p className="text-lg text-slate-600">
+                Below are some of the most common questions we are asked about the company.
+              </p>
+            </FadeInSection>
 
-          <div className="space-y-6">
-            {FAQ_CATEGORIES.map((category) => (
-              <details
-                open
-                key={category.title}
-                className="group rounded-[2.5rem] border border-slate-200 bg-white px-6 py-5 shadow-brand md:px-10 md:py-8"
-              >
-                <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left">
-                  <div>
-                    <p className="text-sm font-bold uppercase tracking-[0.3em] text-pine">
-                      {category.title}
-                    </p>
-                    <p className="mt-2 text-lg text-slate-500">{category.description}</p>
-                  </div>
-                  <ChevronDown className="size-6 text-pine transition group-open:-rotate-180" />
-                </summary>
-                <div className="mt-6 space-y-4">
-                  {category.items.map((item, index) => (
-                    <details
-                      open
-                      key={item.question}
-                      className="group rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3 transition"
-                    >
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-pine">
-                        <span className="flex items-center gap-3">
-                          <span className="text-sm font-bold text-mint">
-                            {(index + 1).toString().padStart(2, "0")}
+            <div className="space-y-6">
+              {FAQ_CATEGORIES.map((category) => (
+                <details
+                  open
+                  key={category.title}
+                  className="group rounded-[2.5rem] border border-slate-200 bg-white px-6 py-5 shadow-brand md:px-10 md:py-8"
+                >
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left">
+                    <div>
+                      <p className="text-sm font-bold uppercase tracking-[0.3em] text-pine">
+                        {category.title}
+                      </p>
+                      <p className="mt-2 text-lg text-slate-500">{category.description}</p>
+                    </div>
+                    <ChevronDown className="size-6 text-pine transition group-open:-rotate-180" />
+                  </summary>
+                  <div className="mt-6 space-y-4">
+                    {category.items.map((item, index) => (
+                      <details
+                        key={item.question}
+                        className="group rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3 transition"
+                      >
+                        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-pine">
+                          <span className="flex items-center gap-3">
+                            <span className="text-sm font-bold text-mint">
+                              {(index + 1).toString().padStart(2, "0")}
+                            </span>
+                            {item.question}
                           </span>
-                          {item.question}
-                        </span>
-                        <ChevronDown className="size-4 text-ink/60 transition group-open:-rotate-180" />
-                      </summary>
-                      <p className="mt-3 text-base text-ink/80">{item.answer}</p>
-                    </details>
-                  ))}
-                </div>
-              </details>
-            ))}
+                          <ChevronDown className="size-4 text-ink/60 transition group-open:-rotate-180" />
+                        </summary>
+                        <p className="mt-3 text-base text-ink/80">{item.answer}</p>
+                      </details>
+                    ))}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+          <div id="contact" className="scroll-mt-32">
+            <ContactStrip
+              phone="(402) 810-8692"
+              email="hello@brightsideturfne.com"
+              note="Still have questions? We’d love to help. Reach out anytime and we’ll get you a quick answer."
+            />
           </div>
-        </section>
-      </main>
-      <div id="contact" className="scroll-mt-32">
-        <ContactStrip
-          phone="(402) 810-8692"
-          email="hello@brightsideturf.com"
-          note="Still have questions? We’d love to help. Reach out anytime and we’ll get you a quick answer."
+        </div>
+        <SiteFooter
+          links={[
+            ...NAV_LINKS,
+            { label: "Privacy Policy", href: "/privacy" },
+            { label: "Get Quote", href: "/get-quote" },
+          ]}
         />
       </div>
-      <SiteFooter
-        links={[
-          ...NAV_LINKS,
-          { label: "Privacy Policy", href: "/privacy" },
-          { label: "Get Quote", href: "/get-quote" },
-        ]}
-      />
     </div>
   );
 }

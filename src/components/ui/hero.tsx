@@ -166,7 +166,7 @@ export function Hero({
       >
         <div className="fixed left-0 right-0 top-4 z-50 flex w-full justify-center px-4 sm:px-6 xl:px-0">
           <div className="relative w-full max-w-6xl">
-            <div className="pointer-events-none absolute inset-0 h-24 rounded-[1.75rem] bg-black/20 shadow-[0_15px_40px_rgba(0,0,0,0.35)] backdrop-blur-lg" />
+            <div className="pointer-events-none absolute inset-0 h-24 rounded-[1.75rem] bg-black/40 shadow-[0_15px_40px_rgba(0,0,0,0.35)] backdrop-blur-lg" />
             <nav
               ref={navRef}
               className="relative flex h-24 w-full items-stretch justify-between px-5 text-white"
