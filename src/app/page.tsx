@@ -117,15 +117,15 @@ const REVIEWS = [
 
 const HOW_IT_WORKS_STEPS = [
   {
-    title: "Get Your Quote",
+    title: "1. Get Your Quote",
     copy: "Tell us what you need and we’ll give you a clear and fair price.",
   },
   {
-    title: "We Show Up",
+    title: "2. We Show Up",
     copy: "We do what we say we will and knock it out of the park.",
   },
   {
-    title: "Enjoy Your Lawn",
+    title: "3. Enjoy Your Lawn",
     copy: "If anything is ever off, we come back and make it right.",
   },
 ];

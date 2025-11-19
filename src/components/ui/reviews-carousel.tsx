@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type TouchEvent } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 
@@ -18,6 +18,12 @@ type ReviewsCarouselProps = {
   reviews: Review[];
 };
 
+const getVisibleCount = (width: number, total: number) => {
+  if (width < 640) return Math.min(1, total);
+  if (width < 1024) return Math.min(2, total);
+  return Math.min(3, total);
+};
+
 export function ReviewsCarousel({
   heading,
   subheading,
@@ -26,16 +32,20 @@ export function ReviewsCarousel({
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [visibleCount, setVisibleCount] = useState(() =>
-    Math.min(3, reviews.length)
+    typeof window === "undefined"
+      ? Math.min(1, reviews.length)
+      : getVisibleCount(window.innerWidth, reviews.length)
   );
   const maxIndex =
     visibleCount > 0 ? Math.max(reviews.length - visibleCount, 0) : 0;
   const viewportRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
+  const touchStartRef = useRef<number | null>(null);
+  const touchCurrentRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
-      setVisibleCount(Math.min(3, reviews.length));
+      setVisibleCount(getVisibleCount(window.innerWidth, reviews.length));
     };
 
     handleResize();
@@ -90,6 +100,38 @@ export function ReviewsCarousel({
     return null;
   }
 
+  const gapSpacing = reviews.length > 1 ? CARD_GAP : 0;
+
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    touchStartRef.current = event.touches[0].clientX;
+    touchCurrentRef.current = event.touches[0].clientX;
+  };
+
+  const handleTouchMove = (event: TouchEvent<HTMLDivElement>) => {
+    touchCurrentRef.current = event.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (
+      touchStartRef.current === null ||
+      touchCurrentRef.current === null ||
+      Math.abs(touchStartRef.current - touchCurrentRef.current) < 30
+    ) {
+      touchStartRef.current = null;
+      touchCurrentRef.current = null;
+      return;
+    }
+
+    if (touchStartRef.current > touchCurrentRef.current) {
+      goTo("next");
+    } else {
+      goTo("prev");
+    }
+
+    touchStartRef.current = null;
+    touchCurrentRef.current = null;
+  };
+
   return (
     <section
       onMouseEnter={() => setPaused(true)}
@@ -102,18 +144,19 @@ export function ReviewsCarousel({
       </FadeInSection>
 
       <div className="relative">
-        <div
-          className="mx-auto px-4"
-          style={{ width: "calc(100vw - 220px)", maxWidth: "1100px" }}
-        >
-          <div className="overflow-hidden" ref={viewportRef}>
+        <div className="mx-auto w-full px-4 sm:px-6" style={{ maxWidth: "1100px" }}>
+          <div
+            className="overflow-hidden"
+            ref={viewportRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div
               className="flex gap-4 transition-transform duration-700 ease-out"
               style={{
                 transform: `translateX(-${
-                  visibleCount > 0
-                    ? index * (cardWidth + (visibleCount > 1 ? CARD_GAP : 0))
-                    : 0
+                  visibleCount > 0 ? index * (cardWidth + gapSpacing) : 0
                 }px)`,
               }}
             >
@@ -153,7 +196,7 @@ export function ReviewsCarousel({
           </div>
         </div>
 
-        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center -translate-x-1/2 pl-10">
+        <div className="pointer-events-none absolute inset-y-0 left-0 hidden items-center -translate-x-1/2 pl-10 md:flex">
           <CarouselButton
             direction="prev"
             onClick={() => goTo("prev")}
@@ -161,7 +204,21 @@ export function ReviewsCarousel({
             disabled={maxIndex === 0}
           />
         </div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center translate-x-1/2 pr-10">
+        <div className="pointer-events-none absolute inset-y-0 right-0 hidden items-center translate-x-1/2 pr-10 md:flex">
+          <CarouselButton
+            direction="next"
+            onClick={() => goTo("next")}
+            ariaLabel="Next review"
+            disabled={maxIndex === 0}
+          />
+        </div>
+        <div className="mt-6 flex items-center justify-center gap-4 md:hidden">
+          <CarouselButton
+            direction="prev"
+            onClick={() => goTo("prev")}
+            ariaLabel="Previous review"
+            disabled={maxIndex === 0}
+          />
           <CarouselButton
             direction="next"
             onClick={() => goTo("next")}

@@ -1,6 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FadeInSection } from "@/components/ui/fade-in-section";
+import {
+  GET_QUOTE_BUTTON_CLASSNAME,
+  GET_QUOTE_BUTTON_STYLE,
+  cn,
+  formatGetQuoteLabel,
+} from "@/lib/utils";
 
 type MeetBrightsideProps = {
   heading: string;
@@ -27,9 +34,12 @@ export function MeetBrightside({
           <Button
             asChild
             size="lg"
-            className="mt-6 rounded-full border border-pine/10 bg-pine px-8 py-6 text-lg font-semibold text-white hover:bg-pine/90"
+            style={GET_QUOTE_BUTTON_STYLE}
+            className={cn(GET_QUOTE_BUTTON_CLASSNAME, "mt-6")}
           >
-            <a href={cta.href}>{cta.label}</a>
+            <Link href={cta.href}>
+              {formatGetQuoteLabel(cta.label)}
+            </Link>
           </Button>
         </FadeInSection>
 

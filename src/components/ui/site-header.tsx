@@ -4,7 +4,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import {
+  GET_QUOTE_BUTTON_CLASSNAME,
+  GET_QUOTE_BUTTON_STYLE,
+  cn,
+} from "@/lib/utils";
 
 type NavLink = {
   label: string;
@@ -66,8 +70,13 @@ export function SiteHeader({ links }: SiteHeaderProps) {
               {link.label}
             </a>
           ))}
-          <Button asChild className="shadow-brand">
-            <a href="/get-quote">Get Quote</a>
+          <Button
+            asChild
+            size="lg"
+            style={GET_QUOTE_BUTTON_STYLE}
+            className={GET_QUOTE_BUTTON_CLASSNAME}
+          >
+            <a href="/get-quote">GET YOUR QUOTE</a>
           </Button>
         </nav>
 
@@ -102,9 +111,14 @@ export function SiteHeader({ links }: SiteHeaderProps) {
                 </a>
               ))}
             </nav>
-            <Button asChild className="w-full">
+            <Button
+              asChild
+              size="lg"
+              style={GET_QUOTE_BUTTON_STYLE}
+              className={cn(GET_QUOTE_BUTTON_CLASSNAME, "w-full")}
+            >
               <a href="/get-quote" onClick={() => setOpen(false)}>
-                Get Your Quote
+                GET YOUR QUOTE
               </a>
             </Button>
           </div>

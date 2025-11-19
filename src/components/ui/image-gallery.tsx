@@ -1,5 +1,5 @@
 // /components/ui/image-gallery.tsx
-import Image from "next/image";
+import { useState } from "react";
 
 export default function Example() {
   return (
@@ -11,11 +11,7 @@ export default function Example() {
 
       <section className="w-full flex flex-col items-center justify-start py-12">
         <div className="max-w-3xl text-center px-4">
-          <h1 className="text-3xl font-semibold">Our Latest Creations</h1>
-          <p className="text-sm text-slate-500 mt-2">
-            A visual collection of our most recent works – each piece crafted
-            with intention, emotion, and style.
-          </p>
+          <h1 className="text-3xl font-semibold">“At Brightside, the Grass Really is Greener”</h1>
         </div>
 
         <div className="flex items-center gap-2 h-[400px] w-full max-w-5xl mt-10 px-4">
@@ -31,13 +27,10 @@ export default function Example() {
               key={idx}
               className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full"
             >
-              <Image
+              <img
+                className="h-full w-full object-cover object-center"
                 src={src}
                 alt={`image-${idx}`}
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 400px"
-                priority={idx === 0}
               />
             </div>
           ))}

@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { BRAND_MINT } from "@/lib/utils";
+import {
+  GET_QUOTE_BUTTON_CLASSNAME,
+  GET_QUOTE_BUTTON_STYLE,
+  formatGetQuoteLabel,
+} from "@/lib/utils";
 
 type CtaStripProps = {
   heading?: string;
@@ -15,6 +19,8 @@ export function CtaStrip({
   ctaHref = "/get-quote",
   ctaLabel = "Get Your Quote",
 }: CtaStripProps) {
+  const formattedLabel = formatGetQuoteLabel(ctaLabel);
+
   return (
     <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 rounded-t-[10rem] rounded-b-none bg-gradient-to-b from-pine to-ink px-4 py-20 text-white sm:px-8">
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-10 text-center">
@@ -25,10 +31,10 @@ export function CtaStrip({
         <Button
           asChild
           size="lg"
-          style={{ backgroundColor: BRAND_MINT, color: "#1e3a4c" }}
-          className="rounded-full px-10 py-6 text-base font-semibold transition hover:opacity-90"
+          style={GET_QUOTE_BUTTON_STYLE}
+          className={GET_QUOTE_BUTTON_CLASSNAME}
         >
-          <Link href={ctaHref}>{ctaLabel}</Link>
+          <Link href={ctaHref}>{formattedLabel}</Link>
         </Button>
       </div>
     </section>

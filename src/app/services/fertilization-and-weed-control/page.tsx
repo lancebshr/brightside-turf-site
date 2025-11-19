@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 import { ReviewsCarousel, type Review } from "@/components/ui/reviews-carousel";
@@ -8,6 +9,12 @@ import { NAV_LINKS } from "@/lib/nav-links";
 import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
+import {
+  GET_QUOTE_BUTTON_CLASSNAME,
+  GET_QUOTE_BUTTON_STYLE,
+  cn,
+  formatGetQuoteLabel,
+} from "@/lib/utils";
 
 const EXPECTATION_POINTS = [
   {
@@ -31,8 +38,6 @@ const EXPECTATION_POINTS = [
     body: "If weeds pop up between visits or something feels off, we come back and make it right.",
   },
 ];
-
-const GALLERY_IMAGES = Array.from({ length: 6 }, () => "/newhero.png");
 
 const FAQ_ITEMS = [
   {
@@ -99,125 +104,151 @@ export default function FertilizationAndWeedControlPage() {
         statLabel="5.0 stars on Google"
         primaryCta={{ href: "/get-quote", label: "Get Your Quote" }}
         navLinks={NAV_LINKS}
-        showPhone={false}
         centerContent
         starPlacement="aboveCta"
       />
-      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-16 pt-10 sm:px-6 lg:px-0">
+      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-0 pt-0 sm:px-6 lg:px-0">
 
-        <section className="grid gap-10 rounded-[2.5rem] bg-white p-6 shadow-brand md:grid-cols-[1.05fr_0.95fr] md:p-12">
-          <div className="relative h-72 overflow-hidden rounded-3xl md:h-[667px] md:self-start">
-            <Image
-              src="/newhero.png"
-              alt="Brightside team walking a property"
-              fill
-              className="object-cover"
-              sizes="(min-width: 768px) 50vw, 100vw"
-              priority
-            />
+        <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-white shadow-brand">
+          <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-10 px-4 py-16 sm:px-6 lg:px-20">
+            <div className="space-y-6 text-center">
+              <h2 className="text-5xl font-bold text-pine">
+                A simple plan that gives your lawn exactly what it needs.
+              </h2>
+            </div>
+            <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+              <div className="relative h-72 overflow-hidden rounded-3xl md:h-[667px]">
+                <Image
+                  src="/newhero.png"
+                  alt="Brightside team walking a property"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col justify-center space-y-5 text-center md:text-left">
+                <p className="text-lg text-ink/80">
+                  A fertilizer and weed control plan that gives your lawn the nutrients it needs
+                  and keeps weeds under control all season.
+                </p>
+                <p className="text-lg text-ink/80">
+                  From the first treatment to the last, we follow the same proven steps so you always know what to expect.
+                </p>
+                <div className="space-y-3">
+                  {EXPECTATION_POINTS.map((item) => (
+                    <details
+                      key={item.title}
+                      className="group px-1 py-3 text-left"
+                    >
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-pine">
+                        {item.title}
+                        <ChevronDown className="size-4 text-ink/60 transition group-open:-rotate-180" />
+                      </summary>
+                      <p className="mt-2 text-base text-ink/80">{item.body}</p>
+                    </details>
+                  ))}
+                </div>
+                <div className="pt-2">
+                  <Button
+                    asChild
+                    size="lg"
+                    style={GET_QUOTE_BUTTON_STYLE}
+                    className={cn(GET_QUOTE_BUTTON_CLASSNAME, "mx-auto")}
+                  >
+                    <Link href="/get-quote">
+                      {formatGetQuoteLabel("Get Your Quote")}
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="space-y-5">
-            <h2 className="text-5xl font-bold text-pine">
-              A simple plan that gives your lawn exactly what it needs.
-            </h2>
-            <p className="text-lg text-ink/80">
-              A fertilizer and weed control plan that gives your lawn the nutrients it needs
-              and keeps weeds under control all season.
-            </p>
-            <div className="space-y-3">
-              {EXPECTATION_POINTS.map((item) => (
+        </section>
+      </main>
+      <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#edf8f2] to-[#c7f0de]">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 pb-16 pt-16 sm:px-6 lg:px-0">
+          <section>
+            <CoreValues
+              heading="Why Brightside"
+              description="We built Brightside on three simple values that guide every job we do."
+            />
+          </section>
+
+          <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-pine py-16 text-white">
+            <div className="mx-auto flex w-full max-w-6xl flex-col space-y-10 px-4 sm:px-6 lg:px-0">
+              <FadeInSection className="space-y-2 text-center">
+                <h2 className="text-5xl font-bold text-white">
+                  At Brightside, the Grass Really is Greener
+                </h2>
+              </FadeInSection>
+              <FadeInSection>
+                <div className="gallery-5">
+                  <div className="gallery-5__tile">
+                    <img src="/aeration.JPG" alt="Brightside technician aerating a lawn" className="gallery-5__image" />
+                  </div>
+                  <div className="gallery-5__tile">
+                    <img src="/fertilization.JPG" alt="Fertilizer application across a green yard" className="gallery-5__image" />
+                  </div>
+                  <div className="gallery-5__tile">
+                    <img src="/overseeding.JPG" alt="Overseeding equipment in action" className="gallery-5__image" />
+                  </div>
+                  <div className="gallery-5__tile">
+                    <img src="/lighting.webp" alt="Holiday lighting installed by Brightside" className="gallery-5__image" />
+                  </div>
+                  <div className="gallery-5__tile">
+                    <img src="/team-truck.jpg" alt="Brightside Turf team truck" className="gallery-5__image" />
+                  </div>
+                </div>
+              </FadeInSection>
+            </div>
+          </section>
+
+          <section className="space-y-6 rounded-[2.5rem] bg-white p-6 shadow-brand md:p-12">
+            <FadeInSection className="space-y-3 text-center">
+              <h2 className="text-5xl font-bold text-pine">Fertilization & Weed Control FAQs</h2>
+            </FadeInSection>
+            <div className="space-y-4">
+              {FAQ_ITEMS.map((faq) => (
                 <details
-                  key={item.title}
-                  className="group rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3"
+                  key={faq.question}
+                  className="group border-b border-slate-200 px-1 py-3 last:border-b-0"
                 >
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-pine">
-                    {item.title}
-                    <span className="text-sm text-ink/60 transition group-open:rotate-45">
-                      +
-                    </span>
+                    {faq.question}
+                    <ChevronDown className="size-4 text-ink/60 transition group-open:-rotate-180" />
                   </summary>
-                  <p className="mt-2 text-base text-ink/80">{item.body}</p>
+                  <p className="mt-3 text-base text-ink/80">{faq.answer}</p>
                 </details>
               ))}
             </div>
-            <Button asChild className="rounded-full bg-pine text-white hover:bg-pine/90">
-              <Link href="/get-quote">Get Your Quote</Link>
-            </Button>
-          </div>
-        </section>
-
-        <section>
-          <CoreValues
-            heading="Why Brightside"
-            description="We built Brightside on three simple values that guide every job we do."
-          />
-        </section>
-
-        <section className="space-y-10">
-          <FadeInSection className="space-y-2 text-center">
-            <h2 className="text-5xl font-bold text-pine">
-              At Brightside, the Grass Really is Greener
-            </h2>
-          </FadeInSection>
-          <FadeInSection>
-            <div className="grid gap-4 md:grid-cols-3">
-              {GALLERY_IMAGES.map((src, index) => (
-                <div key={`${src}-${index}`} className="overflow-hidden rounded-2xl">
-                  <Image
-                    src={src}
-                    alt={`Gallery image ${index + 1}`}
-                    width={400}
-                    height={300}
-                    className="h-48 w-full object-cover transition duration-500 hover:scale-105"
-                  />
-                </div>
-              ))}
-            </div>
-          </FadeInSection>
-        </section>
-
-        <section className="space-y-6 rounded-[2.5rem] bg-white p-6 shadow-brand md:p-12">
-          <FadeInSection className="space-y-3 text-center">
-            <h2 className="text-5xl font-bold text-pine">Fertilization & Weed Control FAQs</h2>
-          </FadeInSection>
-          <div className="space-y-4">
-            {FAQ_ITEMS.map((faq) => (
-              <details
-                key={faq.question}
-                className="group rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-pine">
-                  {faq.question}
-                  <span className="text-sm text-ink/60 transition group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-3 text-base text-ink/80">{faq.answer}</p>
-              </details>
-            ))}
-          </div>
-        </section>
-
-        
-      </main>
-      <section className="w-screen bg-background py-16">
-        <div className="space-y-6 px-4 sm:px-10">
-  
-          <div className="w-full">
-            <ReviewsCarousel
-              heading="What Your Neighbors Think"
-              subheading=""
-              reviews={REVIEWS}
-            />
-          </div>
+          </section>
         </div>
-      </section>
-      <CtaStrip />
-      <SiteFooter
-        links={[
-          ...NAV_LINKS,
-          { label: "Privacy Policy", href: "/privacy" },
-          { label: "Get Quote", href: "/get-quote" },
-        ]}
-      />
+
+        <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-16">
+          <div className="space-y-6 px-4 sm:px-10">
+            <div className="w-full">
+              <ReviewsCarousel
+                heading="What Your Neighbors Think"
+                subheading=""
+                reviews={REVIEWS}
+              />
+            </div>
+          </div>
+        </section>
+
+        <div className="pb-0 pt-4">
+          <CtaStrip />
+        </div>
+
+        <SiteFooter
+          links={[
+            ...NAV_LINKS,
+            { label: "Privacy Policy", href: "/privacy" },
+            { label: "Get Quote", href: "/get-quote" },
+          ]}
+        />
+      </div>
     </div>
   );
 }

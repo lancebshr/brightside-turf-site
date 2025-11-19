@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { Hero } from "@/components/ui/hero";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 import { ContactStrip } from "@/components/ui/contact-strip";
@@ -199,7 +200,6 @@ export default function AboutPage() {
           statLabel="5.0 stars on Google"
           primaryCta={{ label: "Get Your Quote", href: "#contact" }}
           navLinks={NAV_LINKS}
-          showPhone={false}
           centerContent
           starPlacement="aboveCta"
         />
@@ -320,23 +320,23 @@ export default function AboutPage() {
           <div className="space-y-6">
             {FAQ_CATEGORIES.map((category) => (
               <details
+                open
                 key={category.title}
                 className="group rounded-[2.5rem] border border-slate-200 bg-white px-6 py-5 shadow-brand md:px-10 md:py-8"
               >
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left">
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-pine/70">
+                    <p className="text-sm font-bold uppercase tracking-[0.3em] text-pine">
                       {category.title}
                     </p>
-                    <p className="mt-2 text-lg text-ink/80">{category.description}</p>
+                    <p className="mt-2 text-lg text-slate-500">{category.description}</p>
                   </div>
-                  <span className="text-xl font-bold text-pine transition group-open:rotate-45">
-                    +
-                  </span>
+                  <ChevronDown className="size-6 text-pine transition group-open:-rotate-180" />
                 </summary>
                 <div className="mt-6 space-y-4">
                   {category.items.map((item, index) => (
                     <details
+                      open
                       key={item.question}
                       className="group rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3 transition"
                     >
@@ -347,9 +347,7 @@ export default function AboutPage() {
                           </span>
                           {item.question}
                         </span>
-                        <span className="text-sm text-ink/60 transition group-open:rotate-45">
-                          +
-                        </span>
+                        <ChevronDown className="size-4 text-ink/60 transition group-open:-rotate-180" />
                       </summary>
                       <p className="mt-3 text-base text-ink/80">{item.answer}</p>
                     </details>

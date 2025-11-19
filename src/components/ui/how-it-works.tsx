@@ -1,6 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FadeInSection } from "@/components/ui/fade-in-section";
+import {
+  GET_QUOTE_BUTTON_CLASSNAME,
+  GET_QUOTE_BUTTON_STYLE,
+  cn,
+  formatGetQuoteLabel,
+} from "@/lib/utils";
 
 type Step = {
   title: string;
@@ -23,41 +30,41 @@ export function HowItWorks({
   cta,
 }: HowItWorksProps) {
   return (
-    <section className="grid gap-10 rounded-[2.5rem] bg-white p-48 pb-48 shadow-brand md:grid-cols-2 md:p-7 md:pb-12">
-      <FadeInSection className="relative overflow-hidden rounded-xl">
-        <Image
-          src={image}
-          alt="Brightside technician"
-          width={640}
-          height={840}
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
-      </FadeInSection>
+    <section className="relative z-0 overflow-hidden rounded-[2.5rem] shadow-brand">
+      <Image
+        src={image}
+        alt="Brightside technician"
+        fill
+        priority
+        className="object-cover"
+      />
 
-      <FadeInSection className="space-y-6">
-        <h2 className="text-5xl font-bold text-pine">{heading}</h2>
-        <p className="text-lg text-slate-600">{subheading}</p>
+      <FadeInSection className="relative z-0 flex min-h-[520px] items-stretch justify-end px-4 py-6 sm:px-10 sm:py-10">
+        <div className="ml-auto flex w-full max-w-md flex-col justify-center rounded-[2rem] bg-white p-8 text-ink shadow-2xl">
+          <h2 className="text-4xl font-bold text-pine md:text-5xl">{heading}</h2>
+          <p className="mt-3 text-lg text-slate-600">{subheading}</p>
 
-        <div className="space-y-6">
-          {steps.map((step, index) => (
-            <div key={step.title} className="space-y-1.5">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-pine/70">
-                Step {index + 1}
-              </p>
-              <h3 className="text-xl font-semibold text-ink">{step.title}</h3>
-              <p className="text-base text-slate-600">{step.copy}</p>
-            </div>
-          ))}
+          <div className="mt-8 space-y-4">
+            {steps.map((step) => (
+              <div
+                key={step.title}
+                className="rounded-2xl border border-pine/15 bg-white px-5 py-4 shadow-sm"
+              >
+                <h3 className="text-xl font-semibold text-ink">{step.title}</h3>
+                <p className="mt-1 text-base text-slate-600">{step.copy}</p>
+              </div>
+            ))}
+          </div>
+
+          <Button
+            asChild
+            size="lg"
+            style={GET_QUOTE_BUTTON_STYLE}
+            className={cn(GET_QUOTE_BUTTON_CLASSNAME, "mt-8 w-full")}
+          >
+            <Link href={cta.href}>{formatGetQuoteLabel(cta.label)}</Link>
+          </Button>
         </div>
-
-        <Button
-          asChild
-          size="lg"
-          className="rounded-full bg-pine px-8 py-6 text-lg font-semibold text-white hover:bg-pine/90"
-        >
-          <a href={cta.href}>{cta.label}</a>
-        </Button>
       </FadeInSection>
     </section>
   );
