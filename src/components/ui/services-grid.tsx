@@ -34,7 +34,7 @@ export function ServicesGrid({
             <a
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="gallery-5__tile group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+              className="gallery-5__tile focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             >
               <img
                 src={service.image}
@@ -43,18 +43,14 @@ export function ServicesGrid({
                 loading="lazy"
               />
               <div className="gallery-5__overlay">
-                <div className="relative flex h-full w-full flex-col items-center justify-center text-white">
-                  <h3 className="text-2xl font-bold text-glow transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0">
-                    {service.title}
-                  </h3>
-                  <p className="absolute inset-x-6 text-base text-white/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                    {service.description}
-                  </p>
-                  <span className="mt-auto flex items-center justify-center gap-1 text-sm font-semibold text-mint">
-                    Learn More
-                    <ChevronRight className="size-4" />
-                  </span>
+                <div className="gallery-5__text">
+                  <h2 className="gallery-5__title">{service.title}</h2>
+                  <p className="gallery-5__body">{service.description}</p>
                 </div>
+                <span className="gallery-5__cta flex items-center gap-1 text-sm font-semibold text-mint">
+                  Learn More
+                  <ChevronRight className="size-4" />
+                </span>
               </div>
             </a>
           ))}
