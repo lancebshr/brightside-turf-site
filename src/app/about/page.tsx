@@ -264,7 +264,7 @@ export default function AboutPage() {
         </section>
 
         <section id="beliefs" className="scroll-mt-32">
-          <CoreValues heading="We built Brightside on three simple values that guide every job we do." />
+          <CoreValues heading="Our values that guide every job we do:" />
         </section>
 
         <section id="blog" className="space-y-6 scroll-mt-32">

@@ -1,3 +1,6 @@
+"use client";
+
+import { ReactNode, useMemo } from "react";
 import Link from "next/link";
 import { Sparkles, Users, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,24 +15,24 @@ const DEFAULT_VALUES = [
   {
     title: "The Little Things Aren’t Little to Us",
     body: "We care about the small details because we love what we do and want you to love it too.",
-    icon: <Sparkles className="size-16 sm:size-20" />,
+    icon: <Sparkles className="size-10 md:size-14" />,
   },
   {
     title: "We Make It Personal",
     body: "Friendly techs, proactive updates, and quick follow-ups if anything feels off.",
-    icon: <Users className="size-16 sm:size-20" />,
+    icon: <Users className="size-10 md:size-14" />,
   },
   {
     title: "“Good Enough” Isn’t Good Enough",
     body: "We hold ourselves to a higher standard because that’s what Omaha families deserve.",
-    icon: <BadgeCheck className="size-16 sm:size-20" />,
+    icon: <BadgeCheck className="size-14 md:size-20" />,
   },
 ];
 
 type Value = {
   title: string;
   body: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 };
 
 type CoreValuesProps = {
@@ -47,70 +50,59 @@ export function CoreValues({
   values = DEFAULT_VALUES,
   className,
 }: CoreValuesProps) {
-  const topValues = values.slice(0, 2);
-  const bottomValue = values.slice(2, 3);
+  const stableValues = useMemo(() => values, [values]);
 
   return (
-    <div className={cn("relative overflow-hidden space-y-10 py-6 md:py-10", className)}>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#d9f2e5]/60 via-transparent to-transparent blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-10 -left-16 h-40 w-60 bg-gradient-to-tr from-[#c7f0de]/70 via-transparent to-transparent blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-10 -right-16 h-40 w-60 bg-gradient-to-tl from-[#c7f0de]/70 via-transparent to-transparent blur-3xl" />
-      <div className="space-y-4 text-center">
+    <div
+      className={cn(
+        "relative space-y-8 py-10 md:space-y-10 md:py-14",
+        className
+      )}
+    >
+      <div className="space-y-3 text-center pb-4">
         {eyebrow && (
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-pine/80">
             {eyebrow}
           </p>
         )}
-        <h2 className="text-3xl font-semibold italic text-pine">{heading}</h2>
-        {description && <p className="text-base text-ink/60">{description}</p>}
+        <h2 className="text-3xl font-semibold italic text-pine md:text-4xl">
+          {heading}
+        </h2>
+        {description && (
+          <p className="text-base text-ink/60">{description}</p>
+        )}
       </div>
 
-      <div className="mt-16 space-y-14">
-        <div className="grid gap-y-14 gap-x-12 md:grid-cols-2">
-          {topValues.map((value, index) => (
+      <div className="relative mx-auto w-full max-w-6xl">
+        <div className="relative grid gap-6 px-2 sm:grid-cols-2 lg:grid-cols-3">
+          {stableValues.map((value) => (
             <div
               key={value.title}
-              className="flex items-start gap-5"
+              className="relative min-h-[18rem] rounded-[2rem] bg-white shadow-[0_12px_30px_rgba(6,20,31,0.14)]"
             >
-            <div
-              className="flex size-20 flex-shrink-0 items-center justify-center text-pine opacity-0 animate-fade-in drop-shadow-[0_15px_30px_rgba(22,60,90,0.25)] md:justify-start"
-                style={{ animationDelay: `${index * 120}ms` }}
-              >
-                {value.icon}
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-3xl font-bold leading-tight text-pine">
-                  {value.title}
-                </h3>
-                <p className="text-lg text-ink/80">{value.body}</p>
+              <div className="flex h-full flex-col text-center">
+                <div className="relative flex h-32 flex-col items-center justify-end rounded-t-[2rem] bg-[#0b1f30] px-5 pb-4 pt-10 text-white md:h-36">
+                  {value.icon && (
+                    <div className="absolute left-1/2 -top-8 flex h-[4rem] w-[4rem] -translate-x-1/2 items-center justify-center rounded-full bg-white text-[#0b1f30] shadow-[0_6px_18px_rgba(5,15,26,0.18)] md:h-[4.5rem] md:w-[4.5rem]">
+                      {value.icon}
+                    </div>
+                  )}
+                  <p
+                    className={cn(
+                      "text-3xl font-bold leading-tight",
+                      value.title === "We Make It Personal" ? "mt-4" : "mt-6"
+                    )}
+                  >
+                    {value.title}
+                  </p>
+                </div>
+                <div className="flex flex-1 rounded-b-[2rem] bg-white px-6 py-6 text-lg text-ink/80">
+                  {value.body}
+                </div>
               </div>
             </div>
           ))}
         </div>
-
-        {bottomValue.length > 0 && (
-          <div className="mx-auto max-w-3xl">
-            {bottomValue.map((value, index) => (
-              <div
-                key={value.title}
-                className="flex items-start gap-6"
-              >
-                <div
-                className="flex size-24 flex-shrink-0 items-center justify-center text-pine opacity-0 animate-fade-in drop-shadow-[0_18px_30px_rgba(22,60,90,0.3)] md:justify-start"
-                  style={{ animationDelay: `${(index + topValues.length) * 120}ms` }}
-                >
-                  {value.icon}
-                </div>
-                <div className="space-y-3">
-                  <h3 className="text-3xl font-bold leading-tight text-pine">
-                    {value.title}
-                  </h3>
-                  <p className="text-lg text-ink/80">{value.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
 
       <div className="space-y-3 text-center">

@@ -166,7 +166,10 @@ export function Hero({
       >
         <div className="fixed left-0 right-0 top-4 z-50 flex w-full justify-center px-4 sm:px-6 xl:px-0">
           <div className="relative w-full max-w-6xl">
-            <div className="pointer-events-none absolute inset-0 h-24 rounded-[1.75rem] bg-black/40 shadow-[0_15px_40px_rgba(0,0,0,0.35)] backdrop-blur-lg" />
+            <div
+              className="pointer-events-none absolute inset-0 h-24 rounded-[1.75rem] shadow-[0_15px_40px_rgba(0,0,0,0.35)] backdrop-blur-lg"
+              style={{ backgroundColor: "rgba(111, 150, 188, 0.95)" }}
+            />
             <nav
               ref={navRef}
               className="relative flex h-24 w-full items-stretch justify-between px-5 text-white"
@@ -177,10 +180,10 @@ export function Hero({
                 className="flex h-full flex-shrink-0 items-center"
               >
                 <Image
-                  src="/Brightside%20Black.png"
+                  src="/BrightsideLogo.svg"
                   alt="Brightside Turf"
-                  width={1467}
-                  height={406}
+                  width={200}
+                  height={64}
                   priority
                   className="h-16 w-auto flex-shrink-0 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.35)]"
                 />
@@ -264,7 +267,10 @@ export function Hero({
                   </a>
                   <Button
                     size="lg"
-                    style={{ backgroundColor: BRAND_MINT }}
+                    style={{
+                      backgroundColor: BRAND_MINT,
+                      textShadow: "0 0 8px rgba(0,0,0,0.35)",
+                    }}
                     className="rounded-full px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:opacity-90"
                     asChild
                   >
@@ -279,7 +285,7 @@ export function Hero({
                 )}
               >
                 <button
-                  className="flex size-12 items-center justify-center rounded-full border border-white/40 bg-black/40 text-white transition hover:bg-black/60"
+                  className="flex size-12 items-center justify-center bg-navy] text-white"
                   onClick={() => setMobileMenuOpen((prev) => !prev)}
                   aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
                 >
@@ -334,7 +340,10 @@ export function Hero({
                     <div className="space-y-3">
                       <Button
                         asChild
-                        style={{ backgroundColor: BRAND_MINT }}
+                        style={{
+                          backgroundColor: BRAND_MINT,
+                          textShadow: "0 0 8px rgba(0,0,0,0.35)",
+                        }}
                         className="h-auto w-full rounded-2xl py-6 text-base font-bold uppercase tracking-wide text-white hover:opacity-90"
                       >
                         <a
@@ -348,7 +357,10 @@ export function Hero({
                       </Button>
                       <Button
                         asChild
-                        style={{ backgroundColor: BRAND_MINT }}
+                        style={{
+                          backgroundColor: BRAND_MINT,
+                          textShadow: "0 0 8px rgba(0,0,0,0.35)",
+                        }}
                         className="h-auto w-full rounded-2xl py-6 text-base font-bold uppercase tracking-wide text-white hover:opacity-90"
                       >
                         <a href="/get-quote" onClick={closeMobileMenu}>
@@ -385,7 +397,10 @@ export function Hero({
             <Button
               asChild
               size="lg"
-              style={{ backgroundColor: BRAND_MINT }}
+              style={{
+                backgroundColor: BRAND_MINT,
+                textShadow: "0 0 8px rgba(0,0,0,0.35)",
+              }}
               className={`group rounded-full px-8 py-7 text-2xl font-bold uppercase tracking-wide text-white transition hover:opacity-90 ${
                 centerContent ? "mx-auto" : ""
               }`}

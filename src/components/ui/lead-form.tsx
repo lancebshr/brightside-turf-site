@@ -4,7 +4,6 @@ import { FormEvent, ReactNode, useState } from "react";
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -27,15 +26,15 @@ export function LeadForm({ services }: LeadFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [serviceError, setServiceError] = useState(false);
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const selectedServices = formData.getAll("services");
     if (selectedServices.length === 0) {
       setServiceError(true);
       return;
     }
+
     setServiceError(false);
     setIsSubmitting(true);
 
@@ -47,35 +46,21 @@ export function LeadForm({ services }: LeadFormProps) {
   };
 
   return (
-    <div className="rounded-[2.5rem] bg-white p-6 text-ink shadow-brand md:p-5">
+    <div className="rounded-[2.5rem] p-6 text-ink md:p-5">
       <form
         onSubmit={handleSubmit}
-        className="mt-2 grid gap-4"
+        className="mt-1 space-y-2"
         action="#"
         method="post"
       >
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-3 md:grid-cols-2">
           <Field label="Name" htmlFor="name" required>
-            <Input id="name" name="name" placeholder="Jane Smith" required />
-          </Field>
-          <Field label="Address" htmlFor="address" required>
             <Input
-              id="address"
-              name="address"
-              placeholder="1234 Pine Street"
+              id="name"
+              name="name"
+              placeholder="Jane Smith"
               required
-            />
-          </Field>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          <Field label="Email" htmlFor="email" required>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="hello@brightsideturf.com"
-              required
+              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
             />
           </Field>
           <Field label="Phone" htmlFor="phone" required>
@@ -85,51 +70,98 @@ export function LeadForm({ services }: LeadFormProps) {
               type="tel"
               placeholder="(402) 555-0190"
               required
+              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
             />
           </Field>
         </div>
 
-        <Field label="Services interested in" required>
-          <p className="text-sm text-slate-500">
-            Select at least one service that you&apos;re interested in.
-          </p>
-          <div className="grid gap-3 sm:grid-cols-2">
+        <Field label="Email" htmlFor="email" required>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="hello@brightsideturf.com"
+            required
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+          />
+        </Field>
+
+        <Field label="Address" htmlFor="address" required>
+          <Input
+            id="address"
+            name="address"
+            placeholder="1234 Pine Street"
+            required
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+          />
+        </Field>
+
+        <div className="grid gap-3 md:grid-cols-2">
+          <Field label="City" htmlFor="city" required>
+            <Input
+              id="city"
+              name="city"
+              placeholder="Omaha"
+              required
+              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+            />
+          </Field>
+          <Field label="Zip" htmlFor="zip" required>
+            <Input
+              id="zip"
+              name="zip"
+              placeholder="68104"
+              required
+              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+            />
+          </Field>
+        </div>
+
+        <Field label="Select Services" required>
+          {selectedServices.map((service) => (
+            <input key={service} type="hidden" name="services" value={service} />
+          ))}
+          <div className="space-y-1 rounded-2xl border border-slate-200 bg-white p-2">
             {services.map((service) => {
-              const id = `service-${service
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, "-")}`;
+              const active = selectedServices.includes(service);
               return (
-                <label
+                <button
                   key={service}
-                  htmlFor={id}
-                  className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm font-medium text-ink shadow-sm"
+                  type="button"
+                  className={cn(
+                    "flex w-full items-center justify-between rounded-2xl border border-transparent px-4 py-3 text-left text-base transition",
+                    active
+                      ? "border-slate-200 bg-slate-100 font-semibold text-pine shadow-sm"
+                      : "text-ink hover:bg-slate-50"
+                  )}
+                  onClick={() => {
+                    setSelectedServices((prev) =>
+                      active ? prev.filter((item) => item !== service) : [...prev, service]
+                    );
+                    setServiceError(false);
+                  }}
                 >
-                  <input
-                    type="checkbox"
-                    id={id}
-                    name="services"
-                    value={service}
-                    className="service-checkbox size-4 rounded border-slate-300 text-pine focus:ring-pine"
-                    onChange={() => setServiceError(false)}
-                  />
-                  {service}
-                </label>
+                  <span>{service}</span>
+                  {active && (
+                    <span className="text-xs uppercase tracking-wide text-pine">Added</span>
+                  )}
+                </button>
               );
             })}
           </div>
           {serviceError && (
             <p className="text-sm font-semibold text-red-500">
-              Please choose at least one service.
+              Please select at least one service.
             </p>
           )}
         </Field>
 
-        <Field label="How did you find us?" htmlFor="referralSource" required>
+        <Field label="How Did You Find Us?" htmlFor="referralSource" required>
           <select
             id="referralSource"
             name="referralSource"
             required
-            className="rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
           >
             <option value="">Select one</option>
             {REFERRAL_SOURCES.map((source) => (
@@ -158,7 +190,7 @@ export function LeadForm({ services }: LeadFormProps) {
       >
         <div className="flex flex-col items-center gap-4 rounded-[2rem] bg-ink px-10 py-8 text-center text-white shadow-2xl">
           <Image
-            src="/Brightside%20Black.png"
+            src="/BrightsideLogo.svg"
             alt="Brightside Turf"
             width={280}
             height={80}
@@ -183,7 +215,7 @@ type FieldProps = {
 
 function Field({ label, htmlFor, required, children }: FieldProps) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       <Label htmlFor={htmlFor} className="text-sm font-medium text-ink">
         {label} {required && <span className="text-pine">*</span>}
       </Label>

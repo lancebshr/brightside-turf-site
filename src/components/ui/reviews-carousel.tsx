@@ -212,7 +212,7 @@ export function ReviewsCarousel({
             disabled={maxIndex === 0}
           />
         </div>
-        <div className="mt-6 flex items-center justify-center gap-4 md:hidden">
+        <div className="mt-3 flex items-center justify-center gap-4 md:hidden">
           <CarouselButton
             direction="prev"
             onClick={() => goTo("prev")}

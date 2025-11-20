@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -46,18 +47,15 @@ export function SiteHeader({ links }: SiteHeaderProps) {
           scrolled && "shadow-brand bg-white"
         )}
       >
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex size-10 items-center justify-center rounded-xl bg-mint text-pine font-bold tracking-wide">
-            BT
-          </div>
-          <div className="leading-tight">
-            <span className="text-sm uppercase tracking-widest text-slate-500">
-              Brightside
-            </span>
-            <p className="font-semibold text-pine text-base">
-              Turf Services
-            </p>
-          </div>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/BrightsideLogo.svg"
+            alt="Brightside Turf"
+            width={160}
+            height={48}
+            priority
+            className="h-10 w-auto"
+          />
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-ink md:flex">
