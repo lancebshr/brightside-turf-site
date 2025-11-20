@@ -59,17 +59,17 @@ export function CoreValues({
         className
       )}
     >
-      <div className="space-y-3 text-center pb-4">
+      <div className="space-y-4 text-center pb-4">
         {eyebrow && (
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-pine/80">
             {eyebrow}
           </p>
         )}
-        <h2 className="text-3xl font-semibold italic text-pine md:text-4xl">
+        <h2 className="text-5xl font-bold text-pine">
           {heading}
         </h2>
         {description && (
-          <p className="text-base text-ink/60">{description}</p>
+          <p className="text-lg text-slate-600">{description}</p>
         )}
       </div>
 
@@ -81,18 +81,18 @@ export function CoreValues({
               className="relative min-h-[18rem] rounded-[2rem] bg-white shadow-[0_12px_30px_rgba(6,20,31,0.14)]"
             >
               <div className="flex h-full flex-col text-center">
-                <div className="relative flex h-32 flex-col items-center justify-end rounded-t-[2rem] bg-[#0b1f30] px-5 pb-4 pt-10 text-white md:h-36">
+                <div
+                  className={cn(
+                    "relative flex h-32 flex-col items-center rounded-t-[2rem] bg-[#0B3352] px-5 pb-4 pt-10 text-white md:h-36",
+                    value.title === "We Make It Personal" ? "justify-center" : "justify-end"
+                  )}
+                >
                   {value.icon && (
-                    <div className="absolute left-1/2 -top-8 flex h-[4rem] w-[4rem] -translate-x-1/2 items-center justify-center rounded-full bg-white text-[#0b1f30] shadow-[0_6px_18px_rgba(5,15,26,0.18)] md:h-[4.5rem] md:w-[4.5rem]">
+                    <div className="absolute left-1/2 -top-8 flex h-[4rem] w-[4rem] -translate-x-1/2 items-center justify-center rounded-full bg-white text-[#0B3352] shadow-[0_6px_18px_rgba(5,15,26,0.18)] md:h-[4.5rem] md:w-[4.5rem]">
                       {value.icon}
                     </div>
                   )}
-                  <p
-                    className={cn(
-                      "text-3xl font-bold leading-tight",
-                      value.title === "We Make It Personal" ? "mt-4" : "mt-6"
-                    )}
-                  >
+                  <p className="text-3xl font-bold leading-tight">
                     {value.title}
                   </p>
                 </div>

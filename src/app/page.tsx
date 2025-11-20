@@ -188,7 +188,7 @@ export default function Home() {
             cta={{ href: "/get-quote", label: "Get Your Quote" }}
           />
 
-          <div id="lead" className="scroll-mt-32 space-y-6 pt-12">
+          <div id="lead" className="scroll-mt-32 space-y-4 pt-12">
             <div className="space-y-3 text-center">
               <h2 className="text-5xl font-bold text-pine">
                 Tell us about your lawn.

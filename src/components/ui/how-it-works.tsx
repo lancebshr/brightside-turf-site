@@ -41,7 +41,7 @@ export function HowItWorks({
 
       <FadeInSection className="relative z-0 flex min-h-[520px] items-stretch justify-end px-4 py-6 sm:px-10 sm:py-10">
         <div className="ml-auto flex w-full max-w-md flex-col justify-center rounded-[2rem] bg-white p-8 text-ink shadow-2xl">
-          <h2 className="text-4xl font-bold text-pine md:text-5xl">{heading}</h2>
+          <h2 className="text-4xl font-bold text-[#0B3352] md:text-5xl">{heading}</h2>
           <p className="mt-3 text-lg text-slate-600">{subheading}</p>
 
           <div className="mt-8 space-y-4">
@@ -50,7 +50,7 @@ export function HowItWorks({
                 key={step.title}
                 className="rounded-2xl border border-pine/15 bg-white px-5 py-4 shadow-sm"
               >
-                <h3 className="text-xl font-semibold text-ink">{step.title}</h3>
+                <h3 className="text-xl font-bold text-[#0B3352]">{step.title}</h3>
                 <p className="mt-1 text-base text-slate-600">{step.copy}</p>
               </div>
             ))}

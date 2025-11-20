@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 
 type LeadFormProps = {
   services: string[];
+  whiteLabels?: boolean;
 };
 
 const REFERRAL_SOURCES = [
@@ -22,7 +23,7 @@ const REFERRAL_SOURCES = [
   "Vehicles",
 ];
 
-export function LeadForm({ services }: LeadFormProps) {
+export function LeadForm({ services, whiteLabels = false }: LeadFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [serviceError, setServiceError] = useState(false);
@@ -46,7 +47,7 @@ export function LeadForm({ services }: LeadFormProps) {
   };
 
   return (
-    <div className="rounded-[2.5rem] p-6 text-ink md:p-5">
+    <div className="rounded-[2.5rem] p-6 px-14 text-ink md:p-5 md:px-28">
       <form
         onSubmit={handleSubmit}
         className="mt-1 space-y-2"
@@ -54,70 +55,58 @@ export function LeadForm({ services }: LeadFormProps) {
         method="post"
       >
         <div className="grid gap-3 md:grid-cols-2">
-          <Field label="Name" htmlFor="name" required>
-            <Input
-              id="name"
-              name="name"
-              placeholder="Jane Smith"
-              required
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
-            />
-          </Field>
-          <Field label="Phone" htmlFor="phone" required>
-            <Input
-              id="phone"
-              name="phone"
-              type="tel"
-              placeholder="(402) 555-0190"
-              required
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
-            />
-          </Field>
+          <Input
+            id="name"
+            name="name"
+            placeholder="Name"
+            required
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-6 text-base font-semibold text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+          />
+          <Input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="Phone"
+            required
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-6 text-base font-semibold text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+          />
         </div>
 
-        <Field label="Email" htmlFor="email" required>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="hello@brightsideturf.com"
-            required
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
-          />
-        </Field>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          required
+          className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-6 text-base font-semibold text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+        />
 
-        <Field label="Address" htmlFor="address" required>
-          <Input
-            id="address"
-            name="address"
-            placeholder="1234 Pine Street"
-            required
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
-          />
-        </Field>
+        <Input
+          id="address"
+          name="address"
+          placeholder="Address"
+          required
+          className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-6 text-base font-semibold text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+        />
 
         <div className="grid gap-3 md:grid-cols-2">
-          <Field label="City" htmlFor="city" required>
-            <Input
-              id="city"
-              name="city"
-              placeholder="Omaha"
-              required
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
-            />
-          </Field>
-          <Field label="Zip" htmlFor="zip" required>
-            <Input
-              id="zip"
-              name="zip"
-              placeholder="68104"
-              required
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
-            />
-          </Field>
+          <Input
+            id="city"
+            name="city"
+            placeholder="City"
+            required
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-6 text-base font-semibold text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+          />
+          <Input
+            id="zip"
+            name="zip"
+            placeholder="Zip"
+            required
+            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-6 text-base font-semibold text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
+          />
         </div>
 
-        <Field label="Select Services" required>
+        <Field label="Select Services" required labelClassName={whiteLabels ? "text-white font-bold" : undefined}>
           {selectedServices.map((service) => (
             <input key={service} type="hidden" name="services" value={service} />
           ))}
@@ -156,7 +145,7 @@ export function LeadForm({ services }: LeadFormProps) {
           )}
         </Field>
 
-        <Field label="How Did You Find Us?" htmlFor="referralSource" required>
+        <Field label="How Did You Find Us?" htmlFor="referralSource" labelClassName={whiteLabels ? "text-white font-bold" : undefined}>
           <select
             id="referralSource"
             name="referralSource"
@@ -175,7 +164,7 @@ export function LeadForm({ services }: LeadFormProps) {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-full bg-pine py-6 text-base text-white hover:bg-pine/90"
+          className="w-full rounded-2xl border-0 bg-[#0B3352] px-4 py-6 text-base font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-pine/30 hover:bg-[#0d4168] disabled:opacity-50"
         >
           {isSubmitting ? "Sending..." : "Submit"}
         </Button>
@@ -211,13 +200,14 @@ type FieldProps = {
   htmlFor?: string;
   required?: boolean;
   children: ReactNode;
+  labelClassName?: string;
 };
 
-function Field({ label, htmlFor, required, children }: FieldProps) {
+function Field({ label, htmlFor, required, children, labelClassName }: FieldProps) {
   return (
     <div className="space-y-1.5">
-      <Label htmlFor={htmlFor} className="text-sm font-medium text-ink">
-        {label} {required && <span className="text-pine">*</span>}
+      <Label htmlFor={htmlFor} className={cn("text-sm font-medium", labelClassName || "text-ink")}>
+        {label} {required && <span className={labelClassName ? "text-white" : "text-pine"}>*</span>}
       </Label>
       {children}
     </div>

@@ -170,8 +170,7 @@ export default function FertilizationAndWeedControlPage() {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 pb-16 pt-16 sm:px-6 lg:px-0">
           <section>
             <CoreValues
-              heading="Why Brightside"
-              description="We built Brightside on three simple values that guide every job we do."
+              heading="Our values that guide every job we do:"
             />
           </section>
 
