@@ -8,9 +8,9 @@ type ContactStripProps = {
 
 export function ContactStrip({ phone, email, note }: ContactStripProps) {
   return (
-    <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 rounded-t-[10rem] rounded-b-none bg-gradient-to-b from-pine to-ink px-4 py-20 text-white sm:px-8">
-      <div className="mx-auto flex max-w-5xl flex-col items-center gap-14 text-center">
-        <p className="text-3xl font-bold tracking-tight text-mint md:text-4xl">
+    <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 rounded-t-[10rem] rounded-b-none bg-gradient-to-b from-pine to-ink px-4 py-12 text-white sm:px-8">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 text-center">
+        <p className="px-6 text-3xl font-bold tracking-tight text-mint sm:px-8 md:px-12 md:text-4xl">
           {note}
         </p>
         <div className="flex flex-wrap justify-center gap-4">

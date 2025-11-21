@@ -310,18 +310,23 @@ export function Hero({
                   )}
                 >
                   <div className="flex flex-col gap-3">
-                    {navLinks.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        className="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wide text-ink transition hover:bg-slate-100"
-                        onClick={closeMobileMenu}
-                      >
-                        {link.label}
-                      </a>
-                    ))}
+                    {navLinks.map((link) => {
+                      if (link.label === "Our Services") {
+                        return null;
+                      }
+                      return (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          className="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wide text-ink transition hover:bg-slate-100"
+                          onClick={closeMobileMenu}
+                        >
+                          {link.label}
+                        </a>
+                      );
+                    })}
                     <div className="rounded-2xl bg-slate-50 p-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ink/60">
+                      <p className="text-sm font-semibold uppercase tracking-wide text-ink">
                         Our Services
                       </p>
                       <div className="mt-3 flex flex-col">
@@ -340,18 +345,14 @@ export function Hero({
                     <div className="space-y-3">
                       <Button
                         asChild
-                        style={{
-                          backgroundColor: BRAND_MINT,
-                          textShadow: "0 0 8px rgba(0,0,0,0.35)",
-                        }}
-                        className="h-auto w-full rounded-2xl py-6 text-base font-bold uppercase tracking-wide text-white hover:opacity-90"
+                        className="h-auto w-full rounded-2xl border-2 border-[#0B3352] bg-white py-6 text-base font-bold uppercase tracking-wide text-[#0B3352] hover:bg-slate-50"
                       >
                         <a
                           href={`tel:${sanitizedPhone}`}
                           onClick={closeMobileMenu}
                           className="flex items-center justify-center gap-2"
                         >
-                          <Phone className="size-5" />
+                          <Phone className="size-5 text-[#0B3352]" />
                           Call Us
                         </a>
                       </Button>

@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, ReactNode, useState } from "react";
+import { FormEvent, ReactNode, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -24,6 +25,7 @@ const REFERRAL_SOURCES = [
 ];
 
 export function LeadForm({ services, whiteLabels = false }: LeadFormProps) {
+  const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [serviceError, setServiceError] = useState(false);
@@ -42,6 +44,11 @@ export function LeadForm({ services, whiteLabels = false }: LeadFormProps) {
     setTimeout(() => {
       setIsSubmitting(false);
       setShowToast(true);
+      // Reset form and clear all fields
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+      setSelectedServices([]);
       window.setTimeout(() => setShowToast(false), 4000);
     }, 1000);
   };
@@ -49,6 +56,7 @@ export function LeadForm({ services, whiteLabels = false }: LeadFormProps) {
   return (
     <div className="rounded-[2.5rem] p-6 px-14 text-ink md:p-5 md:px-28">
       <form
+        ref={formRef}
         onSubmit={handleSubmit}
         className="mt-1 space-y-2"
         action="#"
@@ -149,7 +157,6 @@ export function LeadForm({ services, whiteLabels = false }: LeadFormProps) {
           <select
             id="referralSource"
             name="referralSource"
-            required
             className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none focus-visible:ring-2 focus-visible:ring-pine/30"
           >
             <option value="">Select one</option>
@@ -170,27 +177,29 @@ export function LeadForm({ services, whiteLabels = false }: LeadFormProps) {
         </Button>
       </form>
 
-      <div
-        aria-live="polite"
-        className={cn(
-          "pointer-events-none fixed inset-0 flex items-center justify-center transition opacity-0",
-          showToast && "opacity-100"
-        )}
-      >
-        <div className="flex flex-col items-center gap-4 rounded-[2rem] bg-ink px-10 py-8 text-center text-white shadow-2xl">
-          <Image
-            src="/BrightsideLogo.svg"
-            alt="Brightside Turf"
-            width={280}
-            height={80}
-            className="h-auto w-60 object-contain"
-          />
-          <div className="flex items-center gap-3 text-lg font-semibold">
-            <CheckCircle2 className="size-6 text-mint" />
-            Thanks! We&apos;ll get back to you within 24 hours.
-          </div>
-        </div>
-      </div>
+      {showToast && typeof window !== "undefined"
+        ? createPortal(
+            <div
+              aria-live="polite"
+              className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none"
+            >
+              <div className="flex flex-col items-center gap-4 rounded-[2rem] bg-ink px-10 py-8 text-center text-white shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+                <Image
+                  src="/BrightsideLogo.svg"
+                  alt="Brightside Turf"
+                  width={280}
+                  height={80}
+                  className="h-auto w-60 object-contain"
+                />
+                <div className="flex items-center gap-3 text-lg font-semibold">
+                  <CheckCircle2 className="size-6 text-mint" />
+                  Thanks! We&apos;ll get back to you within 24 hours.
+                </div>
+              </div>
+            </div>,
+            document.body
+          )
+        : null}
     </div>
   );
 }

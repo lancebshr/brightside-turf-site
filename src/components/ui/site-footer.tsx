@@ -1,23 +1,21 @@
+import Image from "next/image";
+
 type FooterProps = {
   links: { label: string; href: string }[];
 };
 
 export function SiteFooter({ links }: FooterProps) {
   return (
-    <footer className="mt-0 bg-ink px-6 py-16 text-white sm:px-10">
-      <div className="grid gap-5 md:grid-cols-[1fr_2fr_1fr] md:items-start">
+    <footer className="mt-0 bg-ink px-6 py-12 text-white sm:px-10">
+      <div className="grid gap-6 md:grid-cols-[1fr_2fr_1fr] md:items-start">
         <div className="flex flex-col items-center gap-3 text-center md:items-start md:text-left">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-mint text-pine font-bold">
-            BT
-          </div>
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-mint/80">
-              Brightside Turf
-            </p>
-            <p className="text-base text-white/80">
-              The grass really is greener.
-            </p>
-          </div>
+          <Image
+            src="/BrightsideLogo.svg"
+            alt="Brightside Turf"
+            width={240}
+            height={72}
+            className="h-12 w-48"
+          />
         </div>
 
         <nav className="flex flex-nowrap items-center justify-center gap-6 text-sm text-white/80 md:justify-center">

@@ -338,18 +338,13 @@ export default function AboutPage() {
                     <ChevronDown className="size-6 text-pine transition group-open:-rotate-180" />
                   </summary>
                   <div className="mt-6 space-y-4">
-                    {category.items.map((item, index) => (
+                    {category.items.map((item) => (
                       <details
                         key={item.question}
                         className="group rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3 transition"
                       >
                         <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-pine">
-                          <span className="flex items-center gap-3">
-                            <span className="text-sm font-bold text-mint">
-                              {(index + 1).toString().padStart(2, "0")}
-                            </span>
-                            {item.question}
-                          </span>
+                          <span>{item.question}</span>
                           <ChevronDown className="size-4 text-ink/60 transition group-open:-rotate-180" />
                         </summary>
                         <p className="mt-3 text-base text-ink/80">{item.answer}</p>
@@ -364,7 +359,7 @@ export default function AboutPage() {
             <ContactStrip
               phone="(402) 810-8692"
               email="hello@brightsideturfne.com"
-              note="Still have questions? We’d love to help. Reach out anytime and we’ll get you a quick answer."
+              note="Reach out anytime and we’ll get you a quick answer."
             />
           </div>
         </div>

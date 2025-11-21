@@ -174,7 +174,7 @@ export default function Home() {
 
           <div id="reviews" className="scroll-mt-32">
             <ReviewsCarousel
-              heading="Here’s what the families of Omaha have to say"
+              heading="What Omaha families think about Brightside:"
               subheading=""
               reviews={REVIEWS}
             />
