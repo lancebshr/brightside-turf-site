@@ -29,31 +29,33 @@ export function ServicesGrid({
       </FadeInSection>
 
       <FadeInSection>
-        <div className="gallery-5">
-          {galleryServices.map((service) => (
-            <a
-              key={service.slug}
-              href={`/services/${service.slug}`}
-              className="gallery-5__tile focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
-            >
-              <img
-                src={service.image}
-                alt={service.title}
-                className="gallery-5__image"
-                loading="lazy"
-              />
-              <div className="gallery-5__overlay">
-                <div className="gallery-5__text">
-                  <h2 className="gallery-5__title">{service.title}</h2>
-                  <p className="gallery-5__body">{service.description}</p>
+        <div className="w-full">
+          <div className="gallery-5">
+            {galleryServices.map((service) => (
+              <a
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="gallery-5__tile focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+              >
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="gallery-5__image"
+                  loading="lazy"
+                />
+                <div className="gallery-5__overlay">
+                  <div className="gallery-5__text">
+                    <h2 className="gallery-5__title">{service.title}</h2>
+                    <p className="gallery-5__body">{service.description}</p>
+                  </div>
+                  <span className="gallery-5__cta flex items-center gap-1 text-sm font-semibold text-mint">
+                    Learn More
+                    <ChevronRight className="size-4" />
+                  </span>
                 </div>
-                <span className="gallery-5__cta flex items-center gap-1 text-sm font-semibold text-mint">
-                  Learn More
-                  <ChevronRight className="size-4" />
-                </span>
-              </div>
-            </a>
-          ))}
+              </a>
+            ))}
+          </div>
         </div>
       </FadeInSection>
     </section>

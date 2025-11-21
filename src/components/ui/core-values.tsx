@@ -96,7 +96,7 @@ export function CoreValues({
                     {value.title}
                   </p>
                 </div>
-                <div className="flex flex-1 rounded-b-[2rem] bg-white px-6 py-6 text-lg text-ink/80">
+                <div className="flex flex-1 items-center justify-center rounded-b-[2rem] bg-white px-4 py-4 text-lg text-ink/80 md:px-6 md:py-6 md:items-start md:justify-start">
                   {value.body}
                 </div>
               </div>
