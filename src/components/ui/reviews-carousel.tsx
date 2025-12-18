@@ -4,8 +4,10 @@ import Image from "next/image";
 import { useEffect, useRef, useState, type TouchEvent } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { FadeInSection } from "@/components/ui/fade-in-section";
+import { BOLD_PLUS_HEADING } from "@/lib/utils";
 
-const CARD_GAP = 16; // matches Tailwind gap-4 (1rem)
+const CARD_GAP = 24; // matches Tailwind gap-6 (1.5rem)
+const CARD_WIDTH_FACTOR = 1; // default width factor (no shrink)
 
 export type Review = {
   name: string;
@@ -22,6 +24,15 @@ const getVisibleCount = (width: number, total: number) => {
   if (width < 640) return Math.min(1, total);
   if (width < 1024) return Math.min(2, total);
   return Math.min(3, total);
+};
+
+const formatReviewerName = (name: string) => {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length === 0) return "";
+  if (parts.length === 1) return parts[0];
+  const last = parts[parts.length - 1];
+  const initial = last[0]?.toUpperCase() ?? "";
+  return `${parts[0]} ${initial}.`;
 };
 
 export function ReviewsCarousel({
@@ -64,7 +75,7 @@ export function ReviewsCarousel({
       const containerWidth = viewportRef.current.clientWidth;
       const totalGap = CARD_GAP * (visibleCount - 1);
       const effectiveWidth = Math.max(containerWidth - totalGap, 0);
-      setCardWidth(effectiveWidth / visibleCount);
+      setCardWidth((effectiveWidth / visibleCount) * CARD_WIDTH_FACTOR);
     };
 
     updateWidth();
@@ -136,67 +147,83 @@ export function ReviewsCarousel({
     <section
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="space-y-8"
+      className="space-y-10 px-4 py-8 sm:px-8 lg:px-12"
     >
-      <FadeInSection className="flex flex-col gap-4 text-center">
-        <h2 className="text-5xl font-bold text-pine">{heading}</h2>
+      <FadeInSection className="flex flex-col items-center gap-4 text-center">
+        <h2 className={BOLD_PLUS_HEADING}>{heading}</h2>
         <p className="text-lg text-slate-600">{subheading}</p>
       </FadeInSection>
 
       <div className="relative">
-        <div className="mx-auto w-full px-4 sm:px-6" style={{ maxWidth: "1100px" }}>
+        <div className="mb-4 flex animate-float items-center justify-center gap-2">
+          <span className="text-lg font-bold tracking-tight text-slate-800">Over 150</span>
+          <div className="flex items-center gap-0.5">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="size-5 text-[#FABB05]" fill="#FABB05" />
+            ))}
+          </div>
+          <span className="text-lg font-bold tracking-tight text-slate-800">Reviews</span>
+        </div>
+        <div className="mx-auto w-full max-w-[1200px] px-4 py-6 sm:px-8">
           <div
-            className="overflow-hidden"
+            className="-m-10 overflow-hidden p-10 pl-0"
             ref={viewportRef}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
             <div
-              className="flex gap-4 transition-transform duration-700 ease-out"
+              className="flex gap-6 transition-transform duration-700 ease-out"
               style={{
                 transform: `translateX(-${
                   visibleCount > 0 ? index * (cardWidth + gapSpacing) : 0
                 }px)`,
               }}
             >
-              {reviews.map((review, i) => (
-                <div
-                  key={`${review.name}-${i}`}
-                  className="flex-shrink-0"
-                  style={{
-                    width: cardWidth ? `${cardWidth}px` : "100%",
-                  }}
-                >
-                  <article className="flex h-full flex-col gap-6 rounded-3xl p-8 text-left">
-                    <div className="flex items-center gap-2">
-                      {Array.from({ length: 5 }).map((_, starIndex) => (
-                        <Star
-                          key={starIndex}
-                          className="size-4 text-[#FABB05]"
-                          fill="#FABB05"
+                {reviews.map((review, i) => (
+                  <div
+                    key={`${review.name}-${i}`}
+                    className="flex-shrink-0"
+                    style={{
+                      width: cardWidth ? `${cardWidth}px` : "100%",
+                    }}
+                  >
+                    <article className="flex h-full flex-col gap-5 rounded-2xl border border-slate-200 bg-white p-7 shadow-md transition-shadow hover:shadow-lg">
+                      <div className="flex items-start gap-4">
+                        <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-pine text-xl font-semibold text-white">
+                          {review.name.charAt(0).toUpperCase()}
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <span className="text-lg font-medium text-slate-900">
+                            {formatReviewerName(review.name)}
+                          </span>
+                          <div className="flex items-center gap-1">
+                            {Array.from({ length: 5 }).map((_, starIndex) => (
+                              <Star
+                                key={starIndex}
+                                className="size-5 text-[#FABB05]"
+                                fill="#FABB05"
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        <Image
+                          src="/icons8-google-48.png"
+                          alt="Google"
+                          width={32}
+                          height={32}
+                          className="ml-auto shrink-0"
                         />
-                      ))}
-                      <Image
-                        src="/icons8-google-48.png"
-                        alt="Google"
-                        width={20}
-                        height={20}
-                        className="shrink-0"
-                      />
-                    </div>
-                    <p className="text-lg text-ink/90">{review.quote}</p>
-                    <span className="text-sm font-semibold uppercase tracking-[0.2em] text-pine/70">
-                      {review.name}
-                    </span>
-                  </article>
-                </div>
-              ))}
+                      </div>
+                      <p className="flex-1 text-base leading-relaxed text-slate-600">{review.quote}</p>
+                    </article>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
 
-        <div className="pointer-events-none absolute inset-y-0 left-0 hidden items-center -translate-x-1/2 pl-10 md:flex">
+        <div className="pointer-events-none absolute inset-y-0 -left-20 hidden items-center lg:flex">
           <CarouselButton
             direction="prev"
             onClick={() => goTo("prev")}
@@ -204,7 +231,7 @@ export function ReviewsCarousel({
             disabled={maxIndex === 0}
           />
         </div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 hidden items-center translate-x-1/2 pr-10 md:flex">
+        <div className="pointer-events-none absolute inset-y-0 -right-20 hidden items-center lg:flex">
           <CarouselButton
             direction="next"
             onClick={() => goTo("next")}
@@ -212,7 +239,7 @@ export function ReviewsCarousel({
             disabled={maxIndex === 0}
           />
         </div>
-        <div className="mt-3 flex items-center justify-center gap-4 md:hidden">
+        <div className="mt-3 flex items-center justify-center gap-4 lg:hidden">
           <CarouselButton
             direction="prev"
             onClick={() => goTo("prev")}
@@ -248,12 +275,12 @@ const CarouselButton = ({
     onClick={onClick}
     aria-label={ariaLabel}
     disabled={disabled}
-    className="pointer-events-auto rounded-full border border-white/70 bg-white/80 p-3 text-pine shadow-brand backdrop-blur transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-50"
+    className="pointer-events-auto rounded-2xl border-2 border-pine/20 bg-white p-4 text-pine shadow-lg transition-all hover:border-pine/40 hover:bg-pine hover:text-white hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-50"
   >
     {direction === "prev" ? (
-      <ChevronLeft className="size-5" />
+      <ChevronLeft className="size-7" strokeWidth={3} />
     ) : (
-      <ChevronRight className="size-5" />
+      <ChevronRight className="size-7" strokeWidth={3} />
     )}
   </button>
 );

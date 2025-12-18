@@ -1,6 +1,5 @@
 import { Hero } from "@/components/ui/hero";
 import { LeadForm } from "@/components/ui/lead-form";
-import { MeetBrightside } from "@/components/ui/meet-brightside";
 import { ReviewsCarousel } from "@/components/ui/reviews-carousel";
 import { ServiceArea } from "@/components/ui/service-area";
 import { ServicesGrid } from "@/components/ui/services-grid";
@@ -8,43 +7,55 @@ import { SiteFooter } from "@/components/ui/site-footer";
 import { HowItWorks } from "@/components/ui/how-it-works";
 import { ContactStrip } from "@/components/ui/contact-strip";
 import { NAV_LINKS } from "@/lib/nav-links";
+import { BOLD_PLUS_HEADING } from "@/lib/utils";
 
 const SERVICE_CARDS = [
   {
-    title: "Fertilization & Weed Control",
-    description:
-      "We give your lawn what it needs to keep the grass green without weeds.",
+    title: "Fertilization and Weed Control",
+    description: "Healthy, green, weed-free lawns.",
     image: "/fertilization.JPG",
     slug: "fertilization-and-weed-control",
   },
   {
+    title: "Lawn Mowing",
+    description: "Consistent weekly cuts with clean edges.",
+    image: "/grasstop.jpeg",
+    slug: "lawn-mowing",
+  },
+  {
+    title: "Mulch Installation",
+    description: "Fresh mulch, clean beds, boosted curb appeal.",
+    image: "/team-truck.jpg",
+    slug: "mulch-installation",
+  },
+  {
     title: "Core Aeration",
-    description:
-      "We give your lawn a breath of fresh air so the grass can grow the way it should.",
+    description: "Stronger roots and thicker grass.",
     image: "/aeration.JPG",
     slug: "core-aeration",
   },
   {
-    title: "Overseeding",
-    description:
-      "We refresh your lawn with new seed so it can grow thicker and healthier again.",
+    title: "Cleanups",
+    description: "Spring, fall, and yard debris cleanup.",
     image: "/overseeding.JPG",
-    slug: "overseeding",
-  },
-  {
-    title: "Sprinkler Winterization",
-    description:
-      "We blow out your sprinkler system before the freeze so it’s ready to go come spring.",
-    image: "/winterization.JPG",
-    slug: "sprinkler-winterization",
+    slug: "cleanups",
   },
   {
     title: "Holiday Lighting",
-    description:
-      "We design, install, and store custom holiday lights your family will love.",
+    description: "Professional design, install, and takedown.",
     image: "/lighting.webp",
     slug: "holiday-lighting",
   },
+];
+
+const QUOTE_SERVICES = [
+  "Fertilization and Weed Control",
+  "Lawn Mowing",
+  "Mulch Installation",
+  "Core Aeration",
+  "Cleanups",
+  "Holiday Lighting",
+  "Overseeding",
 ];
 
 const REVIEWS = [
@@ -117,16 +128,16 @@ const REVIEWS = [
 
 const HOW_IT_WORKS_STEPS = [
   {
-    title: "1. Get Your Quote",
-    copy: "Tell us what you need and we’ll give you a clear and fair price.",
+    title: "Get Your Quote",
+    copy: "Tell us what you need and we'll give you clear pricing right away.",
   },
   {
-    title: "2. We Show Up",
-    copy: "We do what we say we will and knock it out of the park.",
+    title: "We Show Up",
+    copy: "Our team arrives when we say we will and gets the job done right.",
   },
   {
-    title: "3. Enjoy Your Lawn",
-    copy: "If anything is ever off, we come back and make it right.",
+    title: "Enjoy Your Lawn",
+    copy: "If anything needs attention, we come back and make it right.",
   },
 ];
 
@@ -148,8 +159,8 @@ export default function Home() {
     <div className="bg-background text-foreground">
       <div id="top">
         <Hero
-          heading="Top-Rated Fertilization and Aeration Services In Omaha"
-          subheading="It shouldn’t be hard to love your lawn. At Brightside, the grass really is greener."
+          heading="Top-Rated Lawn Care Services"
+          subheading="Reliable lawn care in Omaha backed by 150+ five star reviews. We handle mowing, fertilization, aeration, mulch, cleanups, and more."
           statLabel="5.0 stars on Google"
           primaryCta={{ label: "Get Your Quote", href: "/get-quote" }}
           navLinks={NAV_LINKS}
@@ -158,31 +169,24 @@ export default function Home() {
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f6fbf8] to-[#c7f0de]">
         <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-12 pt-16 sm:px-6 lg:px-0">
           <section className="space-y-16">
-            <ServicesGrid
-              heading="Brightside’s Services"
-              subheading="We’re redefining the way families experience lawn care. And really, it’s nothing too crazy. It’s just friendly people who show up when they say they will, in clean uniforms, ready to do the job right. That’s it."
+          <ServicesGrid
+              heading="Lawn and Landscaping Services"
+              subheading="We make lawn care simple. Our team handles fertilizing, mowing, mulching, aeration, cleanups, and more so your yard always looks its best."
               services={SERVICE_CARDS}
-            />
-
-            <MeetBrightside
-              heading="Meet Brightside"
-              body="We aren’t reinventing the wheel. We just really care about making your lawn look good… because that’s what you hired us to do. We show up, we do things right, and we never say “good enough”."
-              cta={{ label: "Get Your Quote", href: "/get-quote" }}
-              image={{ src: "/newhero.png", alt: "Brightside Turf crew" }}
             />
           </section>
 
           <div id="reviews" className="scroll-mt-32">
             <ReviewsCarousel
-              heading="What Omaha families think about Brightside:"
+              heading="Trusted by Homeowners Across Omaha"
               subheading=""
               reviews={REVIEWS}
             />
           </div>
 
           <HowItWorks
-            heading="It’s really easy to get started"
-            subheading="We keep it simple, fast, and without pressure."
+            heading="How It Works"
+            subheading="A simple process designed around reliability."
             steps={HOW_IT_WORKS_STEPS}
             image="/newhero.png"
             cta={{ href: "/get-quote", label: "Get Your Quote" }}
@@ -190,22 +194,21 @@ export default function Home() {
 
           <div id="lead" className="scroll-mt-32 space-y-4 pt-12">
             <div className="space-y-3 text-center">
-              <h2 className="text-5xl font-bold text-pine">
-                Tell us about your lawn.
-              </h2>
+              <h2 className={BOLD_PLUS_HEADING}>Get Your Free Estimate</h2>
               <p className="text-lg text-slate-600">
-                We&apos;d love to take care of your home. Tell us what you want
-                information on, and we&apos;ll reach out within 24 hours.
+                Tell us what you need and our team will reach out within one business day. No
+                pressure, ever.
               </p>
             </div>
-            <LeadForm services={SERVICE_CARDS.map((service) => service.title)} />
+            <LeadForm services={QUOTE_SERVICES} />
           </div>
 
-          <ServiceArea
-            title="Serving our neighbors across the Omaha Metro"
-            description="We’re proud to care for lawns throughout the greater Omaha metro."
-            areas={SERVICE_AREAS}
-          />
+          <div className="space-y-6">
+            <div className="text-center">
+              <h2 className={BOLD_PLUS_HEADING}>Proudly Serving the Omaha Metro</h2>
+            </div>
+            <ServiceArea areas={SERVICE_AREAS} />
+          </div>
         </div>
 
         <ContactStrip

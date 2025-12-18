@@ -40,22 +40,22 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       {
         question: "How do I get a quote?",
         answer:
-          "Just click “Get Your Quote,” tell us what you need, and we’ll reach out within 24 hours with clear next steps and pricing.",
+          "Just click 'Get Your Quote,' tell us what you need, and we'll reach out within 24 hours with clear next steps and pricing.",
       },
       {
         question: "Do I need to be home during my first service?",
         answer:
-          "Not usually. As long as we have access to the areas we need, you don’t have to be home. If we ever need entry through a gate or special instructions, we’ll let you know ahead of time.",
+          "Not usually. As long as we have access to the areas we need, you don't have to be home. If we ever need entry through a gate or special instructions, we'll let you know ahead of time.",
       },
       {
         question: "What happens after I fill out the quote form?",
         answer:
-          "You’ll get a quick confirmation message and a follow-up from our team. We’ll make sure we understand exactly what you’re looking for and schedule a time that works best for you.",
+          "You'll get a quick confirmation message and a follow-up from our team. We'll make sure we understand exactly what you're looking for and schedule a time that works best for you.",
       },
       {
         question: "How soon can I get scheduled once I approve a quote?",
         answer:
-          "Most services are booked within a few days. During peak seasons, we may schedule a bit further out, but we’ll always communicate clear timelines before confirming.",
+          "Most services are booked within a few days. During peak seasons, we may schedule a bit further out, but we'll always communicate clear timelines before confirming.",
       },
     ],
   },
@@ -64,40 +64,40 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     description: "What to expect on the day we show up and how we take care of your property.",
     items: [
       {
-        question: "How will I know when you’re coming?",
+        question: "How will I know when you're coming?",
         answer:
-          "We’ll notify you the day before your service and again when we’re on the way. You’ll always know who’s coming and when.",
+          "We'll notify you the day before your service and again when we're on the way. You'll always know who's coming and when.",
       },
       {
         question: "What should I do to prepare for my service?",
         answer:
-          "Make sure gates are unlocked, pets are inside, and toys or obstacles are moved from the service area. That’s all we need to get the job done smoothly.",
+          "Make sure gates are unlocked, pets are inside, and toys or obstacles are moved from the service area. That's all we need to get the job done smoothly.",
       },
       {
         question: "Do I need to move anything in my yard or around my home?",
         answer:
-          "Only if it blocks the area we’re working on. If something needs to be moved, our team can take care of it carefully and put it back afterward.",
+          "Only if it blocks the area we're working on. If something needs to be moved, our team can take care of it carefully and put it back afterward.",
       },
       {
         question: "What if it rains or snows on my scheduled day?",
         answer:
-          "Weather happens. If we need to reschedule due to conditions, we’ll let you know right away and get you the next available time slot.",
+          "Weather happens. If we need to reschedule due to conditions, we'll let you know right away and get you the next available time slot.",
       },
       {
-        question: "Will you close my gate or move items back when you’re done?",
+        question: "Will you close my gate or move items back when you're done?",
         answer:
           "Always. We make sure every gate is closed and the area looks as tidy as when we arrived.",
       },
       {
         question: "What if I have a dog or a locked gate?",
         answer:
-          "Just let us know in advance. We’ll work with you on the best way to access your property safely and respectfully.",
+          "Just let us know in advance. We'll work with you on the best way to access your property safely and respectfully.",
       },
     ],
   },
   {
     title: "After Service",
-    description: "What happens once we’re done and how we make sure you’re happy.",
+    description: "What happens once we're done and how we make sure you're happy.",
     items: [
       {
         question: "How soon will I see results after my service?",
@@ -105,24 +105,24 @@ const FAQ_CATEGORIES: FaqCategory[] = [
           "It depends on the service. Fertilization and weed control show results within a few weeks, while aeration and overseeding take a bit longer to develop.",
       },
       {
-        question: "What if I’m not happy with how something looks?",
+        question: "What if I'm not happy with how something looks?",
         answer:
-          "Reach out right away. Our 101% Satisfaction Guarantee means we’ll come back, assess the issue, and make it right at no extra cost.",
+          "Reach out right away. Our 101% Satisfaction Guarantee means we'll come back, assess the issue, and make it right at no extra cost.",
       },
       {
-        question: "What’s your 101% Satisfaction Guarantee?",
+        question: "What's your 101% Satisfaction Guarantee?",
         answer:
-          "If something doesn’t meet your expectations, we don’t stop at fixing it. We take time to understand what went wrong and make sure it doesn’t happen again.",
+          "If something doesn't meet your expectations, we don't stop at fixing it. We take time to understand what went wrong and make sure it doesn't happen again.",
       },
       {
         question: "Can I reach out directly to my technician?",
         answer:
-          "Our technicians stay focused on providing great service, so all communication goes through our small office team and managers. They’ll make sure any questions or updates get to the right person fast.",
+          "Our technicians stay focused on providing great service, so all communication goes through our small office team and managers. They'll make sure any questions or updates get to the right person fast.",
       },
       {
         question: "How do I leave feedback or a review?",
         answer:
-          "After every service, we’ll send a quick follow-up asking for feedback. You can reply directly or leave a Google review — it helps our local team grow and improve.",
+          "After every service, we'll send a quick follow-up asking for feedback. You can reply directly or leave a Google review — it helps our local team grow and improve.",
       },
     ],
   },
@@ -133,7 +133,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       {
         question: "How do your service programs work?",
         answer:
-          "We operate on seasonal schedules based on what your lawn or lights need. You can sign up once and we’ll take care of everything from timing to reminders.",
+          "We operate on seasonal schedules based on what your lawn or lights need. You can sign up once and we'll take care of everything from timing to reminders.",
       },
       {
         question: "Can I sign up for multiple services at once?",
@@ -143,12 +143,12 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       {
         question: "Do you automatically return next season?",
         answer:
-          "Yes. Most of our programs renew automatically each season. You’ll always get a reminder before we start to confirm your schedule.",
+          "Yes. Most of our programs renew automatically each season. You'll always get a reminder before we start to confirm your schedule.",
       },
       {
         question: "How will I know when my next visit is scheduled?",
         answer:
-          "You’ll receive reminders before every service, plus an on-the-way notification when we’re headed to your property.",
+          "You'll receive reminders before every service, plus an on-the-way notification when we're headed to your property.",
       },
     ],
   },
@@ -169,7 +169,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       {
         question: "What happens if a payment fails?",
         answer:
-          "We’ll notify you immediately so you can update your information and keep your service on schedule.",
+          "We'll notify you immediately so you can update your information and keep your service on schedule.",
       },
       {
         question: "Is there a contract?",
@@ -179,7 +179,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       {
         question: "How do I cancel or pause my service?",
         answer:
-          "Reach out by email or phone. We’ll confirm your request quickly and make sure your account is updated.",
+          "Reach out by email or phone. We'll confirm your request quickly and make sure your account is updated.",
       },
       {
         question: "Do you share my information with anyone else?",
@@ -196,7 +196,7 @@ export default function AboutPage() {
       <div id="top">
         <Hero
           heading="We are redefining the way families experience lawn care."
-          subheading="It shouldn’t be hard to love your lawn. At Brightside, the grass really is greener."
+          subheading="It shouldn't be hard to love your lawn. At Brightside, the grass really is greener."
           statLabel="5.0 stars on Google"
           primaryCta={{ label: "Get Your Quote", href: "#contact" }}
           navLinks={NAV_LINKS}
@@ -218,13 +218,13 @@ export default function AboutPage() {
               We built Brightside to raise the bar for Omaha homeowners.
             </h2>
             <p className="text-lg text-ink/80">
-              Before Brightside, we spent years helping other home service companies run their operations, marketing, sales, and customer support. We learned a lot, but one thing became clear: no matter how much of a business you can control, you can’t control the care that goes into the work. So we started Brightside to change that.
+              Before Brightside, we spent years helping other home service companies run their operations, marketing, sales, and customer support. We learned a lot, but one thing became clear: no matter how much of a business you can control, you can't control the care that goes into the work. So we started Brightside to change that.
             </p>
             <p className="text-lg text-ink/80">
-              We built this company around one goal: to give homeowners an experience that feels as personal as it does professional. We’re from Omaha, and we take pride in serving the same neighborhoods we grew up in. Every part of Brightside is intentional, from how our technicians look and carry themselves to the products we choose to the emails you get throughout the year.
+              We built this company around one goal: to give homeowners an experience that feels as personal as it does professional. We're from Omaha, and we take pride in serving the same neighborhoods we grew up in. Every part of Brightside is intentional, from how our technicians look and carry themselves to the products we choose to the emails you get throughout the year.
             </p>
             <p className="text-lg text-ink/80">
-              We’re obsessed with creating something that feels personal, even as we grow. It’s the small business touch combined with the consistency of a big business system. Our job is simple: make people genuinely happy with their lawns and lights.
+              We're obsessed with creating something that feels personal, even as we grow. It's the small business touch combined with the consistency of a big business system. Our job is simple: make people genuinely happy with their lawns and lights.
             </p>
             <p className="text-lg text-ink/80">
               We love meeting people in our community. If you ever want to grab a coffee, reach out to us directly:
@@ -281,7 +281,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 bg-ink/60" />
               <div className="relative z-10 flex h-full w-full items-center justify-center text-center">
                 <div className="space-y-3 px-6">
-                  
+
                   <h2 className="text-5xl font-bold text-white">The Brightside Blog</h2>
                 </div>
               </div>
@@ -359,7 +359,7 @@ export default function AboutPage() {
             <ContactStrip
               phone="(402) 810-8692"
               email="hello@brightsideturfne.com"
-              note="Reach out anytime and we’ll get you a quick answer."
+              note="Reach out anytime and we'll get you a quick answer."
             />
           </div>
         </div>

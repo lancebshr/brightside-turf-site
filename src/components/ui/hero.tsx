@@ -38,13 +38,15 @@ export function Hero({
   const actionButtonsRef = useRef<HTMLDivElement>(null);
   const SERVICE_OPTIONS = [
     {
-      label: "Lawn Fertilization & Weed Control",
+      label: "Fertilization and Weed Control",
       href: "/services/fertilization-and-weed-control",
     },
+    { label: "Lawn Mowing", href: "/services/lawn-mowing" },
+    { label: "Mulch Installation", href: "/services/mulch-installation" },
     { label: "Core Aeration", href: "/services/core-aeration" },
-    { label: "Overseeding", href: "/services/overseeding" },
-    { label: "Sprinkler Winterization", href: "/services/sprinkler-winterization" },
+    { label: "Cleanups", href: "/services/cleanups" },
     { label: "Holiday Lighting", href: "/services/holiday-lighting" },
+    { label: "Overseeding", href: "/services/overseeding" },
   ];
   const renderStarRow = (className = "", alignCenter = centerContent) => (
     <div
@@ -395,22 +397,34 @@ export function Hero({
             className={`mt-3 ${centerContent ? "flex flex-col items-center gap-4" : ""}`}
           >
             {starPlacement === "aboveCta" && renderStarRow("mb-2", true)}
-            <Button
-              asChild
-              size="lg"
-              style={{
-                backgroundColor: BRAND_MINT,
-                textShadow: "0 0 8px rgba(0,0,0,0.35)",
-              }}
-              className={`group rounded-full px-8 py-7 text-2xl font-bold uppercase tracking-wide text-white transition hover:opacity-90 ${
-                centerContent ? "mx-auto" : ""
+            <div
+              className={`flex flex-wrap items-center gap-4 ${
+                centerContent ? "justify-center" : ""
               }`}
             >
-              <a href={primaryCta.href}>
-                {primaryCta.label}
-                <ArrowRight className="ml-2 size-6 transition-transform group-hover:translate-x-1" />
+              <Button
+                asChild
+                size="lg"
+                style={{
+                  backgroundColor: BRAND_MINT,
+                  textShadow: "0 0 8px rgba(0,0,0,0.35)",
+                }}
+                className="group rounded-full px-8 py-7 text-2xl font-bold uppercase tracking-wide text-white transition hover:opacity-90"
+              >
+                <a href={primaryCta.href}>
+                  {primaryCta.label}
+                  <ArrowRight className="ml-2 size-6 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
+              <a
+                href={`tel:${sanitizedPhone}`}
+                className="group inline-flex items-center gap-2 text-lg font-semibold text-white transition hover:text-white/80"
+                aria-label={`Call Brightside at ${phone}`}
+              >
+                <Phone className="size-5 transition group-hover:scale-110" />
+                <span className="whitespace-nowrap">{phone}</span>
               </a>
-            </Button>
+            </div>
           </div>
         </div>
       </div>
