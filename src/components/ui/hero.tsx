@@ -385,11 +385,11 @@ export function Hero({
         >
           {starPlacement === "top" && renderStarRow("mt-16 mb-8")}
 
-          <h1 className="text-glow mb-7 max-w-7xl text-balance text-5xl font-bold leading-tight md:text-6xl lg:text-7xl">
+          <h1 className="text-glow mb-7 max-w-7xl text-balance text-5xl font-black tracking-tight leading-tight drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)] md:text-6xl lg:text-7xl">
             {heading}
           </h1>
 
-          <p className="text-glow mb-9 max-w-7xl text-balance text-xl font-medium md:text-2xl">
+          <p className="text-glow mb-9 max-w-7xl text-balance text-xl font-bold md:text-2xl">
             {subheading}
           </p>
 

@@ -206,60 +206,58 @@ export default function AboutPage() {
       </div>
 
       <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-6 pt-16 sm:px-6 lg:px-0">
-        <section
-          id="story"
-          className="grid gap-10 rounded-[2.5rem] bg-white/95 p-6 shadow-brand scroll-mt-32 md:grid-cols-[1.1fr_0.9fr] md:p-12"
-        >
-          <div className="space-y-5 text-ink">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-pine/70">
-              Our Story
-            </p>
-            <h2 className="text-5xl font-bold text-pine">
-              We built Brightside to raise the bar for Omaha homeowners.
-            </h2>
-            <p className="text-lg text-ink/80">
-              Before Brightside, we spent years helping other home service companies run their operations, marketing, sales, and customer support. We learned a lot, but one thing became clear: no matter how much of a business you can control, you can't control the care that goes into the work. So we started Brightside to change that.
-            </p>
-            <p className="text-lg text-ink/80">
-              We built this company around one goal: to give homeowners an experience that feels as personal as it does professional. We're from Omaha, and we take pride in serving the same neighborhoods we grew up in. Every part of Brightside is intentional, from how our technicians look and carry themselves to the products we choose to the emails you get throughout the year.
-            </p>
-            <p className="text-lg text-ink/80">
-              We're obsessed with creating something that feels personal, even as we grow. It's the small business touch combined with the consistency of a big business system. Our job is simple: make people genuinely happy with their lawns and lights.
-            </p>
-            <p className="text-lg text-ink/80">
-              We love meeting people in our community. If you ever want to grab a coffee, reach out to us directly:
-            </p>
-            <div className="space-y-4 text-lg font-semibold">
-              <div className="space-y-1">
-                <p className="text-pine">Luke Protzman</p>
-                <a
-                  href="mailto:lprotzman@brightsideturfne.com"
-                  className="text-ink underline decoration-2 underline-offset-4 transition hover:text-pine/80"
-                >
-                  lprotzman@brightsideturfne.com
-                </a>
-              </div>
-              <div className="space-y-1">
-                <p className="text-pine">Ben Newton</p>
-                <a
-                  href="mailto:bnewton@brightsideturfne.com"
-                  className="text-ink underline decoration-2 underline-offset-4 transition hover:text-pine/80"
-                >
-                  bnewton@brightsideturfne.com
-                </a>
+        <section id="story" className="scroll-mt-32 space-y-8">
+          <h2 className="text-center text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
+            We built Brightside to raise the bar for Omaha homeowners.
+          </h2>
+          <div
+            className="grid gap-10 rounded-[2.5rem] border-2 border-slate-200 bg-white p-6 shadow-xl md:grid-cols-[1.1fr_0.9fr] md:p-12"
+          >
+            <div className="space-y-5 text-ink">
+              <p className="text-lg font-medium leading-relaxed text-ink">
+                Before Brightside, we spent years helping other home service companies with operations, marketing, and customer experience. We learned a lot, but one thing stood out: no matter how good the systems were, we could not control the care that went into the work. And for homeowners, that is what matters most.
+              </p>
+              <p className="text-lg font-medium leading-relaxed text-ink">
+                So we built Brightside with one goal in mind: to give people a lawn care experience that feels as personal as it is professional. We are from Omaha, and we take pride in serving the same neighborhoods we grew up in. Everything we do is intentional, from how our technicians present themselves to the products we use and the communication you receive throughout the year.
+              </p>
+              <p className="text-lg font-medium leading-relaxed text-ink">
+                We want Brightside to feel like the small business you trust and the big business you can rely on. Our job is simple: make people genuinely happy with their lawns and lights.
+              </p>
+              <p className="text-lg font-medium leading-relaxed text-ink">
+                If you ever want to talk with us directly, here is how to reach us:
+              </p>
+              <div className="space-y-4 pt-2">
+                <div className="space-y-1">
+                  <p className="text-lg font-bold text-pine">Luke Protzman</p>
+                  <a
+                    href="mailto:lprotzman@brightsideturfne.com"
+                    className="text-lg font-medium text-ink underline decoration-2 underline-offset-4 transition hover:text-pine"
+                  >
+                    lprotzman@brightsideturfne.com
+                  </a>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-lg font-bold text-pine">Ben Newton</p>
+                  <a
+                    href="mailto:bnewton@brightsideturfne.com"
+                    className="text-lg font-medium text-ink underline decoration-2 underline-offset-4 transition hover:text-pine"
+                  >
+                    bnewton@brightsideturfne.com
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="relative overflow-hidden rounded-3xl">
-            <Image
-              src="/newhero.png"
-              alt="Brightside Turf team"
-              width={720}
-              height={540}
-              className="h-full w-full object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-pine/40 to-transparent" />
+            <div className="relative overflow-hidden rounded-3xl">
+              <Image
+                src="/newhero.png"
+                alt="Brightside Turf team"
+                width={720}
+                height={540}
+                className="h-full w-full object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-pine/40 to-transparent" />
+            </div>
           </div>
         </section>
 
@@ -282,7 +280,7 @@ export default function AboutPage() {
               <div className="relative z-10 flex h-full w-full items-center justify-center text-center">
                 <div className="space-y-3 px-6">
 
-                  <h2 className="text-5xl font-bold text-white">The Brightside Blog</h2>
+                  <h2 className="text-5xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]">The Brightside Blog</h2>
                 </div>
               </div>
             </div>
@@ -307,7 +305,7 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute inset-0 flex items-end p-6">
-                  <h3 className="text-xl font-semibold text-white">{title}</h3>
+                  <h3 className="text-xl font-bold text-white">{title}</h3>
                 </div>
               </article>
             ))}
@@ -315,43 +313,38 @@ export default function AboutPage() {
 
           <section id="faqs" className="space-y-6 scroll-mt-32">
             <FadeInSection className="space-y-3 text-center">
-              <h2 className="text-5xl font-bold text-pine">Questions about Brightside?</h2>
-              <p className="text-lg text-slate-600">
+              <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">Questions about Brightside?</h2>
+              <p className="text-xl font-semibold text-slate-600">
                 Below are some of the most common questions we are asked about the company.
               </p>
             </FadeInSection>
 
-            <div className="space-y-6">
+            <div className="space-y-10">
               {FAQ_CATEGORIES.map((category) => (
-                <details
-                  open
-                  key={category.title}
-                  className="group rounded-[2.5rem] border border-slate-200 bg-white px-6 py-5 shadow-brand md:px-10 md:py-8"
-                >
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-left">
-                    <div>
-                      <p className="text-sm font-bold uppercase tracking-[0.3em] text-pine">
-                        {category.title}
-                      </p>
-                      <p className="mt-2 text-lg text-slate-500">{category.description}</p>
-                    </div>
-                    <ChevronDown className="size-6 text-pine transition group-open:-rotate-180" />
-                  </summary>
-                  <div className="mt-6 space-y-4">
-                    {category.items.map((item) => (
-                      <details
-                        key={item.question}
-                        className="group rounded-2xl border border-slate-100 bg-slate-50/70 px-4 py-3 transition"
-                      >
-                        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-pine">
-                          <span>{item.question}</span>
-                          <ChevronDown className="size-4 text-ink/60 transition group-open:-rotate-180" />
-                        </summary>
-                        <p className="mt-3 text-base text-ink/80">{item.answer}</p>
-                      </details>
-                    ))}
+                <div key={category.title} className="space-y-4">
+                  <div>
+                    <p className="text-2xl font-black text-pine">
+                      {category.title}
+                    </p>
+                    <p className="mt-2 text-lg font-bold text-slate-600">{category.description}</p>
                   </div>
-                </details>
+                  <div className="rounded-[2.5rem] border border-slate-200 bg-white px-6 py-5 shadow-brand md:px-10 md:py-8">
+                    <div className="space-y-4">
+                      {category.items.map((item) => (
+                        <details
+                          key={item.question}
+                          className="group/item rounded-2xl border border-slate-100 bg-slate-50/70 px-5 py-4 transition"
+                        >
+                          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-black text-pine">
+                            <span>{item.question}</span>
+                            <ChevronDown className="size-5 text-ink/60 transition group-open/item:-rotate-180" />
+                          </summary>
+                          <p className="mt-4 pt-4 border-t border-slate-200 text-base font-semibold text-ink/90 leading-relaxed">{item.answer}</p>
+                        </details>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           </section>

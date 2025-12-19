@@ -1,125 +1,98 @@
-"use client";
-
-import { ReactNode, useMemo } from "react";
-import Link from "next/link";
-import { Sparkles, Users, BadgeCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  GET_QUOTE_BUTTON_CLASSNAME,
-  GET_QUOTE_BUTTON_STYLE,
-  cn,
-  formatGetQuoteLabel,
-} from "@/lib/utils";
-
-const DEFAULT_VALUES = [
-  {
-    title: "The Little Things Aren’t Little to Us",
-    body: "We care about the small details because we love what we do and want you to love it too.",
-    icon: <Sparkles className="size-10 md:size-14" />,
-  },
-  {
-    title: "We Make It Personal",
-    body: "Friendly techs, proactive updates, and quick follow-ups if anything feels off.",
-    icon: <Users className="size-10 md:size-14" />,
-  },
-  {
-    title: "“Good Enough” Isn’t Good Enough",
-    body: "We hold ourselves to a higher standard because that’s what Omaha families deserve.",
-    icon: <BadgeCheck className="size-14 md:size-20" />,
-  },
-];
-
-type Value = {
-  title: string;
-  body: string;
-  icon?: ReactNode;
-};
+import { Search, HeartHandshake, Trophy, ArrowRight } from 'lucide-react'
 
 type CoreValuesProps = {
-  eyebrow?: string;
-  heading: string;
-  description?: string;
-  values?: Value[];
-  className?: string;
+  heading?: string;
 };
 
-export function CoreValues({
-  eyebrow,
-  heading,
-  description,
-  values = DEFAULT_VALUES,
-  className,
-}: CoreValuesProps) {
-  const stableValues = useMemo(() => values, [values]);
+export function CoreValues({ heading }: CoreValuesProps) {
+  const values = [
+    {
+      id: '01',
+      title: "The Little Things Aren't Little to Us",
+      description:
+        'We care about the small details because we love what we do and want you to love it too.',
+      icon: Search,
+    },
+    {
+      id: '02',
+      title: 'We Make It Personal',
+      description:
+        'Friendly techs, proactive updates, and quick follow-ups if anything feels off.',
+      icon: HeartHandshake,
+    },
+    {
+      id: '03',
+      title: '"Good Enough" Isn\'t Good Enough',
+      description:
+        "We hold ourselves to a higher standard because that's what Omaha families deserve.",
+      icon: Trophy,
+    },
+  ]
 
   return (
-    <div
-      className={cn(
-        "relative space-y-8 py-10 md:space-y-10 md:py-14",
-        className
-      )}
-    >
-      <div className="space-y-4 text-center pb-4">
-        {eyebrow && (
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-pine/80">
-            {eyebrow}
-          </p>
-        )}
-        <h2 className="text-5xl font-bold text-pine">
-          {heading}
-        </h2>
-        {description && (
-          <p className="text-lg text-slate-600">{description}</p>
-        )}
-      </div>
+    <section className="relative z-0 w-full bg-white py-24 px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="mb-20 text-center max-w-4xl mx-auto">
+          <div className="inline-block bg-emerald-500 border-4 border-black px-4 py-2 mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-2">
+            <span className="text-xl font-black text-white uppercase tracking-tight">
+              Our Philosophy
+            </span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-black drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)] leading-none mb-8">
+            Our values that guide{' '}
+            <span className="text-emerald-500 underline decoration-4 underline-offset-8 decoration-black">
+              every job
+            </span>{' '}
+            we do
+          </h2>
+        </div>
 
-      <div className="relative mx-auto w-full max-w-6xl">
-        <div className="relative grid gap-6 px-2 sm:grid-cols-2 lg:grid-cols-3">
-          {stableValues.map((value) => (
+        {/* Values Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          {values.map((value) => (
             <div
-              key={value.title}
-              className="relative min-h-[18rem] rounded-[2rem] bg-white shadow-[0_12px_30px_rgba(6,20,31,0.14)]"
+              key={value.id}
+              className="group relative bg-white border-4 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:scale-[1.02] transition-transform duration-300 flex flex-col items-start"
             >
-              <div className="flex h-full flex-col text-center">
-                <div
-                  className={cn(
-                    "relative flex h-32 flex-col items-center rounded-t-[2rem] bg-[#0B3352] px-5 pb-4 pt-10 text-white md:h-36",
-                    value.title === "We Make It Personal" ? "justify-center" : "justify-end"
-                  )}
-                >
-                  {value.icon && (
-                    <div className="absolute left-1/2 -top-8 flex h-[4rem] w-[4rem] -translate-x-1/2 items-center justify-center rounded-full bg-white text-[#0B3352] shadow-[0_6px_18px_rgba(5,15,26,0.18)] md:h-[4.5rem] md:w-[4.5rem]">
-                      {value.icon}
-                    </div>
-                  )}
-                  <p className="text-3xl font-bold leading-tight">
-                    {value.title}
-                  </p>
-                </div>
-                <div className="flex flex-1 items-center justify-center rounded-b-[2rem] bg-white px-4 py-4 text-lg text-ink/80 md:px-6 md:py-6 md:items-start md:justify-start">
-                  {value.body}
-                </div>
+              {/* Number Badge */}
+              <div className="absolute -top-6 -right-6 w-16 h-16 bg-black text-white border-4 border-white flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] z-20">
+                <span className="font-black text-xl">{value.id}</span>
               </div>
+
+              {/* Icon Container */}
+              <div className="mb-8 relative">
+                <div className="w-24 h-24 bg-emerald-500 rounded-full border-4 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:rotate-6 transition-transform duration-300">
+                  <value.icon className="w-10 h-10 text-white stroke-[2.5]" />
+                </div>
+                {/* Decorative line connecting icon to text */}
+                <div className="absolute left-1/2 bottom-0 w-1 h-8 bg-black transform -translate-x-1/2 translate-y-full" />
+              </div>
+
+              {/* Content */}
+              <div className="mt-8 pt-4 border-t-4 border-black w-full">
+                <h3 className="text-2xl md:text-3xl font-black tracking-tight text-black drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] mb-4 leading-tight">
+                  {value.title}
+                </h3>
+                <p className="text-lg font-bold text-black leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
+
             </div>
           ))}
         </div>
-      </div>
 
-      <div className="space-y-3 text-center">
-        <Button
-          asChild
-          size="lg"
-          style={GET_QUOTE_BUTTON_STYLE}
-          className={GET_QUOTE_BUTTON_CLASSNAME}
-        >
-          <Link href="/get-quote">
-            {formatGetQuoteLabel("Get Your Quote")}
-          </Link>
-        </Button>
-        <p className="text-lg text-ink/80">
-          Tell us about your lawn and we’ll reach out within 24 hours.
-        </p>
+        {/* Bottom CTA or Closing Graphic */}
+        <div className="mt-20 text-center">
+          <div className="inline-flex items-center justify-center space-x-4 bg-black text-white border-4 border-black px-8 py-4 shadow-[4px_4px_0px_0px_rgba(74,222,128,1)] hover:bg-emerald-500 hover:text-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 cursor-pointer">
+            <span className="text-xl font-black uppercase tracking-wide">
+              Experience the difference
+            </span>
+            <ArrowRight className="w-6 h-6 stroke-[3]" />
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    </section>
+  )
 }
