@@ -7,6 +7,39 @@ import { ArrowRight, ChevronDown, Menu, Phone, Star, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BRAND_MINT, cn } from "@/lib/utils";
 
+function ScrollIndicator({ centerContent }: { centerContent: boolean }) {
+  const [visible, setVisible] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const progress = Math.min(scrollY / 150, 1);
+      setScrollProgress(progress);
+      setVisible(scrollY < 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div
+      className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center transition-opacity duration-300 ${
+        centerContent ? "" : "md:left-16 md:translate-x-0"
+      }`}
+      style={{ opacity: visible ? 1 - scrollProgress * 0.5 : 0 }}
+    >
+      <div
+        className="relative"
+        style={{ transform: `translateY(${scrollProgress * 20}px)` }}
+      >
+        <ChevronDown className="size-8 text-white/80 animate-pulse" />
+      </div>
+    </div>
+  );
+}
+
 type HeroProps = {
   heading: string;
   subheading: string;
@@ -160,7 +193,7 @@ export function Hero({
         className="absolute inset-0 bg-cover bg-top bg-no-repeat"
         style={{ backgroundImage: "url('/testhero.jpg')" }}
       />
-      <div className="absolute inset-0 bg-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/30" />
 
       <div
         className="relative z-10 flex min-h-screen flex-col pt-28 md:pt-32"
@@ -169,8 +202,8 @@ export function Hero({
         <div className="fixed left-0 right-0 top-4 z-50 flex w-full justify-center px-4 sm:px-6 xl:px-0">
           <div className="relative w-full max-w-6xl">
             <div
-              className="pointer-events-none absolute inset-0 h-24 rounded-[1.75rem] shadow-[0_15px_40px_rgba(0,0,0,0.35)] backdrop-blur-lg"
-              style={{ backgroundColor: "rgba(111, 150, 188, 0.95)" }}
+              className="pointer-events-none absolute inset-0 h-24 rounded-[1.75rem] shadow-[0_8px_24px_rgba(0,0,0,0.2)] backdrop-blur-md"
+              style={{ backgroundColor: "rgba(111, 150, 188, 0.50)" }}
             />
             <nav
               ref={navRef}
@@ -405,6 +438,16 @@ export function Hero({
               <Button
                 asChild
                 size="lg"
+                className="group rounded-full border-2 border-white bg-white/10 px-8 py-7 text-2xl font-bold uppercase tracking-wide text-white backdrop-blur-sm transition hover:bg-white/20"
+              >
+                <a href={`tel:${sanitizedPhone}`}>
+                  <Phone className="mr-2 size-6" />
+                  {phone}
+                </a>
+              </Button>
+              <Button
+                asChild
+                size="lg"
                 style={{
                   backgroundColor: BRAND_MINT,
                   textShadow: "0 0 8px rgba(0,0,0,0.35)",
@@ -416,17 +459,12 @@ export function Hero({
                   <ArrowRight className="ml-2 size-6 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
-              <a
-                href={`tel:${sanitizedPhone}`}
-                className="group inline-flex items-center gap-2 text-lg font-semibold text-white transition hover:text-white/80"
-                aria-label={`Call Brightside at ${phone}`}
-              >
-                <Phone className="size-5 transition group-hover:scale-110" />
-                <span className="whitespace-nowrap">{phone}</span>
-              </a>
             </div>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <ScrollIndicator centerContent={centerContent} />
       </div>
     </section>
   );

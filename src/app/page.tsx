@@ -164,6 +164,8 @@ export default function Home() {
           statLabel="5.0 stars on Google"
           primaryCta={{ label: "Get Your Quote", href: "/get-quote" }}
           navLinks={NAV_LINKS}
+          centerContent
+          starPlacement="aboveCta"
         />
       </div>
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f6fbf8] to-[#c7f0de]">
