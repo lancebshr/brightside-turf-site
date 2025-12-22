@@ -1,10 +1,6 @@
-import { Search, HeartHandshake, Trophy, ArrowRight } from 'lucide-react'
+import { Search, HeartHandshake, Trophy } from 'lucide-react'
 
-type CoreValuesProps = {
-  heading?: string;
-};
-
-export function CoreValues({ heading }: CoreValuesProps) {
+export function CoreValues() {
   const values = [
     {
       id: '01',
@@ -30,67 +26,43 @@ export function CoreValues({ heading }: CoreValuesProps) {
   ]
 
   return (
-    <section className="relative z-0 w-full bg-white py-24 px-4">
+    <section className="w-full bg-transparent py-24 px-4 md:px-8">
+      <div className="mx-auto mb-16 h-px w-full max-w-7xl bg-pine/30" />
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-20 text-center max-w-4xl mx-auto">
-          <div className="inline-block bg-emerald-500 border-4 border-black px-4 py-2 mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform -rotate-2">
-            <span className="text-xl font-black text-white uppercase tracking-tight">
-              Our Philosophy
-            </span>
-          </div>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-black drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)] leading-none mb-8">
-            Our values that guide{' '}
-            <span className="text-emerald-500 underline decoration-4 underline-offset-8 decoration-black">
-              every job
-            </span>{' '}
-            we do
+        <div className="mb-24 max-w-4xl">
+          <h2 className="text-5xl md:text-6xl font-black text-pine tracking-tight leading-[1.1] drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)] mb-8">
+            Our values that guide <br />
+            <span className="text-[#45D1B7]">every job</span> we do
           </h2>
+          <div className="h-px w-32 bg-[#45D1B7]/60" />
         </div>
 
         {/* Values Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16">
           {values.map((value) => (
-            <div
-              key={value.id}
-              className="group relative bg-white border-4 border-black p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:scale-[1.02] transition-transform duration-300 flex flex-col items-start"
-            >
-              {/* Number Badge */}
-              <div className="absolute -top-6 -right-6 w-16 h-16 bg-black text-white border-4 border-white flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] z-20">
-                <span className="font-black text-xl">{value.id}</span>
-              </div>
-
-              {/* Icon Container */}
-              <div className="mb-8 relative">
-                <div className="w-24 h-24 bg-emerald-500 rounded-full border-4 border-black flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:rotate-6 transition-transform duration-300">
-                  <value.icon className="w-10 h-10 text-white stroke-[2.5]" />
+            <div key={value.id} className="group flex flex-col items-start">
+              {/* Icon & Number Row */}
+              <div className="flex items-center justify-between w-full mb-8 pb-6 border-b border-gray-100 group-hover:border-[#45D1B7]/30 transition-colors duration-500">
+                <div className="relative">
+                  <value.icon className="w-10 h-10 text-pine stroke-[1.5] group-hover:text-[#45D1B7] transition-colors duration-300" />
                 </div>
-                {/* Decorative line connecting icon to text */}
-                <div className="absolute left-1/2 bottom-0 w-1 h-8 bg-black transform -translate-x-1/2 translate-y-full" />
+                <span className="text-base font-semibold text-[#45D1B7]">
+                  {value.id}
+                </span>
               </div>
 
               {/* Content */}
-              <div className="mt-8 pt-4 border-t-4 border-black w-full">
-                <h3 className="text-2xl md:text-3xl font-black tracking-tight text-black drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] mb-4 leading-tight">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-pine leading-tight group-hover:text-ink transition-colors duration-300">
                   {value.title}
                 </h3>
-                <p className="text-lg font-bold text-black leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-lg font-light">
                   {value.description}
                 </p>
               </div>
-
             </div>
           ))}
-        </div>
-
-        {/* Bottom CTA or Closing Graphic */}
-        <div className="mt-20 text-center">
-          <div className="inline-flex items-center justify-center space-x-4 bg-black text-white border-4 border-black px-8 py-4 shadow-[4px_4px_0px_0px_rgba(74,222,128,1)] hover:bg-emerald-500 hover:text-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 cursor-pointer">
-            <span className="text-xl font-black uppercase tracking-wide">
-              Experience the difference
-            </span>
-            <ArrowRight className="w-6 h-6 stroke-[3]" />
-          </div>
         </div>
       </div>
     </section>

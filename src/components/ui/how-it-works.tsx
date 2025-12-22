@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 
 type Step = {
@@ -20,85 +19,73 @@ export function HowItWorks({
   subheading,
   steps,
   image,
-  cta,
 }: HowItWorksProps) {
   return (
-    <section className="relative left-1/2 right-1/2 z-0 ml-[-50vw] mr-[-50vw] w-screen overflow-hidden">
-      <Image
-        src={image}
-        alt="Brightside technician"
-        fill
-        priority
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0B3352] via-[#0B3352]/95 to-[#0B3352]/85" />
-
-      <FadeInSection className="relative z-10 px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section className="relative left-1/2 right-1/2 z-0 ml-[-50vw] mr-[-50vw] w-screen overflow-hidden bg-[#0B3352] py-24 px-4 md:px-8">
+      <FadeInSection>
         <div className="mx-auto max-w-7xl">
           {/* Header */}
-          <div className="mb-16 text-center md:mb-24">
-            <h2 className="text-5xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.4)] sm:text-6xl md:text-7xl">
+          <div className="mb-16 text-center">
+            <h2 className="text-5xl md:text-6xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)] mb-6">
               {heading}
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-xl font-bold text-white sm:text-2xl">
-              {subheading}
-            </p>
+            {subheading && (
+              <p className="text-xl md:text-2xl font-bold text-white/90 max-w-2xl mx-auto">
+                {subheading}
+              </p>
+            )}
           </div>
 
-          {/* Timeline Container */}
-          <div className="relative">
-            {/* Connecting Line - Desktop (Horizontal) */}
-            <div
-              className="absolute left-0 top-[70px] z-0 hidden h-3 w-full -translate-y-1/2 rounded-full bg-white/20 md:block"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute left-0 top-[70px] z-0 hidden h-3 w-full origin-left -translate-y-1/2 rounded-full bg-emerald-500 md:block"
-              aria-hidden="true"
-            />
+          {/* Two Column Layout */}
+          <div className="grid items-start gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
+            {/* Left - Image (bigger, extends left and down) */}
+            <div className="relative h-[400px] overflow-hidden rounded-3xl lg:h-full lg:min-h-[650px] lg:-ml-8 border-4 border-white/20 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)]">
+              <Image
+                src={image}
+                alt="Brightside technician"
+                fill
+                priority
+                className="object-cover"
+              />
+            </div>
 
-            {/* Connecting Line - Mobile (Vertical) */}
-            <div
-              className="absolute left-[60px] top-0 z-0 h-full w-3 -translate-x-1/2 rounded-full bg-emerald-500 md:hidden"
-              aria-hidden="true"
-            />
+            {/* Right - Steps */}
+            <div className="relative">
+              {/* Connecting Line - Vertical */}
+              <div
+                className="absolute top-0 left-[50px] h-full w-3 bg-[#45D1B7] z-0 rounded-full"
+                aria-hidden="true"
+              />
 
-            {/* Steps */}
-            <div className="relative z-10 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
-              {steps.map((step, index) => (
-                <div
-                  key={step.title}
-                  className="group flex flex-col md:items-center md:text-center"
-                >
-                  {/* Node Container */}
-                  <div className="mb-6 flex items-center pl-4 md:mb-10 md:pl-0">
-                    {/* Circle Node */}
-                    <div className="relative z-10 flex size-[120px] shrink-0 items-center justify-center rounded-full border-4 border-white bg-emerald-500 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-110 md:size-[120px]">
-                      <span className="text-6xl font-black text-white md:text-7xl">
-                        {index + 1}
-                      </span>
+              {/* Steps */}
+              <div className="flex flex-col gap-12 relative z-10">
+                {steps.map((step, index) => (
+                  <div key={step.title} className="flex flex-col group">
+                    {/* Node Container */}
+                    <div className="flex items-center mb-6 pl-4">
+                      {/* Circle Node */}
+                      <div className="w-[100px] h-[100px] rounded-full bg-[#45D1B7] flex items-center justify-center shrink-0 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 border-4 border-white relative z-10">
+                        <span className="text-5xl font-black text-white">
+                          {index + 1}
+                        </span>
+                      </div>
+
                     </div>
 
-                    {/* Mobile Arrow */}
-                    <div className="ml-6 text-emerald-400 md:hidden">
-                      <ArrowRight size={32} strokeWidth={3} />
+                    {/* Content */}
+                    <div className="pl-[124px] pr-4">
+                      <h3 className="text-3xl font-black text-white mb-4 tracking-tight">
+                        {step.title}
+                      </h3>
+                      <p className="text-lg font-bold text-white/80 leading-relaxed">
+                        {step.copy}
+                      </p>
                     </div>
                   </div>
-
-                  {/* Content */}
-                  <div className="pl-[124px] pr-4 md:pl-0">
-                    <h3 className="mb-3 text-3xl font-black tracking-tight text-white md:text-4xl">
-                      {step.title}
-                    </h3>
-                    <p className="text-lg font-semibold leading-relaxed text-white md:text-xl">
-                      {step.copy}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-
         </div>
       </FadeInSection>
     </section>

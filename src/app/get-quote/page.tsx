@@ -8,10 +8,9 @@ const QUOTE_SERVICES = [
   "Fertilization and Weed Control",
   "Lawn Mowing",
   "Mulch Installation",
-  "Core Aeration",
+  "Core Aeration/Overseeding",
   "Cleanups",
   "Holiday Lighting",
-  "Overseeding",
 ];
 
 export default function GetQuotePage() {

@@ -52,10 +52,9 @@ const QUOTE_SERVICES = [
   "Fertilization and Weed Control",
   "Lawn Mowing",
   "Mulch Installation",
-  "Core Aeration",
+  "Core Aeration/Overseeding",
   "Cleanups",
   "Holiday Lighting",
-  "Overseeding",
 ];
 
 const REVIEWS = [
@@ -179,16 +178,20 @@ export default function Home() {
           </section>
 
           <div id="reviews" className="scroll-mt-32">
+            <div className="mb-4 text-center">
+              <h2 className="whitespace-nowrap text-4xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)] md:text-5xl lg:text-6xl">
+                Trusted by Homeowners Across Omaha
+              </h2>
+            </div>
             <ReviewsCarousel
-              heading="Trusted by Homeowners Across Omaha"
-              subheading=""
               reviews={REVIEWS}
+              hideHeader
             />
           </div>
 
           <HowItWorks
             heading="How It Works"
-            subheading="A simple process designed around reliability."
+            subheading=""
             steps={HOW_IT_WORKS_STEPS}
             image="/newhero.png"
             cta={{ href: "/get-quote", label: "Get Your Quote" }}

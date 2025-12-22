@@ -112,7 +112,7 @@ export default function FertilizationAndWeedControlPage() {
         <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-white shadow-brand">
           <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-10 px-4 py-16 sm:px-6 lg:px-20">
             <div className="space-y-6 text-center">
-              <h2 className="text-5xl font-bold text-pine">
+              <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
                 A simple plan that gives your lawn exactly what it needs.
               </h2>
             </div>
@@ -128,11 +128,11 @@ export default function FertilizationAndWeedControlPage() {
                 />
               </div>
               <div className="flex flex-col justify-center space-y-5 text-center md:text-left">
-                <p className="text-lg text-ink/80">
+                <p className="text-lg font-semibold text-ink/80">
                   A fertilizer and weed control plan that gives your lawn the nutrients it needs
                   and keeps weeds under control all season.
                 </p>
-                <p className="text-lg text-ink/80">
+                <p className="text-lg font-semibold text-ink/80">
                   From the first treatment to the last, we follow the same proven steps so you always know what to expect.
                 </p>
                 <div className="space-y-3">
@@ -141,11 +141,11 @@ export default function FertilizationAndWeedControlPage() {
                       key={item.title}
                       className="group px-1 py-3 text-left"
                     >
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-pine">
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-bold text-pine">
                         {item.title}
-                        <ChevronDown className="size-4 text-ink/60 transition group-open:-rotate-180" />
+                        <ChevronDown className="size-5 text-ink/60 transition group-open:-rotate-180" />
                       </summary>
-                      <p className="mt-2 text-base text-ink/80">{item.body}</p>
+                      <p className="mt-2 text-base font-semibold text-ink/80">{item.body}</p>
                     </details>
                   ))}
                 </div>
@@ -169,68 +169,76 @@ export default function FertilizationAndWeedControlPage() {
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#edf8f2] to-[#c7f0de]">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 pb-16 pt-16 sm:px-6 lg:px-0">
           <section>
-            <CoreValues
-              heading="Our values that guide every job we do:"
-            />
+            <CoreValues />
           </section>
 
           <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-pine py-16 text-white">
             <div className="mx-auto flex w-full max-w-6xl flex-col space-y-10 px-4 sm:px-6 lg:px-0">
               <FadeInSection className="space-y-2 text-center">
-                <h2 className="text-5xl font-bold text-white">
+                <h2 className="text-5xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
                   At Brightside, the Grass Really is Greener
                 </h2>
               </FadeInSection>
               <FadeInSection>
-                <div className="gallery-5">
-                  <div className="gallery-5__tile">
-                    <img src="/aeration.JPG" alt="Brightside technician aerating a lawn" className="gallery-5__image" />
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+                  <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
+                    <Image src="/aeration.JPG" alt="Brightside technician aerating a lawn" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
-                  <div className="gallery-5__tile">
-                    <img src="/fertilization.JPG" alt="Fertilizer application across a green yard" className="gallery-5__image" />
+                  <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
+                    <Image src="/fertilization.JPG" alt="Fertilizer application across a green yard" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
-                  <div className="gallery-5__tile">
-                    <img src="/overseeding.JPG" alt="Overseeding equipment in action" className="gallery-5__image" />
+                  <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
+                    <Image src="/overseeding.JPG" alt="Overseeding equipment in action" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
-                  <div className="gallery-5__tile">
-                    <img src="/lighting.webp" alt="Holiday lighting installed by Brightside" className="gallery-5__image" />
+                  <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
+                    <Image src="/lighting.webp" alt="Holiday lighting installed by Brightside" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
-                  <div className="gallery-5__tile">
-                    <img src="/team-truck.jpg" alt="Brightside Turf team truck" className="gallery-5__image" />
+                  <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
+                    <Image src="/team-truck.jpg" alt="Brightside Turf team truck" fill className="object-cover transition duration-300 hover:scale-105" />
+                  </div>
+                  <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
+                    <Image src="/grasstop.jpeg" alt="Lush green lawn" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
                 </div>
               </FadeInSection>
             </div>
           </section>
 
-          <section className="space-y-6 rounded-[2.5rem] bg-white p-6 shadow-brand md:p-12">
+          <section className="space-y-4">
             <FadeInSection className="space-y-3 text-center">
-              <h2 className="text-5xl font-bold text-pine">Fertilization & Weed Control FAQs</h2>
+              <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">Fertilization & Weed Control FAQs</h2>
+              <p className="text-lg font-bold text-slate-600">Common questions about our fertilization and weed control services.</p>
             </FadeInSection>
-            <div className="space-y-4">
-              {FAQ_ITEMS.map((faq) => (
-                <details
-                  key={faq.question}
-                  className="group border-b border-slate-200 px-1 py-3 last:border-b-0"
-                >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-pine">
-                    {faq.question}
-                    <ChevronDown className="size-4 text-ink/60 transition group-open:-rotate-180" />
-                  </summary>
-                  <p className="mt-3 text-base text-ink/80">{faq.answer}</p>
-                </details>
-              ))}
+            <div className="rounded-[2.5rem] border border-slate-200 bg-white px-6 py-5 shadow-brand md:px-10 md:py-8">
+              <div className="space-y-4">
+                {FAQ_ITEMS.map((faq) => (
+                  <details
+                    key={faq.question}
+                    className="group/item rounded-2xl border border-slate-100 bg-slate-50/70 px-5 py-4 transition"
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-black text-pine">
+                      <span>{faq.question}</span>
+                      <ChevronDown className="size-5 text-ink/60 transition group-open/item:-rotate-180" />
+                    </summary>
+                    <p className="mt-4 pt-4 border-t border-slate-200 text-base font-semibold text-ink/90 leading-relaxed">{faq.answer}</p>
+                  </details>
+                ))}
+              </div>
             </div>
           </section>
         </div>
 
         <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-16">
-          <div className="space-y-6 px-4 sm:px-10">
+          <div className="mb-10 px-4 text-center sm:px-8">
+            <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
+              What Your Neighbors Think
+            </h2>
+          </div>
+          <div className="px-4 sm:px-10">
             <div className="w-full">
               <ReviewsCarousel
-                heading="What Your Neighbors Think"
-                subheading=""
                 reviews={REVIEWS}
+                hideHeader
               />
             </div>
           </div>

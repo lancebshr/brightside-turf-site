@@ -206,63 +206,59 @@ export default function AboutPage() {
       </div>
 
       <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-6 pt-16 sm:px-6 lg:px-0">
-        <section id="story" className="scroll-mt-32 space-y-8">
+        <section id="story" className="scroll-mt-32 space-y-10">
           <h2 className="text-center text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
             We built Brightside to raise the bar for Omaha homeowners.
           </h2>
-          <div
-            className="grid gap-10 rounded-[2.5rem] border-2 border-slate-200 bg-white p-6 shadow-xl md:grid-cols-[1.1fr_0.9fr] md:p-12"
-          >
-            <div className="space-y-5 text-ink">
-              <p className="text-lg font-medium leading-relaxed text-ink">
-                Before Brightside, we spent years helping other home service companies with operations, marketing, and customer experience. We learned a lot, but one thing stood out: no matter how good the systems were, we could not control the care that went into the work. And for homeowners, that is what matters most.
-              </p>
-              <p className="text-lg font-medium leading-relaxed text-ink">
-                So we built Brightside with one goal in mind: to give people a lawn care experience that feels as personal as it is professional. We are from Omaha, and we take pride in serving the same neighborhoods we grew up in. Everything we do is intentional, from how our technicians present themselves to the products we use and the communication you receive throughout the year.
-              </p>
-              <p className="text-lg font-medium leading-relaxed text-ink">
-                We want Brightside to feel like the small business you trust and the big business you can rely on. Our job is simple: make people genuinely happy with their lawns and lights.
-              </p>
-              <p className="text-lg font-medium leading-relaxed text-ink">
-                If you ever want to talk with us directly, here is how to reach us:
-              </p>
-              <div className="space-y-4 pt-2">
-                <div className="space-y-1">
-                  <p className="text-lg font-bold text-pine">Luke Protzman</p>
-                  <a
-                    href="mailto:lprotzman@brightsideturfne.com"
-                    className="text-lg font-medium text-ink underline decoration-2 underline-offset-4 transition hover:text-pine"
-                  >
-                    lprotzman@brightsideturfne.com
-                  </a>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-lg font-bold text-pine">Ben Newton</p>
-                  <a
-                    href="mailto:bnewton@brightsideturfne.com"
-                    className="text-lg font-medium text-ink underline decoration-2 underline-offset-4 transition hover:text-pine"
-                  >
-                    bnewton@brightsideturfne.com
-                  </a>
-                </div>
+
+          <div className="mx-auto max-w-3xl space-y-6">
+            <p className="text-lg font-medium leading-relaxed text-ink">
+              Before Brightside, we spent years helping other home service companies with operations, marketing, and customer experience. We learned a lot, but one thing stood out: no matter how good the systems were, we could not control the care that went into the work. And for homeowners, that is what matters most.
+            </p>
+            <p className="text-lg font-medium leading-relaxed text-ink">
+              So we built Brightside with one goal in mind: to give people a lawn care experience that feels as personal as it is professional. We are from Omaha, and we take pride in serving the same neighborhoods we grew up in. Everything we do is intentional, from how our technicians present themselves to the products we use and the communication you receive throughout the year.
+            </p>
+            <p className="text-lg font-medium leading-relaxed text-ink">
+              We want Brightside to feel like the small business you trust and the big business you can rely on. Our job is simple: make people genuinely happy with their lawns and lights.
+            </p>
+            <p className="text-lg font-medium leading-relaxed text-ink">
+              If you ever want to talk with us directly, here is how to reach us:
+            </p>
+            <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:gap-12">
+              <div className="space-y-1">
+                <p className="text-lg font-bold text-pine">Luke Protzman</p>
+                <a
+                  href="mailto:lprotzman@brightsideturfne.com"
+                  className="text-lg font-medium text-ink underline decoration-2 underline-offset-4 transition hover:text-pine"
+                >
+                  lprotzman@brightsideturfne.com
+                </a>
+              </div>
+              <div className="space-y-1">
+                <p className="text-lg font-bold text-pine">Ben Newton</p>
+                <a
+                  href="mailto:bnewton@brightsideturfne.com"
+                  className="text-lg font-medium text-ink underline decoration-2 underline-offset-4 transition hover:text-pine"
+                >
+                  bnewton@brightsideturfne.com
+                </a>
               </div>
             </div>
-            <div className="relative overflow-hidden rounded-3xl">
-              <Image
-                src="/newhero.png"
-                alt="Brightside Turf team"
-                width={720}
-                height={540}
-                className="h-full w-full object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-pine/40 to-transparent" />
-            </div>
+          </div>
+
+          <div className="relative mx-auto h-72 w-full overflow-hidden rounded-3xl md:h-80">
+            <Image
+              src="/newhero.png"
+              alt="Brightside Turf team"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
         </section>
 
         <section id="beliefs" className="scroll-mt-32">
-          <CoreValues heading="Our values that guide every job we do:" />
+          <CoreValues />
         </section>
 
         <section id="blog" className="space-y-6 scroll-mt-32">

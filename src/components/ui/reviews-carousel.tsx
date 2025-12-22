@@ -15,9 +15,10 @@ export type Review = {
 };
 
 type ReviewsCarouselProps = {
-  heading: string;
-  subheading: string;
+  heading?: string;
+  subheading?: string;
   reviews: Review[];
+  hideHeader?: boolean;
 };
 
 const getVisibleCount = (width: number, total: number) => {
@@ -39,6 +40,7 @@ export function ReviewsCarousel({
   heading,
   subheading,
   reviews,
+  hideHeader = false,
 }: ReviewsCarouselProps) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -147,12 +149,14 @@ export function ReviewsCarousel({
     <section
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="space-y-10 px-4 py-8 sm:px-8 lg:px-12"
+      className={`space-y-10 px-4 sm:px-8 lg:px-12 ${hideHeader ? "pt-6 pb-4" : "py-16"}`}
     >
-      <FadeInSection className="flex flex-col items-center gap-4 text-center">
-        <h2 className={BOLD_PLUS_HEADING}>{heading}</h2>
-        <p className="text-lg text-slate-600">{subheading}</p>
-      </FadeInSection>
+      {!hideHeader && (
+        <FadeInSection className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 text-center sm:px-8">
+          <h2 className={BOLD_PLUS_HEADING}>{heading}</h2>
+          {subheading && <p className="text-lg font-semibold text-slate-600">{subheading}</p>}
+        </FadeInSection>
+      )}
 
       <div className="relative">
         <div className="mb-4 flex animate-float items-center justify-center gap-2">

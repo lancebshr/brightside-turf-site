@@ -18,7 +18,7 @@ export function SiteFooter({ links }: FooterProps) {
           />
         </div>
 
-        <nav className="flex flex-nowrap items-center justify-center gap-6 text-sm text-white/80 md:justify-center">
+        <nav className="flex flex-nowrap items-center justify-center gap-6 text-sm font-semibold text-white/90 md:justify-center">
           {links.map((link) => (
             <a
               key={link.href}
@@ -30,16 +30,16 @@ export function SiteFooter({ links }: FooterProps) {
           ))}
         </nav>
 
-        <div className="text-center text-sm text-white/80 md:text-right">
-          <p className="font-semibold uppercase tracking-wide text-mint/80">
+        <div className="text-center text-white/90 md:text-right">
+          <p className="text-lg font-black tracking-tight text-mint">
             Office Contact
           </p>
-          <p className="mt-4">
+          <p className="mt-4 text-base font-bold">
             <a href="tel:4028108692" className="hover:text-pine">
               (402) 810-8692
             </a>
           </p>
-          <p>
+          <p className="text-base font-bold">
             <a href="mailto:office@brightsideturfne.com" className="hover:text-pine">
               office@brightsideturfne.com
             </a>
