@@ -199,18 +199,25 @@ export function LeadForm({
           htmlFor="referralSource"
           labelClassName={labelTone}
         >
-          <select
-            id="referralSource"
-            name="referralSource"
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-base text-ink outline-none shadow-[0_1px_3px_rgba(0,0,0,0.25)] focus-visible:ring-2 focus-visible:ring-pine/30"
-          >
-            <option value="">Select one</option>
-            {REFERRAL_SOURCES.map((source) => (
-              <option key={source} value={source}>
-                {source}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              id="referralSource"
+              name="referralSource"
+              className="w-full appearance-none rounded-2xl border border-slate-200 bg-white px-4 py-3 pr-10 text-base font-medium text-ink outline-none shadow-[0_1px_3px_rgba(0,0,0,0.25)] focus-visible:ring-2 focus-visible:ring-pine/30"
+            >
+              <option value="">Select one</option>
+              {REFERRAL_SOURCES.map((source) => (
+                <option key={source} value={source}>
+                  {source}
+                </option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+              <svg className="size-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
         </Field>
 
         <Button
