@@ -149,12 +149,12 @@ export default function FertilizationAndWeedControlPage() {
                     </details>
                   ))}
                 </div>
-                <div className="pt-2">
+                <div className="pt-2 flex justify-center">
                   <Button
                     asChild
                     size="lg"
                     style={GET_QUOTE_BUTTON_STYLE}
-                    className={cn(GET_QUOTE_BUTTON_CLASSNAME, "mx-auto")}
+                    className={GET_QUOTE_BUTTON_CLASSNAME}
                   >
                     <Link href="/get-quote">
                       {formatGetQuoteLabel("Get Your Quote")}

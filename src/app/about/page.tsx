@@ -7,15 +7,6 @@ import { SiteFooter } from "@/components/ui/site-footer";
 import { CoreValues } from "@/components/ui/core-values";
 import { NAV_LINKS } from "@/lib/nav-links";
 
-const BLOG_POSTS = [
-  "Placeholder Blog #1",
-  "Placeholder Blog #2",
-  "Placeholder Blog #3",
-  "Placeholder Blog #4",
-  "Placeholder Blog #5",
-  "Placeholder Blog #6",
-];
-
 type FaqCategory = {
   title: string;
   description: string;
@@ -273,11 +264,17 @@ export default function AboutPage() {
                 priority
               />
               <div className="absolute inset-0 bg-ink/60" />
-              <div className="relative z-10 flex h-full w-full items-center justify-center text-center">
-                <div className="space-y-3 px-6">
-
-                  <h2 className="text-5xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]">The Brightside Blog</h2>
-                </div>
+              <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-6 text-center">
+                <h2 className="text-5xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+                  The Brightside Blog
+                </h2>
+                <a
+                  href="/blog"
+                  className="rounded-full px-8 py-5 text-lg font-semibold uppercase tracking-wide text-white shadow-brand transition hover:opacity-90"
+                  style={{ backgroundColor: "#45D1B7", textShadow: "0 0 8px rgba(0,0,0,0.35)" }}
+                >
+                  VIEW BLOG
+                </a>
               </div>
             </div>
           </div>
@@ -286,27 +283,6 @@ export default function AboutPage() {
 
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f5fbf7] to-[#c7f0de]">
         <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-0 pt-12 sm:px-6 lg:px-0">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {BLOG_POSTS.map((title) => (
-              <article
-                key={title}
-                className="group relative overflow-hidden rounded-3xl shadow-brand"
-              >
-                <Image
-                  src="/newhero.png"
-                  alt={title}
-                  width={480}
-                  height={320}
-                  className="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute inset-0 flex items-end p-6">
-                  <h3 className="text-xl font-bold text-white">{title}</h3>
-                </div>
-              </article>
-            ))}
-          </div>
-
           <section id="faqs" className="space-y-6 scroll-mt-32">
             <FadeInSection className="space-y-3 text-center">
               <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">Questions about Brightside?</h2>

@@ -1,4 +1,7 @@
+import Link from 'next/link'
 import { Search, HeartHandshake, Trophy } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { GET_QUOTE_BUTTON_CLASSNAME, GET_QUOTE_BUTTON_STYLE, cn } from '@/lib/utils'
 
 export function CoreValues() {
   const values = [
@@ -63,6 +66,18 @@ export function CoreValues() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="mt-16 text-center">
+          <Button
+            asChild
+            size="lg"
+            style={GET_QUOTE_BUTTON_STYLE}
+            className={cn(GET_QUOTE_BUTTON_CLASSNAME, "px-12 py-7 text-xl")}
+          >
+            <Link href="/get-quote">GET YOUR QUOTE</Link>
+          </Button>
         </div>
       </div>
     </section>
