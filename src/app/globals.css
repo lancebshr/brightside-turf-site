@@ -95,6 +95,14 @@
   }
 }
 
+/* Hide default disclosure triangle on details/summary across all browsers */
+summary::-webkit-details-marker {
+  display: none;
+}
+summary::marker {
+  content: none;
+}
+
 .text-glow {
   text-shadow: 0 3px 16px rgba(14, 36, 49, 0.85);
 }

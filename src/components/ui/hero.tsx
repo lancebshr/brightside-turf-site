@@ -56,6 +56,7 @@ export function Hero({
   starPlacement = "top",
 }: HeroProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [collapseLinks, setCollapseLinks] = useState(false);
   const [collapseActions, setCollapseActions] = useState(false);
@@ -74,6 +75,13 @@ export function Hero({
     { label: "Cleanups", href: "/services/cleanups" },
     { label: "Holiday Lighting", href: "/services/holiday-lighting" },
     { label: "Overseeding", href: "/services/overseeding" },
+  ];
+  const ABOUT_OPTIONS = [
+    { label: "Our Story", href: "/about#story" },
+    { label: "Our Values", href: "/about#beliefs" },
+    { label: "FAQs", href: "/about#faqs" },
+    { label: "Contact", href: "/about#contact" },
+    { label: "Blog", href: "/blog" },
   ];
   const renderStarRow = (className = "") => (
     <div
@@ -265,6 +273,43 @@ export function Hero({
                         </div>
                       );
                     }
+                    if (link.label === "About Us") {
+                      return (
+                        <div
+                          key={link.label}
+                          className="relative -mb-8 pb-8"
+                          onMouseEnter={() => setAboutOpen(true)}
+                          onMouseLeave={() => setAboutOpen(false)}
+                        >
+                          <Link
+                            href="/about"
+                            className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-black/70 hover:shadow-[0_8px_20px_rgba(0,0,0,0.45)] drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]"
+                          >
+                            About Us
+                            <ChevronDown
+                              className={`size-4 transition ${aboutOpen ? "rotate-180" : ""}`}
+                            />
+                          </Link>
+                          <div
+                            className={`absolute right-0 mt-3 w-56 rounded-[1.25rem] border border-white/30 bg-black/80 p-4 shadow-[0_20px_45px_rgba(0,0,0,0.6)] backdrop-blur-lg ${
+                              aboutOpen ? "opacity-100" : "hidden opacity-0"
+                            }`}
+                          >
+                            <div className="flex flex-col gap-2 text-left text-sm text-white/90">
+                              {ABOUT_OPTIONS.map((option) => (
+                                <Link
+                                  key={option.label}
+                                  href={option.href}
+                                  className="rounded-xl px-3 py-2 transition hover:bg-white/10"
+                                >
+                                  {option.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
                     return (
                       <a
                         key={link.href}
@@ -338,7 +383,7 @@ export function Hero({
                 >
                   <div className="flex flex-col gap-3">
                     {navLinks.map((link) => {
-                      if (link.label === "Our Services") {
+                      if (link.label === "Our Services" || link.label === "About Us") {
                         return null;
                       }
                       return (
@@ -365,6 +410,27 @@ export function Hero({
                             onClick={closeMobileMenu}
                           >
                             {service.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="rounded-2xl bg-slate-50 p-4">
+                      <Link
+                        href="/about"
+                        className="text-sm font-semibold uppercase tracking-wide text-ink hover:text-pine"
+                        onClick={closeMobileMenu}
+                      >
+                        About Us
+                      </Link>
+                      <div className="mt-3 flex flex-col">
+                        {ABOUT_OPTIONS.map((option) => (
+                          <Link
+                            key={option.label}
+                            href={option.href}
+                            className="rounded-xl px-3 py-2 text-sm text-ink/80 transition hover:bg-white"
+                            onClick={closeMobileMenu}
+                          >
+                            {option.label}
                           </Link>
                         ))}
                       </div>
