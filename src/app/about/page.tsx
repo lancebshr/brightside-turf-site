@@ -236,17 +236,17 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-
-          <div className="relative mx-auto h-72 w-full overflow-hidden rounded-3xl md:h-80">
-            <Image
-              src="/newhero.png"
-              alt="Brightside Turf team"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
         </section>
+
+        <div className="relative left-1/2 right-1/2 mt-16 h-72 w-screen -translate-x-1/2 overflow-hidden md:h-96">
+          <Image
+            src="/newhero.png"
+            alt="Brightside Turf team"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
         <section id="beliefs" className="scroll-mt-32">
           <CoreValues />

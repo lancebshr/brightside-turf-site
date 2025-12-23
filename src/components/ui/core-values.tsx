@@ -29,8 +29,8 @@ export function CoreValues() {
   ]
 
   return (
-    <section className="w-full bg-transparent py-24 px-4 md:px-8">
-      <div className="mx-auto mb-16 h-px w-full max-w-7xl bg-pine/30" />
+    <section className="w-full bg-transparent pt-10 pb-24 px-4 md:px-8">
+      <div className="mx-auto mb-12 h-px w-full max-w-7xl bg-pine/30" />
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-24 max-w-4xl">
