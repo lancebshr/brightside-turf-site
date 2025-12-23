@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 
 type ServiceAreaProps = {
@@ -28,12 +29,13 @@ export function ServiceArea({ title, description, areas }: ServiceAreaProps) {
       </FadeInSection>
 
       <FadeInSection className="flex items-center justify-center">
-        <div className="w-full md:w-[118%] overflow-hidden rounded-3xl border border-slate-200 shadow-brand">
-          <iframe
-            src="https://www.google.com/maps/d/u/0/embed?mid=1kTVCYCGoHKvztB-o8pNYoyNNbSO33xU&ehbc=2E312F&noprof=1"
-            className="h-[420px] w-full rounded-3xl"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
+        <div className="relative w-full md:w-[118%] overflow-hidden rounded-3xl border border-slate-200 shadow-brand">
+          <Image
+            src="/brightsidemaps.webp"
+            alt="Brightside Turf service area map"
+            width={600}
+            height={420}
+            className="h-auto w-full rounded-3xl object-cover"
           />
         </div>
       </FadeInSection>

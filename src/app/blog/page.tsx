@@ -21,7 +21,6 @@ export default function BlogPage() {
         statLabel="5.0 stars on Google"
         primaryCta={{ label: "Get Your Quote", href: "/get-quote" }}
         navLinks={NAV_LINKS}
-        centerContent
         starPlacement="aboveCta"
       />
 

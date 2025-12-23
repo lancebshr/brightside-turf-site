@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Hero } from "@/components/ui/hero";
 import { LeadForm } from "@/components/ui/lead-form";
 import { ReviewsCarousel } from "@/components/ui/reviews-carousel";
@@ -6,8 +7,9 @@ import { ServicesGrid } from "@/components/ui/services-grid";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { HowItWorks } from "@/components/ui/how-it-works";
 import { ContactStrip } from "@/components/ui/contact-strip";
+import { Button } from "@/components/ui/button";
 import { NAV_LINKS } from "@/lib/nav-links";
-import { BOLD_PLUS_HEADING } from "@/lib/utils";
+import { BOLD_PLUS_HEADING, GET_QUOTE_BUTTON_CLASSNAME, GET_QUOTE_BUTTON_STYLE, cn } from "@/lib/utils";
 
 const SERVICE_CARDS = [
   {
@@ -163,18 +165,27 @@ export default function Home() {
           statLabel="5.0 stars on Google"
           primaryCta={{ label: "Get Your Quote", href: "/get-quote" }}
           navLinks={NAV_LINKS}
-          centerContent
           starPlacement="aboveCta"
         />
       </div>
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f6fbf8] to-[#c7f0de]">
         <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-12 pt-16 sm:px-6 lg:px-0">
-          <section className="space-y-16">
-          <ServicesGrid
+          <section className="space-y-10">
+            <ServicesGrid
               heading="Lawn and Landscaping Services"
-              subheading="We make lawn care simple. Our team handles fertilizing, mowing, mulching, aeration, cleanups, and more so your yard always looks its best."
+              subheading=""
               services={SERVICE_CARDS}
             />
+            <div className="flex justify-center">
+              <Button
+                asChild
+                size="lg"
+                style={GET_QUOTE_BUTTON_STYLE}
+                className={cn(GET_QUOTE_BUTTON_CLASSNAME, "px-12 py-7 text-xl")}
+              >
+                <Link href="/get-quote">GET YOUR QUOTE</Link>
+              </Button>
+            </div>
           </section>
 
           <section id="reviews" className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-16 scroll-mt-32">

@@ -7,7 +7,7 @@ import { ArrowRight, ChevronDown, Menu, Phone, Star, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BRAND_MINT, cn } from "@/lib/utils";
 
-function ScrollIndicator({ centerContent }: { centerContent: boolean }) {
+function ScrollIndicator() {
   const [visible, setVisible] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -25,17 +25,13 @@ function ScrollIndicator({ centerContent }: { centerContent: boolean }) {
 
   return (
     <div
-      className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center transition-opacity duration-300 ${
-        centerContent ? "" : "md:left-16 md:translate-x-0"
-      }`}
-      style={{ opacity: visible ? 1 - scrollProgress * 0.5 : 0 }}
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center transition-opacity duration-500"
+      style={{
+        opacity: 1 - scrollProgress,
+        transform: `translateX(-50%) translateY(${scrollProgress * 30}px)`
+      }}
     >
-      <div
-        className="relative"
-        style={{ transform: `translateY(${scrollProgress * 20}px)` }}
-      >
-        <ChevronDown className="size-8 text-white/80 animate-pulse" />
-      </div>
+      <ChevronDown className="size-6 text-white/70" strokeWidth={1.5} />
     </div>
   );
 }
@@ -47,7 +43,6 @@ type HeroProps = {
   primaryCta: { href: string; label: string };
   navLinks: { label: string; href: string }[];
   phone?: string;
-  centerContent?: boolean;
   starPlacement?: "top" | "aboveCta";
 };
 
@@ -58,7 +53,6 @@ export function Hero({
   primaryCta,
   navLinks,
   phone = "(402) 810-8692",
-  centerContent = false,
   starPlacement = "top",
 }: HeroProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -81,11 +75,9 @@ export function Hero({
     { label: "Holiday Lighting", href: "/services/holiday-lighting" },
     { label: "Overseeding", href: "/services/overseeding" },
   ];
-  const renderStarRow = (className = "", alignCenter = centerContent) => (
+  const renderStarRow = (className = "") => (
     <div
-      className={`flex flex-wrap items-center gap-2 text-glow ${
-        alignCenter ? "justify-center" : ""
-      } ${className}`}
+      className={`flex flex-wrap items-center gap-2 text-glow ${className}`}
     >
       {Array.from({ length: 5 }).map((_, index) => (
         <Star key={index} className="size-6 flex-shrink-0 fill-yellow-400 text-yellow-400" />
@@ -411,30 +403,20 @@ export function Hero({
           </div>
         </div>
 
-        <div
-          className={`flex flex-1 flex-col justify-center px-6 pb-16 text-white md:px-12 lg:px-16 ${
-            centerContent ? "items-center text-center" : ""
-          }`}
-        >
+        <div className="flex flex-1 flex-col justify-center px-6 pb-16 text-white md:px-12 lg:px-16">
           {starPlacement === "top" && renderStarRow("mt-16 mb-8")}
 
-          <h1 className="text-glow mb-7 max-w-7xl text-balance text-5xl font-black tracking-tight leading-tight drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)] md:text-6xl lg:text-7xl">
+          <h1 className="text-glow mb-7 max-w-6xl text-5xl font-black tracking-tight leading-tight drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)] md:text-6xl lg:text-7xl">
             {heading}
           </h1>
 
-          <p className="text-glow mb-9 max-w-7xl text-balance text-xl font-bold md:text-2xl">
+          <p className="text-glow mb-9 max-w-4xl text-balance text-xl font-extrabold md:text-2xl">
             {subheading}
           </p>
 
-          <div
-            className={`mt-3 ${centerContent ? "flex flex-col items-center gap-4" : ""}`}
-          >
-            {starPlacement === "aboveCta" && renderStarRow("mb-2", true)}
-            <div
-              className={`flex flex-wrap items-center gap-4 ${
-                centerContent ? "justify-center" : ""
-              }`}
-            >
+          <div className="mt-3">
+            {starPlacement === "aboveCta" && renderStarRow("mb-4")}
+            <div className="flex flex-wrap items-center gap-4">
               <Button
                 asChild
                 size="lg"
@@ -464,7 +446,7 @@ export function Hero({
         </div>
 
         {/* Scroll indicator */}
-        <ScrollIndicator centerContent={centerContent} />
+        <ScrollIndicator />
       </div>
     </section>
   );

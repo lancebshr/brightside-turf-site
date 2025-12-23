@@ -25,21 +25,22 @@ export function HowItWorks({
       <FadeInSection>
         <div className="mx-auto max-w-7xl">
           {/* Header */}
-          <div className="mb-16 text-center">
+          <div className="mb-16">
             <h2 className="text-5xl md:text-6xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)] mb-6">
               {heading}
             </h2>
             {subheading && (
-              <p className="text-xl md:text-2xl font-bold text-white/90 max-w-2xl mx-auto">
+              <p className="text-xl md:text-2xl font-bold text-white/90 max-w-2xl">
                 {subheading}
               </p>
             )}
+            <div className="h-px w-32 bg-[#45D1B7]/60 mt-8" />
           </div>
 
           {/* Two Column Layout */}
-          <div className="grid items-start gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-12">
-            {/* Left - Image (bigger, extends left and down) */}
-            <div className="relative h-[400px] overflow-hidden rounded-3xl lg:h-full lg:min-h-[650px] lg:-ml-8 border-4 border-white/20 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)]">
+          <div className="grid items-start gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+            {/* Left - Image */}
+            <div className="relative h-[400px] overflow-hidden rounded-3xl lg:h-full lg:min-h-[500px]">
               <Image
                 src={image}
                 alt="Brightside technician"
@@ -49,41 +50,28 @@ export function HowItWorks({
               />
             </div>
 
-            {/* Right - Steps */}
-            <div className="relative">
-              {/* Connecting Line - Vertical */}
-              <div
-                className="absolute top-0 left-[50px] h-full w-3 bg-[#45D1B7] z-0 rounded-full"
-                aria-hidden="true"
-              />
-
-              {/* Steps */}
-              <div className="flex flex-col gap-12 relative z-10">
-                {steps.map((step, index) => (
-                  <div key={step.title} className="flex flex-col group">
-                    {/* Node Container */}
-                    <div className="flex items-center mb-6 pl-4">
-                      {/* Circle Node */}
-                      <div className="w-[100px] h-[100px] rounded-full bg-[#45D1B7] flex items-center justify-center shrink-0 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 border-4 border-white relative z-10">
-                        <span className="text-5xl font-black text-white">
-                          {index + 1}
-                        </span>
-                      </div>
-
-                    </div>
-
-                    {/* Content */}
-                    <div className="pl-[124px] pr-4">
-                      <h3 className="text-3xl font-black text-white mb-4 tracking-tight">
+            {/* Right - Steps (minimal style like CoreValues) */}
+            <div className="flex flex-col gap-12">
+              {steps.map((step, index) => (
+                <div key={step.title} className="group flex flex-col">
+                  {/* Step number and title row */}
+                  <div className="w-full mb-5 pb-5 border-b border-white/20 group-hover:border-[#45D1B7]/50 transition-colors duration-500">
+                    <div className="flex items-baseline gap-4">
+                      <span className="text-[#45D1B7] text-2xl font-bold">
+                        0{index + 1}
+                      </span>
+                      <h3 className="text-3xl font-extrabold text-white leading-tight">
                         {step.title}
                       </h3>
-                      <p className="text-lg font-bold text-white/80 leading-relaxed">
-                        {step.copy}
-                      </p>
                     </div>
                   </div>
-                ))}
-              </div>
+
+                  {/* Description */}
+                  <p className="text-white leading-relaxed text-xl font-semibold pl-12">
+                    {step.copy}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -104,7 +104,6 @@ export default function FertilizationAndWeedControlPage() {
         statLabel="5.0 stars on Google"
         primaryCta={{ href: "/get-quote", label: "Get Your Quote" }}
         navLinks={NAV_LINKS}
-        centerContent
         starPlacement="aboveCta"
       />
       <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-0 pt-0 sm:px-6 lg:px-0">

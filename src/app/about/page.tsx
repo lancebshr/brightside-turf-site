@@ -191,7 +191,6 @@ export default function AboutPage() {
           statLabel="5.0 stars on Google"
           primaryCta={{ label: "Get Your Quote", href: "#contact" }}
           navLinks={NAV_LINKS}
-          centerContent
           starPlacement="aboveCta"
         />
       </div>
@@ -238,52 +237,14 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <div className="relative left-1/2 right-1/2 mt-16 h-72 w-screen -translate-x-1/2 overflow-hidden md:h-96">
-          <Image
-            src="/newhero.png"
-            alt="Brightside Turf team"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-
         <section id="beliefs" className="scroll-mt-32">
           <CoreValues />
-        </section>
-
-        <section id="blog" className="space-y-6 scroll-mt-32">
-          <div className="relative left-1/2 w-screen -translate-x-1/2">
-            <div className="relative h-72 w-full overflow-hidden">
-              <Image
-                src="/hero-bg.jpg"
-                alt="Brightside Blog"
-                fill
-                className="object-cover"
-                sizes="100vw"
-                priority
-              />
-              <div className="absolute inset-0 bg-ink/60" />
-              <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-6 text-center">
-                <h2 className="text-5xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
-                  The Brightside Blog
-                </h2>
-                <a
-                  href="/blog"
-                  className="rounded-full px-8 py-5 text-lg font-semibold uppercase tracking-wide text-white shadow-brand transition hover:opacity-90"
-                  style={{ backgroundColor: "#45D1B7", textShadow: "0 0 8px rgba(0,0,0,0.35)" }}
-                >
-                  VIEW BLOG
-                </a>
-              </div>
-            </div>
-          </div>
         </section>
       </main>
 
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f5fbf7] to-[#c7f0de]">
         <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-0 pt-12 sm:px-6 lg:px-0">
-          <section id="faqs" className="space-y-6 scroll-mt-32">
+          <section id="faqs" className="space-y-12 scroll-mt-32">
             <FadeInSection className="space-y-3 text-center">
               <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">Questions about Brightside?</h2>
               <p className="text-xl font-semibold text-slate-600">
@@ -294,7 +255,7 @@ export default function AboutPage() {
             <div className="space-y-10">
               {FAQ_CATEGORIES.map((category) => (
                 <div key={category.title} className="space-y-4">
-                  <div>
+                  <div className="pl-6 md:pl-12">
                     <p className="text-2xl font-black text-pine">
                       {category.title}
                     </p>

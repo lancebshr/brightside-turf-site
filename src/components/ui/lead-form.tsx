@@ -91,31 +91,32 @@ export function LeadForm({
           </div>
         </div>
 
-        <div className="space-y-1.5">
-          <Label htmlFor="email" className={cn("text-base font-semibold text-ink", labelTone)}>
-            Email <span className={labelTone ? "text-white" : "text-pine"}>*</span>
-          </Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Email"
-            required
-            className={INPUT_STYLES}
-          />
-        </div>
-
-        <div className="space-y-1.5">
-          <Label htmlFor="address" className={cn("text-base font-semibold text-ink", labelTone)}>
-            Address <span className={labelTone ? "text-white" : "text-pine"}>*</span>
-          </Label>
-          <Input
-            id="address"
-            name="address"
-            placeholder="Address"
-            required
-            className={INPUT_STYLES}
-          />
+        <div className="grid gap-3 md:grid-cols-2">
+          <div className="space-y-1.5">
+            <Label htmlFor="email" className={cn("text-base font-semibold text-ink", labelTone)}>
+              Email <span className={labelTone ? "text-white" : "text-pine"}>*</span>
+            </Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Email"
+              required
+              className={INPUT_STYLES}
+            />
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="address" className={cn("text-base font-semibold text-ink", labelTone)}>
+              Address <span className={labelTone ? "text-white" : "text-pine"}>*</span>
+            </Label>
+            <Input
+              id="address"
+              name="address"
+              placeholder="Address"
+              required
+              className={INPUT_STYLES}
+            />
+          </div>
         </div>
 
         <div className="grid gap-3 md:grid-cols-2">
