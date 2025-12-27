@@ -377,91 +377,73 @@ export function Hero({
                 />
                 <div
                   className={cn(
-                    "absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 rounded-[1.75rem] border border-white/40 bg-white/95 p-5 text-ink shadow-[0_15px_40px_rgba(0,0,0,0.35)] backdrop-blur-md",
+                    "absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 max-h-[70vh] overflow-y-auto rounded-2xl border border-white/40 bg-white p-4 text-ink shadow-[0_15px_40px_rgba(0,0,0,0.35)]",
                     showMenuButton ? "" : "md:hidden"
                   )}
                 >
-                  <div className="flex flex-col gap-3">
-                    {navLinks.map((link) => {
-                      if (link.label === "Our Services" || link.label === "About Us") {
-                        return null;
-                      }
-                      return (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          className="rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-wide text-ink transition hover:bg-slate-100"
-                          onClick={closeMobileMenu}
-                        >
-                          {link.label}
-                        </a>
-                      );
-                    })}
-                    <div className="rounded-2xl bg-slate-50 p-4">
-                      <p className="text-sm font-semibold uppercase tracking-wide text-ink">
+                  <div className="flex flex-col gap-2">
+                    {/* Services Dropdown */}
+                    <details className="group rounded-xl bg-slate-100">
+                      <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-bold text-pine">
                         Our Services
-                      </p>
-                      <div className="mt-3 flex flex-col">
+                        <ChevronDown className="size-4 transition group-open:rotate-180" />
+                      </summary>
+                      <div className="flex flex-col gap-1 px-2 pb-2">
                         {SERVICE_OPTIONS.map((service) => (
                           <Link
                             key={service.label}
                             href={service.href}
-                            className="rounded-xl px-3 py-2 text-sm text-ink/80 transition hover:bg-white"
+                            className="rounded-lg px-3 py-2 text-sm font-medium text-ink/80 transition hover:bg-white"
                             onClick={closeMobileMenu}
                           >
                             {service.label}
                           </Link>
                         ))}
                       </div>
-                    </div>
-                    <div className="rounded-2xl bg-slate-50 p-4">
-                      <Link
-                        href="/about"
-                        className="text-sm font-semibold uppercase tracking-wide text-ink hover:text-pine"
-                        onClick={closeMobileMenu}
-                      >
-                        About Us
-                      </Link>
-                      <div className="mt-3 flex flex-col">
-                        {ABOUT_OPTIONS.map((option) => (
-                          <Link
-                            key={option.label}
-                            href={option.href}
-                            className="rounded-xl px-3 py-2 text-sm text-ink/80 transition hover:bg-white"
-                            onClick={closeMobileMenu}
-                          >
-                            {option.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="space-y-3">
-                      <Button
-                        asChild
-                        className="h-auto w-full rounded-2xl border-2 border-[#0B3352] bg-white py-6 text-base font-bold uppercase tracking-wide text-[#0B3352] hover:bg-slate-50"
-                      >
-                        <a
-                          href={`tel:${sanitizedPhone}`}
-                          onClick={closeMobileMenu}
-                          className="flex items-center justify-center gap-2"
-                        >
-                          <Phone className="size-5 text-[#0B3352]" />
-                          Call Us
-                        </a>
-                      </Button>
-                      <Button
-                        asChild
-                        style={{
-                          backgroundColor: BRAND_MINT,
-                          textShadow: "0 0 8px rgba(0,0,0,0.35)",
-                        }}
-                        className="h-auto w-full rounded-2xl py-6 text-base font-bold uppercase tracking-wide text-white hover:opacity-90"
-                      >
-                        <a href="/get-quote" onClick={closeMobileMenu}>
-                          Get Quote
-                        </a>
-                      </Button>
-                    </div>
+                    </details>
+
+                    <Link
+                      href="/about"
+                      className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
+                      onClick={closeMobileMenu}
+                    >
+                      About Us
+                    </Link>
+                    <Link
+                      href="/reviews"
+                      className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
+                      onClick={closeMobileMenu}
+                    >
+                      Reviews
+                    </Link>
+                    <Link
+                      href="/blog"
+                      className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
+                      onClick={closeMobileMenu}
+                    >
+                      Blog
+                    </Link>
+
+                    {/* Divider */}
+                    <div className="my-2 h-px w-full bg-slate-200" />
+
+                    {/* Action Buttons */}
+                    <a
+                      href={`tel:${sanitizedPhone}`}
+                      onClick={closeMobileMenu}
+                      className="flex items-center justify-center gap-2 rounded-xl border-2 border-pine bg-white px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-50"
+                    >
+                      <Phone className="size-4" />
+                      Call Us
+                    </a>
+                    <Link
+                      href="/get-quote"
+                      onClick={closeMobileMenu}
+                      className="flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:opacity-90"
+                      style={{ backgroundColor: BRAND_MINT }}
+                    >
+                      Get Quote
+                    </Link>
                   </div>
                 </div>
               </>
@@ -469,27 +451,27 @@ export function Hero({
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col justify-center px-6 pb-16 text-white md:px-12 lg:px-16">
+        <div className="flex flex-1 flex-col justify-center px-6 pb-8 text-white md:px-12 md:pb-16 lg:px-16">
           {starPlacement === "top" && renderStarRow("mt-16 mb-8")}
 
-          <h1 className="text-glow mb-7 max-w-6xl text-5xl font-black tracking-tight leading-tight drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)] md:text-6xl lg:text-7xl">
+          <h1 className="text-glow mb-5 max-w-6xl text-4xl font-black tracking-tight leading-tight drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)] md:mb-7 md:text-6xl lg:text-7xl">
             {heading}
           </h1>
 
-          <p className="text-glow mb-9 max-w-4xl text-balance text-xl font-extrabold md:text-2xl">
+          <p className="text-glow mb-6 max-w-4xl text-balance text-lg font-extrabold md:mb-9 md:text-2xl">
             {subheading}
           </p>
 
-          <div className="mt-3">
-            {starPlacement === "aboveCta" && renderStarRow("mb-4")}
-            <div className="flex flex-wrap items-center gap-4">
+          <div className="mt-2 md:mt-3">
+            {starPlacement === "aboveCta" && renderStarRow("mb-3 md:mb-4")}
+            <div className="flex flex-wrap items-center gap-3 md:gap-4">
               <Button
                 asChild
                 size="lg"
-                className="group rounded-full border-2 border-white bg-white/10 px-8 py-7 text-2xl font-bold uppercase tracking-wide text-white backdrop-blur-sm transition hover:bg-white/20"
+                className="group rounded-full border-2 border-white bg-white/10 px-5 py-5 text-lg font-bold uppercase tracking-wide text-white backdrop-blur-sm transition hover:bg-white/20 md:px-8 md:py-7 md:text-2xl"
               >
                 <a href={`tel:${sanitizedPhone}`}>
-                  <Phone className="mr-2 size-6" />
+                  <Phone className="mr-2 size-5 md:size-6" />
                   {phone}
                 </a>
               </Button>
@@ -500,11 +482,11 @@ export function Hero({
                   backgroundColor: BRAND_MINT,
                   textShadow: "0 0 8px rgba(0,0,0,0.35)",
                 }}
-                className="group rounded-full px-8 py-7 text-2xl font-bold uppercase tracking-wide text-white transition hover:opacity-90"
+                className="group rounded-full px-5 py-5 text-lg font-bold uppercase tracking-wide text-white transition hover:opacity-90 md:px-8 md:py-7 md:text-2xl"
               >
                 <a href={primaryCta.href}>
                   {primaryCta.label}
-                  <ArrowRight className="ml-2 size-6 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1 md:size-6" />
                 </a>
               </Button>
             </div>

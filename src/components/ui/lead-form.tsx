@@ -163,7 +163,7 @@ export function LeadForm({
                   key={service}
                   htmlFor={inputId}
                   className={cn(
-                    "flex items-center gap-3 rounded-xl px-3 py-2 text-base transition hover:bg-slate-50",
+                    "flex items-start gap-3 rounded-xl px-3 py-2 text-base text-left transition hover:bg-slate-50",
                     active ? "bg-slate-100 font-semibold text-pine" : "text-ink"
                   )}
                 >
@@ -180,9 +180,9 @@ export function LeadForm({
                       );
                       setServiceError(false);
                     }}
-                    className="size-5 rounded border-slate-300 text-pine focus:ring-2 focus:ring-pine/40"
+                    className="size-5 shrink-0 mt-0.5 rounded border-slate-300 text-pine focus:ring-2 focus:ring-pine/40"
                   />
-                  <span>{service}</span>
+                  <span className="text-left">{service}</span>
                 </label>
               );
             })}

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { GET_QUOTE_BUTTON_CLASSNAME, GET_QUOTE_BUTTON_STYLE, cn } from '@/lib/utils'
@@ -22,30 +23,42 @@ export function CoreValues() {
   ]
 
   return (
-    <section className="w-full bg-transparent pt-10 pb-24 px-4 md:px-8">
-      <div className="mx-auto mb-12 h-px w-full max-w-7xl bg-pine/30" />
-      <div className="max-w-7xl mx-auto">
+    <section className="relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen py-16 px-4 md:px-8">
+      <div className="mx-auto max-w-6xl">
         {/* Section Header */}
-        <div className="mb-24 max-w-full">
-          <h2 className="text-5xl md:text-6xl font-black text-pine tracking-tight leading-[1.1] drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)] mb-8">
+        <div className="mb-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-pine tracking-tight leading-[1.1] drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
             Our values that guide <span className="text-[#45D1B7]">every job</span> we do
           </h2>
-          <div className="h-px w-32 bg-[#45D1B7]/60" />
         </div>
 
-        {/* Values Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16">
-          {values.map((value) => (
-            <div key={value.title} className="group flex flex-col items-start">
-              {/* Title Row */}
-              <div className="w-full mb-6 pb-6 border-b border-gray-100 group-hover:border-[#45D1B7]/30 transition-colors duration-500">
-                <h3 className="text-2xl font-bold text-pine leading-tight group-hover:text-ink transition-colors duration-300">
-                  {value.title}
-                </h3>
-              </div>
+        {/* Large Image */}
+        <div className="relative mb-12 h-[240px] w-full overflow-hidden rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] md:h-[300px]">
+          <Image
+            src="/team-truck.jpg"
+            alt="Brightside team"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
 
-              {/* Description */}
-              <p className="text-gray-600 leading-relaxed text-lg font-light">
+        {/* Values Row */}
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {values.map((value, index) => (
+            <div
+              key={value.title}
+              className={cn(
+                "py-6 md:py-0 md:px-8",
+                index < values.length - 1 && "border-b md:border-b-0 md:border-r border-slate-200",
+                index === 0 && "md:pl-0",
+                index === values.length - 1 && "md:pr-0"
+              )}
+            >
+              <h3 className="mb-4 text-2xl font-extrabold text-pine leading-tight">
+                {value.title}
+              </h3>
+              <p className="text-base font-medium leading-relaxed text-slate-500">
                 {value.description}
               </p>
             </div>
@@ -53,7 +66,7 @@ export function CoreValues() {
         </div>
 
         {/* CTA Button */}
-        <div className="mt-16 text-center">
+        <div className="mt-12 text-center">
           <Button
             asChild
             size="lg"

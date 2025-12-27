@@ -201,18 +201,40 @@ export default function AboutPage() {
             We built Brightside to raise the bar for Omaha homeowners.
           </h2>
 
-          <div className="mx-auto max-w-3xl space-y-6">
+          <div className="mx-auto max-w-3xl space-y-12">
+            {/* Why We Exist */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <h3 className="text-xl font-bold text-pine whitespace-nowrap">Why We Exist</h3>
+                <div className="h-px flex-1 bg-pine/30" />
+              </div>
+              <p className="text-lg font-medium leading-relaxed text-ink">
+                Before Brightside, we spent years helping other home service companies with operations, marketing, and customer experience. We learned a lot, but one thing stood out. No matter how good the systems were, we could not control the care that went into the work. And for homeowners, that is what matters most.
+              </p>
+              <p className="text-lg font-medium leading-relaxed text-ink">
+                So we built Brightside with one goal in mind. To give people a lawn care experience that feels as personal as it is professional. We are from Omaha, and we take pride in serving the same neighborhoods we grew up in. Everything we do is intentional, from how our technicians present themselves to the products we use and the communication you receive throughout the year.
+              </p>
+            </div>
+
+            {/* Our Standard */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <h3 className="text-xl font-bold text-pine whitespace-nowrap">Our Standard</h3>
+                <div className="h-px flex-1 bg-pine/30" />
+              </div>
+              <p className="text-lg font-medium leading-relaxed text-ink">
+                Brightside is built to combine the <strong>care</strong> of a small business with the <strong>reliability</strong> of a larger one. <strong>Our standard</strong> is simple. Show up when we say we will. Communicate clearly. Do the job right. And if something is not right, we fix it.
+              </p>
+              <p className="text-lg font-medium leading-relaxed text-ink">
+                <strong>Our job is simple.</strong> Make people genuinely happy with their lawns and lights.
+              </p>
+            </div>
+          </div>
+
+          {/* Contact Section */}
+          <div className="mx-auto max-w-3xl space-y-6 pt-6">
             <p className="text-lg font-medium leading-relaxed text-ink">
-              Before Brightside, we spent years helping other home service companies with operations, marketing, and customer experience. We learned a lot, but one thing stood out: no matter how good the systems were, we could not control the care that went into the work. And for homeowners, that is what matters most.
-            </p>
-            <p className="text-lg font-medium leading-relaxed text-ink">
-              So we built Brightside with one goal in mind: to give people a lawn care experience that feels as personal as it is professional. We are from Omaha, and we take pride in serving the same neighborhoods we grew up in. Everything we do is intentional, from how our technicians present themselves to the products we use and the communication you receive throughout the year.
-            </p>
-            <p className="text-lg font-medium leading-relaxed text-ink">
-              We want Brightside to feel like the small business you trust and the big business you can rely on. Our job is simple: make people genuinely happy with their lawns and lights.
-            </p>
-            <p className="text-lg font-medium leading-relaxed text-ink">
-              If you ever want to talk with us directly, here is how to reach us:
+              If you ever want to talk with us directly, here is how to reach us.
             </p>
             <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:gap-12">
               <div className="space-y-1">

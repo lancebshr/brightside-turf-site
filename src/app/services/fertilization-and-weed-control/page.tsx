@@ -1,41 +1,34 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { FadeInSection } from "@/components/ui/fade-in-section";
+import { FeatureGrid } from "@/components/ui/feature-grid";
 import { ReviewsCarousel, type Review } from "@/components/ui/reviews-carousel";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { NAV_LINKS } from "@/lib/nav-links";
 import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
-import {
-  GET_QUOTE_BUTTON_CLASSNAME,
-  GET_QUOTE_BUTTON_STYLE,
-  cn,
-  formatGetQuoteLabel,
-} from "@/lib/utils";
 
-const EXPECTATION_POINTS = [
+const FEATURE_CARDS = [
   {
     title: "Seasonal Fertilization",
-    body: "Timed applications that give your lawn the nutrients it needs to stay green and strong.",
+    description: "Timed applications that give your lawn the nutrients it needs to stay green and strong all year round.",
+    image: "/fertilization.JPG",
   },
   {
     title: "Weed Control",
-    body: "Targeted treatments that knock out broadleaf and invasive weeds before they take over.",
+    description: "Targeted treatments that knock out broadleaf and invasive weeds before they take over your lawn.",
+    image: "/grasstop.jpeg",
   },
   {
     title: "Professional Products",
-    body: "We use high-quality granular materials hand-picked for Nebraska lawns.",
-  },
-  {
-    title: "Consistent Scheduling",
-    body: "The same techs service your property on a reliable schedule so you always know who’s showing up.",
+    description: "We use high-quality granular materials hand-picked specifically for Nebraska lawns and soil conditions.",
+    image: "/team-truck.jpg",
   },
   {
     title: "101% Satisfaction Guarantee",
-    body: "If weeds pop up between visits or something feels off, we come back and make it right.",
+    description: "If weeds pop up between visits or something feels off, we come back and make it right at no extra cost.",
+    image: "/aeration.JPG",
   },
 ];
 
@@ -106,67 +99,14 @@ export default function FertilizationAndWeedControlPage() {
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
       />
-      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-0 pt-0 sm:px-6 lg:px-0">
-
-        <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-white shadow-brand">
-          <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-10 px-4 py-16 sm:px-6 lg:px-20">
-            <div className="space-y-6 text-center">
-              <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
-                A simple plan that gives your lawn exactly what it needs.
-              </h2>
-            </div>
-            <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-              <div className="relative h-72 overflow-hidden rounded-3xl md:h-[667px]">
-                <Image
-                  src="/newhero.png"
-                  alt="Brightside team walking a property"
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  priority
-                />
-              </div>
-              <div className="flex flex-col justify-center space-y-5 text-center md:text-left">
-                <p className="text-lg font-semibold text-ink/80">
-                  A fertilizer and weed control plan that gives your lawn the nutrients it needs
-                  and keeps weeds under control all season.
-                </p>
-                <p className="text-lg font-semibold text-ink/80">
-                  From the first treatment to the last, we follow the same proven steps so you always know what to expect.
-                </p>
-                <div className="space-y-3">
-                  {EXPECTATION_POINTS.map((item) => (
-                    <details
-                      key={item.title}
-                      className="group px-1 py-3 text-left"
-                    >
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-bold text-pine">
-                        {item.title}
-                        <ChevronDown className="size-5 text-ink/60 transition group-open:-rotate-180" />
-                      </summary>
-                      <p className="mt-2 text-base font-semibold text-ink/80">{item.body}</p>
-                    </details>
-                  ))}
-                </div>
-                <div className="pt-2 flex justify-center">
-                  <Button
-                    asChild
-                    size="lg"
-                    style={GET_QUOTE_BUTTON_STYLE}
-                    className={GET_QUOTE_BUTTON_CLASSNAME}
-                  >
-                    <Link href="/get-quote">
-                      {formatGetQuoteLabel("Get Your Quote")}
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      <main>
+        <FeatureGrid
+          heading={<>A simple plan that gives your lawn <span className="text-[#45D1B7]">exactly</span> what it needs.</>}
+          features={FEATURE_CARDS}
+        />
       </main>
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#edf8f2] to-[#c7f0de]">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 pb-16 pt-16 sm:px-6 lg:px-0">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 lg:px-0">
           <section>
             <CoreValues />
           </section>

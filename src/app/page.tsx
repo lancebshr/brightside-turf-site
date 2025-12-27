@@ -190,7 +190,7 @@ export default function Home() {
 
           <section id="reviews" className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-16 scroll-mt-32">
             <div className="mb-10 px-4 text-center sm:px-8">
-              <h2 className="whitespace-nowrap text-4xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)] md:text-5xl lg:text-6xl">
+              <h2 className="text-4xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)] md:text-5xl">
                 Trusted by Homeowners Across Omaha
               </h2>
             </div>
