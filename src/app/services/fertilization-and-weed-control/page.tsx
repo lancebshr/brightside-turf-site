@@ -101,7 +101,7 @@ export default function FertilizationAndWeedControlPage() {
       />
       <main>
         <FeatureGrid
-          heading={<>A simple plan that gives your lawn <span className="text-[#45D1B7]">exactly</span> what it needs.</>}
+          heading={<>A simple plan that gives your<br />lawn <span className="text-[#45D1B7]">exactly</span> what it needs.</>}
           features={FEATURE_CARDS}
         />
       </main>

@@ -22,6 +22,7 @@ export default function BlogPage() {
         primaryCta={{ label: "Get Your Quote", href: "/get-quote" }}
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
+        compact
       />
 
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f5fbf7] to-[#c7f0de]">

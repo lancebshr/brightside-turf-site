@@ -44,6 +44,7 @@ type HeroProps = {
   navLinks: { label: string; href: string }[];
   phone?: string;
   starPlacement?: "top" | "aboveCta";
+  compact?: boolean;
 };
 
 export function Hero({
@@ -54,6 +55,7 @@ export function Hero({
   navLinks,
   phone = "(402) 810-8692",
   starPlacement = "top",
+  compact = false,
 }: HeroProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -74,13 +76,10 @@ export function Hero({
     { label: "Core Aeration", href: "/services/core-aeration" },
     { label: "Cleanups", href: "/services/cleanups" },
     { label: "Holiday Lighting", href: "/services/holiday-lighting" },
-    { label: "Overseeding", href: "/services/overseeding" },
   ];
   const ABOUT_OPTIONS = [
     { label: "Our Story", href: "/about#story" },
-    { label: "Our Values", href: "/about#beliefs" },
-    { label: "FAQs", href: "/about#faqs" },
-    { label: "Contact", href: "/about#contact" },
+    { label: "FAQs", href: "/faqs" },
     { label: "Blog", href: "/blog" },
   ];
   const renderStarRow = (className = "") => (
@@ -186,8 +185,11 @@ export function Hero({
 
   return (
     <section
-      className="relative min-h-screen w-full overflow-hidden bg-ink text-white"
-      style={{ minHeight: "100svh" }}
+      className={cn(
+        "relative w-full overflow-hidden bg-ink text-white",
+        compact ? "min-h-[60vh]" : "min-h-screen"
+      )}
+      style={{ minHeight: compact ? "60vh" : "100svh" }}
     >
       <div
         className="absolute inset-0 bg-cover bg-top bg-no-repeat"
@@ -196,8 +198,11 @@ export function Hero({
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/30" />
 
       <div
-        className="relative z-10 flex min-h-screen flex-col pt-28 md:pt-32"
-        style={{ minHeight: "100svh" }}
+        className={cn(
+          "relative z-10 flex flex-col pt-28 md:pt-32",
+          compact ? "min-h-[60vh]" : "min-h-screen"
+        )}
+        style={{ minHeight: compact ? "60vh" : "100svh" }}
       >
         <div className="fixed left-0 right-0 top-4 z-50 flex w-full justify-center px-4 sm:px-6 xl:px-0">
           <div className="relative w-full max-w-6xl">
@@ -377,73 +382,77 @@ export function Hero({
                 />
                 <div
                   className={cn(
-                    "absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 max-h-[70vh] overflow-y-auto rounded-2xl border border-white/40 bg-white p-4 text-ink shadow-[0_15px_40px_rgba(0,0,0,0.35)]",
+                    "absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 flex max-h-[75vh] flex-col rounded-2xl border border-white/40 bg-white text-ink shadow-[0_15px_40px_rgba(0,0,0,0.35)]",
                     showMenuButton ? "" : "md:hidden"
                   )}
                 >
-                  <div className="flex flex-col gap-2">
-                    {/* Services Dropdown */}
-                    <details className="group rounded-xl bg-slate-100">
-                      <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-bold text-pine">
-                        Our Services
-                        <ChevronDown className="size-4 transition group-open:rotate-180" />
-                      </summary>
-                      <div className="flex flex-col gap-1 px-2 pb-2">
-                        {SERVICE_OPTIONS.map((service) => (
-                          <Link
-                            key={service.label}
-                            href={service.href}
-                            className="rounded-lg px-3 py-2 text-sm font-medium text-ink/80 transition hover:bg-white"
-                            onClick={closeMobileMenu}
-                          >
-                            {service.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </details>
+                  {/* Scrollable nav links */}
+                  <div className="flex-1 overflow-y-auto p-4 pb-2">
+                    <div className="flex flex-col gap-2">
+                      {/* Services Dropdown */}
+                      <details className="group rounded-xl bg-slate-100">
+                        <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-bold text-pine">
+                          Our Services
+                          <ChevronDown className="size-4 transition group-open:rotate-180" />
+                        </summary>
+                        <div className="flex flex-col gap-1 px-2 pb-2">
+                          {SERVICE_OPTIONS.map((service) => (
+                            <Link
+                              key={service.label}
+                              href={service.href}
+                              className="rounded-lg px-3 py-2 text-sm font-medium text-ink/80 transition hover:bg-white"
+                              onClick={closeMobileMenu}
+                            >
+                              {service.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </details>
 
-                    <Link
-                      href="/about"
-                      className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
-                      onClick={closeMobileMenu}
-                    >
-                      About Us
-                    </Link>
-                    <Link
-                      href="/reviews"
-                      className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
-                      onClick={closeMobileMenu}
-                    >
-                      Reviews
-                    </Link>
-                    <Link
-                      href="/blog"
-                      className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
-                      onClick={closeMobileMenu}
-                    >
-                      Blog
-                    </Link>
+                      <Link
+                        href="/about"
+                        className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
+                        onClick={closeMobileMenu}
+                      >
+                        About Us
+                      </Link>
+                      <Link
+                        href="/reviews"
+                        className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
+                        onClick={closeMobileMenu}
+                      >
+                        Reviews
+                      </Link>
+                      <Link
+                        href="/blog"
+                        className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
+                        onClick={closeMobileMenu}
+                      >
+                        Blog
+                      </Link>
+                    </div>
+                  </div>
 
-                    {/* Divider */}
-                    <div className="my-2 h-px w-full bg-slate-200" />
-
-                    {/* Action Buttons */}
-                    <a
-                      href={`tel:${sanitizedPhone}`}
-                      onClick={closeMobileMenu}
-                      className="flex items-center justify-center gap-2 rounded-xl border-2 border-pine bg-white px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-50"
-                    >
-                      <Phone className="size-4" />
-                      Call Us
-                    </a>
-                    <Link
-                      href="/get-quote"
-                      onClick={closeMobileMenu}
-                      className="flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:opacity-90"
-                      style={{ backgroundColor: BRAND_MINT }}
-                    >
-                      Get Quote
-                    </Link>
+                  {/* Sticky Action Buttons */}
+                  <div className="border-t border-slate-200 bg-white p-4 pt-3">
+                    <div className="flex flex-col gap-2">
+                      <a
+                        href={`tel:${sanitizedPhone}`}
+                        onClick={closeMobileMenu}
+                        className="flex items-center justify-center gap-2 rounded-xl border-2 border-pine bg-white px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-50"
+                      >
+                        <Phone className="size-4" />
+                        Call Us
+                      </a>
+                      <Link
+                        href="/get-quote"
+                        onClick={closeMobileMenu}
+                        className="flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:opacity-90"
+                        style={{ backgroundColor: BRAND_MINT }}
+                      >
+                        Get Quote
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </>
@@ -451,19 +460,25 @@ export function Hero({
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col justify-center px-6 pb-8 text-white md:px-12 md:pb-16 lg:px-16">
+        <div className={cn(
+          "flex flex-1 flex-col justify-center px-6 pb-8 text-white md:px-12 md:pb-16 lg:px-16",
+          compact && "pt-8 md:pt-12"
+        )}>
           {starPlacement === "top" && renderStarRow("mt-16 mb-8")}
 
           <h1 className="text-glow mb-5 max-w-6xl text-4xl font-black tracking-tight leading-tight drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)] md:mb-7 md:text-6xl lg:text-7xl">
             {heading}
           </h1>
 
-          <p className="text-glow mb-6 max-w-4xl text-balance text-lg font-extrabold md:mb-9 md:text-2xl">
+          <p className={cn(
+            "text-glow max-w-4xl text-balance text-lg font-extrabold md:text-2xl",
+            compact ? "mb-4 md:mb-5" : "mb-6 md:mb-9"
+          )}>
             {subheading}
           </p>
 
-          <div className="mt-2 md:mt-3">
-            {starPlacement === "aboveCta" && renderStarRow("mb-3 md:mb-4")}
+          <div className={cn("mt-2 md:mt-3", compact && "mt-1 md:mt-2")}>
+            {starPlacement === "aboveCta" && renderStarRow(compact ? "mb-2 md:mb-3" : "mb-3 md:mb-4")}
             <div className="flex flex-wrap items-center gap-3 md:gap-4">
               <Button
                 asChild
@@ -494,7 +509,7 @@ export function Hero({
         </div>
 
         {/* Scroll indicator */}
-        <ScrollIndicator />
+        {!compact && <ScrollIndicator />}
       </div>
     </section>
   );

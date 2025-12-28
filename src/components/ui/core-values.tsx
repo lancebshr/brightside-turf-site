@@ -49,7 +49,7 @@ export function CoreValues() {
             <div
               key={value.title}
               className={cn(
-                "py-6 md:py-0 md:px-8",
+                "py-6 md:py-0 md:px-8 text-center",
                 index < values.length - 1 && "border-b md:border-b-0 md:border-r border-slate-200",
                 index === 0 && "md:pl-0",
                 index === values.length - 1 && "md:pr-0"

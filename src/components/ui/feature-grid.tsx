@@ -38,15 +38,15 @@ export function FeatureGrid({
         </div>
 
         {/* Feature Cards Grid */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid auto-rows-fr gap-6 md:grid-cols-2">
           {features.map((feature) => (
             <article
               key={feature.title}
-              className="group overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)]"
+              className="group h-full overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)]"
             >
-              <div className="flex flex-col md:flex-row">
+              <div className="flex h-full flex-col md:flex-row">
                 {/* Image */}
-                <div className="relative h-48 w-full md:h-auto md:w-[42%]">
+                <div className="relative h-48 w-full shrink-0 md:h-full md:w-[42%]">
                   <Image
                     src={feature.image}
                     alt={feature.imageAlt || feature.title}
