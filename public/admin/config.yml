@@ -46,11 +46,6 @@ collections:
             widget: "object"
             collapsed: false
             fields:
-              - label: "Hero Background (Default)"
-                name: "heroBackground"
-                widget: "image"
-                hint: "The large background image that appears behind the text on the Homepage, About page, FAQs page, Reviews page, and all Service pages. This is the main hero image visitors see when they first land on any page. Recommended size: 1920x1080px or larger."
-
               - label: "Company Logo"
                 name: "logo"
                 widget: "image"
@@ -60,6 +55,68 @@ collections:
                 name: "googleIcon"
                 widget: "image"
                 hint: "The small Google 'G' icon that appears next to the star ratings and Google review mentions throughout the site (in the hero section and reviews carousel). Should be a small square image, around 48x48px."
+
+          # ===== HERO BACKGROUNDS =====
+          - label: "Hero Background Images"
+            name: "heroBackgrounds"
+            widget: "object"
+            collapsed: false
+            hint: "Each page can have its own unique hero background image. These are the large images that appear behind the main heading text at the top of each page."
+            fields:
+              - label: "Homepage Hero"
+                name: "homepage"
+                widget: "image"
+                hint: "The hero background image for the Homepage (main landing page). This is the first image visitors see when they arrive at your website. Recommended size: 1920x1080px or larger."
+
+              - label: "About Page Hero"
+                name: "about"
+                widget: "image"
+                hint: "The hero background image for the About page where you tell your company story and values. Recommended size: 1920x1080px or larger."
+
+              - label: "FAQ Page Hero"
+                name: "faq"
+                widget: "image"
+                hint: "The hero background image for the Frequently Asked Questions page. Recommended size: 1920x1080px or larger."
+
+              - label: "Blog Page Hero"
+                name: "blog"
+                widget: "image"
+                hint: "The hero background image for the Blog listing page where all blog posts are displayed. Recommended size: 1920x1080px or larger."
+
+              - label: "Reviews Page Hero"
+                name: "reviews"
+                widget: "image"
+                hint: "The hero background image for the Reviews page showing all customer testimonials. Recommended size: 1920x1080px or larger."
+
+              - label: "Fertilization & Weed Control Page Hero"
+                name: "fertilization"
+                widget: "image"
+                hint: "The hero background image for the Fertilization & Weed Control service page. Recommended size: 1920x1080px or larger."
+
+              - label: "Core Aeration Page Hero"
+                name: "coreAeration"
+                widget: "image"
+                hint: "The hero background image for the Core Aeration service page. Recommended size: 1920x1080px or larger."
+
+              - label: "Lawn Mowing Page Hero"
+                name: "lawnMowing"
+                widget: "image"
+                hint: "The hero background image for the Lawn Mowing service page. Recommended size: 1920x1080px or larger."
+
+              - label: "Holiday Lighting Page Hero"
+                name: "holidayLighting"
+                widget: "image"
+                hint: "The hero background image for the Holiday Lighting service page. Recommended size: 1920x1080px or larger."
+
+              - label: "Cleanups Page Hero"
+                name: "cleanups"
+                widget: "image"
+                hint: "The hero background image for the Cleanups service page. Recommended size: 1920x1080px or larger."
+
+              - label: "Mulch Installation Page Hero"
+                name: "mulchInstallation"
+                widget: "image"
+                hint: "The hero background image for the Mulch Installation service page. Recommended size: 1920x1080px or larger."
 
           # ===== HOMEPAGE IMAGES =====
           - label: "Homepage"

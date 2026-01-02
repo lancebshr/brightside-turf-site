@@ -4,9 +4,11 @@ import { Hero } from "@/components/ui/hero";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { NAV_LINKS } from "@/lib/nav-links";
 import { getAllPosts } from "@/lib/blog";
+import { getSiteImages } from "@/lib/site-images";
 
 export default function BlogPage() {
   const posts = getAllPosts();
+  const siteImages = getSiteImages();
 
   return (
     <div className="bg-background text-foreground">
@@ -18,6 +20,7 @@ export default function BlogPage() {
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
         compact
+        backgroundImage={siteImages.heroBackgrounds.blog}
       />
 
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f5fbf7] to-[#c7f0de]">

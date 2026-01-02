@@ -3,6 +3,7 @@ import { Star } from "lucide-react";
 import { Hero } from "@/components/ui/hero";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { NAV_LINKS } from "@/lib/nav-links";
+import { getSiteImages } from "@/lib/site-images";
 
 const REVIEWS = [
   {
@@ -587,6 +588,8 @@ const formatReviewerName = (name: string) => {
 };
 
 export default function ReviewsPage() {
+  const siteImages = getSiteImages();
+
   return (
     <div className="bg-background text-foreground">
       <Hero
@@ -597,6 +600,7 @@ export default function ReviewsPage() {
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
         compact
+        backgroundImage={siteImages.heroBackgrounds.reviews}
       />
 
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f5fbf7] to-[#c7f0de]">

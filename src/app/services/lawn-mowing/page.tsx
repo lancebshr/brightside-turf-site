@@ -101,7 +101,7 @@ export default function LawnMowingPage() {
         primaryCta={{ href: "/get-quote", label: "Get Your Quote" }}
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
-        backgroundImage={siteImages.global.heroBackground}
+        backgroundImage={siteImages.heroBackgrounds.lawnMowing}
       />
       <main>
         <FeatureGrid

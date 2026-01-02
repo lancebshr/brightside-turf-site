@@ -3,9 +3,21 @@ import path from 'path';
 
 export interface SiteImages {
   global: {
-    heroBackground: string;
     logo: string;
     googleIcon: string;
+  };
+  heroBackgrounds: {
+    homepage: string;
+    about: string;
+    faq: string;
+    blog: string;
+    reviews: string;
+    fertilization: string;
+    coreAeration: string;
+    lawnMowing: string;
+    holidayLighting: string;
+    cleanups: string;
+    mulchInstallation: string;
   };
   homepage: {
     howItWorksImage: string;
@@ -95,9 +107,21 @@ export function getSiteImages(): SiteImages {
     // Return defaults if file doesn't exist
     return {
       global: {
-        heroBackground: '/testhero.jpg',
         logo: '/BrightsideLogo.svg',
         googleIcon: '/icons8-google-48.png',
+      },
+      heroBackgrounds: {
+        homepage: '/testhero.jpg',
+        about: '/testhero.jpg',
+        faq: '/testhero.jpg',
+        blog: '/testhero.jpg',
+        reviews: '/testhero.jpg',
+        fertilization: '/testhero.jpg',
+        coreAeration: '/testhero.jpg',
+        lawnMowing: '/testhero.jpg',
+        holidayLighting: '/testhero.jpg',
+        cleanups: '/testhero.jpg',
+        mulchInstallation: '/testhero.jpg',
       },
       homepage: {
         howItWorksImage: '/newhero.png',

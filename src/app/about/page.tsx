@@ -18,7 +18,7 @@ export default function AboutPage() {
           primaryCta={{ label: "Get Your Quote", href: "#contact" }}
           navLinks={NAV_LINKS}
           starPlacement="aboveCta"
-          backgroundImage={siteImages.global.heroBackground}
+          backgroundImage={siteImages.heroBackgrounds.about}
         />
       </div>
 

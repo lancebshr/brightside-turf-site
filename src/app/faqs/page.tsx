@@ -3,6 +3,7 @@ import { Hero } from "@/components/ui/hero";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { NAV_LINKS } from "@/lib/nav-links";
+import { getSiteImages } from "@/lib/site-images";
 
 type FaqCategory = {
   title: string;
@@ -179,6 +180,8 @@ const FAQ_CATEGORIES: FaqCategory[] = [
 ];
 
 export default function FaqsPage() {
+  const siteImages = getSiteImages();
+
   return (
     <div className="bg-background text-foreground">
       <Hero
@@ -189,6 +192,7 @@ export default function FaqsPage() {
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
         compact
+        backgroundImage={siteImages.heroBackgrounds.faq}
       />
 
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f5fbf7] to-[#c7f0de]">
