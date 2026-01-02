@@ -120,7 +120,7 @@ export default function FertilizationAndWeedControlPage() {
           <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-pine py-16 text-white">
             <div className="mx-auto flex w-full max-w-6xl flex-col space-y-10 px-4 sm:px-6 lg:px-0">
               <FadeInSection className="space-y-2 text-center">
-                <h2 className="text-5xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+                <h2 className="text-5xl md:text-6xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
                   At Brightside, the Grass Really is Greener
                 </h2>
               </FadeInSection>
@@ -151,7 +151,7 @@ export default function FertilizationAndWeedControlPage() {
 
           <section className="space-y-4">
             <FadeInSection className="space-y-3 text-center">
-              <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">Fertilization & Weed Control FAQs</h2>
+              <h2 className="text-5xl md:text-6xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">Fertilization & Weed Control FAQs</h2>
               <p className="text-lg font-bold text-slate-600">Common questions about our fertilization and weed control services.</p>
             </FadeInSection>
             <div className="rounded-[2.5rem] border border-slate-200 bg-white px-6 py-5 shadow-brand md:px-10 md:py-8">
@@ -175,7 +175,7 @@ export default function FertilizationAndWeedControlPage() {
 
         <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-16">
           <div className="mb-10 px-4 text-center sm:px-8">
-            <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
+            <h2 className="text-5xl md:text-6xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
               What Your Neighbors Think
             </h2>
           </div>

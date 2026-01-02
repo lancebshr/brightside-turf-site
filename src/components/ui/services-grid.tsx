@@ -23,8 +23,8 @@ export function ServicesGrid({
 
   return (
     <section id="services" className="space-y-6 scroll-mt-32">
-      <FadeInSection className="mx-auto max-w-5xl space-y-4 text-center py-8 md:py-9">
-        <h2 className="text-6xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
+      <FadeInSection className="mx-auto max-w-5xl space-y-4 text-center py-5 md:py-6">
+        <h2 className="text-5xl md:text-6xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
           {heading}
         </h2>
         <p className="text-xl font-semibold text-slate-700">{subheading}</p>

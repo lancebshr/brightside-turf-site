@@ -105,7 +105,7 @@ export default function MulchInstallationPage() {
       />
       <main>
         <FeatureGrid
-          heading={<>A seasonal refresh that brings order and<br /><span className="text-[#45D1B7]">definition</span> to your landscape beds.</>}
+          heading={<>A seasonal refresh that brings order<br />and <span className="text-[#45D1B7]">definition</span> to your landscape beds.</>}
           features={FEATURE_CARDS}
         />
       </main>
@@ -117,7 +117,7 @@ export default function MulchInstallationPage() {
 
           <section className="space-y-4">
             <FadeInSection className="space-y-3 text-center">
-              <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">Mulch Installation FAQs</h2>
+              <h2 className="text-5xl md:text-6xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">Mulch Installation FAQs</h2>
               <p className="text-lg font-bold text-slate-600">Common questions about our mulch installation services.</p>
             </FadeInSection>
             <div className="rounded-[2.5rem] border border-slate-200 bg-white px-6 py-5 shadow-brand md:px-10 md:py-8">
@@ -141,7 +141,7 @@ export default function MulchInstallationPage() {
 
         <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-16">
           <div className="mb-10 px-4 text-center sm:px-8">
-            <h2 className="text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
+            <h2 className="text-5xl md:text-6xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
               What Your Neighbors Think
             </h2>
           </div>

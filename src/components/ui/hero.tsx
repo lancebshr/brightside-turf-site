@@ -349,8 +349,9 @@ export function Hero({
                     style={{
                       backgroundColor: BRAND_MINT,
                       textShadow: "0 0 8px rgba(0,0,0,0.35)",
+                      boxShadow: "0 0 15px rgba(69, 209, 183, 0.25), 0 4px 12px rgba(0, 0, 0, 0.12)",
                     }}
-                    className="rounded-full px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:opacity-90"
+                    className="rounded-full px-5 py-3 text-sm font-bold uppercase tracking-wide text-white transition-all duration-300 ease-out hover:scale-105 hover:brightness-110"
                     asChild
                   >
                     <a href="/get-quote">Get Quote</a>
@@ -449,8 +450,11 @@ export function Hero({
                       <Link
                         href="/get-quote"
                         onClick={closeMobileMenu}
-                        className="flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:opacity-90"
-                        style={{ backgroundColor: BRAND_MINT }}
+                        className="flex items-center justify-center rounded-xl px-4 py-3 text-sm font-bold text-white transition-all duration-300 ease-out hover:scale-105 hover:brightness-110"
+                        style={{
+                          backgroundColor: BRAND_MINT,
+                          boxShadow: "0 0 15px rgba(69, 209, 183, 0.25), 0 4px 12px rgba(0, 0, 0, 0.12)",
+                        }}
                       >
                         Get Quote
                       </Link>
@@ -498,8 +502,9 @@ export function Hero({
                 style={{
                   backgroundColor: BRAND_MINT,
                   textShadow: "0 0 8px rgba(0,0,0,0.35)",
+                  boxShadow: "0 0 15px rgba(69, 209, 183, 0.25), 0 4px 12px rgba(0, 0, 0, 0.12)",
                 }}
-                className="group rounded-full px-5 py-5 text-lg font-bold uppercase tracking-wide text-white transition hover:opacity-90 md:px-8 md:py-7 md:text-2xl"
+                className="group rounded-full px-5 py-5 text-lg font-bold uppercase tracking-wide text-white transition-all duration-300 ease-out hover:scale-105 hover:brightness-110 md:px-8 md:py-7 md:text-2xl"
               >
                 <a href={primaryCta.href}>
                   {primaryCta.label}

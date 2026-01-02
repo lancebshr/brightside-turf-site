@@ -172,7 +172,7 @@ export default function Home() {
           backgroundImage={siteImages.heroBackgrounds.homepage}
         />
       </div>
-      <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f6fbf8] to-[#c7f0de]">
+      <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#e0f5eb] via-90% to-[#c7f0de]">
         <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-12 pt-16 sm:px-6 lg:px-0">
           <section className="space-y-10">
             <ServicesGrid
@@ -194,7 +194,7 @@ export default function Home() {
 
           <section id="reviews" className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-16 scroll-mt-32">
             <div className="mb-10 px-4 text-center sm:px-8">
-              <h2 className="text-4xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)] md:text-5xl">
+              <h2 className="text-5xl md:text-6xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
                 Trusted by Homeowners Across Omaha
               </h2>
             </div>

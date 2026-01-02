@@ -25,7 +25,7 @@ export function HowItWorks({
         <div className="mx-auto max-w-6xl">
           {/* Header */}
           <div className="mb-12 text-center">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
+            <h2 className="text-5xl md:text-6xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
               {heading}
             </h2>
           </div>
@@ -49,19 +49,19 @@ export function HowItWorks({
                 <div className="flex h-full flex-col justify-center">
                   {steps.map((step, index) => (
                     <div key={step.title}>
-                      <div className="py-6">
+                      <div className="py-5">
                         {/* Step Label */}
-                        <p className="mb-3 text-sm font-bold uppercase tracking-widest text-[#45D1B7]">
+                        <p className="mb-2 text-base font-bold uppercase tracking-widest text-[#45D1B7]">
                           Step {index + 1}
                         </p>
 
                         {/* Headline */}
-                        <h3 className="mb-3 text-2xl font-bold text-pine">
+                        <h3 className="mb-2 text-3xl font-bold text-pine">
                           {step.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-base font-medium leading-relaxed text-slate-500">
+                        <p className="text-lg font-medium leading-relaxed text-slate-500">
                           {step.copy}
                         </p>
                       </div>

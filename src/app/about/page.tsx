@@ -24,7 +24,7 @@ export default function AboutPage() {
 
       <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-6 pt-16 sm:px-6 lg:px-0">
         <section id="story" className="scroll-mt-32 space-y-10">
-          <h2 className="text-center text-5xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
+          <h2 className="text-center text-5xl md:text-6xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
             We built Brightside to raise the bar for Omaha homeowners.
           </h2>
 

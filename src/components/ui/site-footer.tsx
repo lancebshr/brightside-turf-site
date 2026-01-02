@@ -23,7 +23,7 @@ export function SiteFooter({ links }: FooterProps) {
             <a
               key={link.href}
               href={link.href}
-              className="whitespace-nowrap hover:text-pine"
+              className="whitespace-nowrap transition hover:text-mint"
             >
               {link.label}
             </a>
@@ -35,12 +35,12 @@ export function SiteFooter({ links }: FooterProps) {
             Office Contact
           </p>
           <p className="mt-4 text-base font-bold">
-            <a href="tel:4028108692" className="hover:text-pine">
+            <a href="tel:4028108692" className="transition hover:text-mint">
               (402) 810-8692
             </a>
           </p>
           <p className="text-base font-bold">
-            <a href="mailto:office@brightsideturfne.com" className="hover:text-pine">
+            <a href="mailto:office@brightsideturfne.com" className="transition hover:text-mint">
               office@brightsideturfne.com
             </a>
           </p>

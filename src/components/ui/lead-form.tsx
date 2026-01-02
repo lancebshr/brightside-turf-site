@@ -223,7 +223,13 @@ export function LeadForm({
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-2xl border-0 bg-[#0B3352] px-4 py-7 text-lg font-bold uppercase tracking-wide text-white outline-none focus-visible:ring-2 focus-visible:ring-pine/30 hover:bg-[#0d4168] disabled:opacity-50 md:text-xl"
+          className={cn(
+            "w-full rounded-2xl border-0 px-4 py-7 text-lg font-bold uppercase tracking-wide text-white outline-none transition-all duration-300 ease-out hover:scale-105 hover:brightness-110 focus-visible:ring-2 disabled:opacity-50 md:text-xl",
+            whiteLabels
+              ? "bg-[#45D1B7] shadow-[0_0_15px_rgba(69,209,183,0.25),0_4px_12px_rgba(0,0,0,0.12)] focus-visible:ring-mint/30"
+              : "bg-[#0B3352] shadow-[0_4px_12px_rgba(0,0,0,0.15)] focus-visible:ring-pine/30 hover:bg-[#0d4168]"
+          )}
+          style={whiteLabels ? { textShadow: "0 0 8px rgba(0,0,0,0.35)" } : undefined}
         >
           {isSubmitting ? "Sending..." : "Request My Quote"}
         </Button>

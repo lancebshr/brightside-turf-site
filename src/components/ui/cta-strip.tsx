@@ -23,7 +23,7 @@ export function CtaStrip({
   return (
     <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 rounded-t-[10rem] rounded-b-none bg-gradient-to-b from-pine to-ink px-4 py-20 text-white sm:px-8">
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-10 text-center">
-        <h2 className="text-6xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+        <h2 className="text-5xl md:text-6xl font-black tracking-tight text-white drop-shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
           {heading}
         </h2>
         <Button

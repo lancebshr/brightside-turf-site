@@ -32,7 +32,7 @@ export function FeatureGrid({
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-14 text-center">
-          <h2 className="text-4xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)] md:text-5xl">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-pine drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
             {heading}
           </h2>
         </div>

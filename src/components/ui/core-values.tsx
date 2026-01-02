@@ -31,7 +31,7 @@ export function CoreValues({ image = "/team-truck.jpg" }: CoreValuesProps) {
       <div className="mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="mb-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-pine tracking-tight leading-[1.1] drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
+          <h2 className="text-5xl md:text-6xl font-black text-pine tracking-tight leading-[1.1] drop-shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
             Our values that guide <span className="text-[#45D1B7]">every job</span> we do
           </h2>
         </div>
