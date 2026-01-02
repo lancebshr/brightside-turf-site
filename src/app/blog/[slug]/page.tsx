@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
@@ -52,6 +51,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
         compact
+        backgroundImage={post.thumbnail}
       />
 
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f5fbf7] to-[#c7f0de]">
@@ -65,14 +65,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
 
           <article className="bg-white rounded-3xl shadow-brand overflow-hidden">
-            <Image
-              src={post.thumbnail}
-              alt={post.title}
-              width={1200}
-              height={600}
-              className="w-full h-64 md:h-96 object-cover"
-            />
-
             <div className="p-6 md:p-10">
               <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
                 <span>{post.author}</span>
@@ -111,7 +103,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             <h3 className="text-2xl font-bold mb-4">Ready to transform your lawn?</h3>
             <Link
               href="/get-quote"
-              className="inline-block px-8 py-3 bg-emerald-600 text-white font-semibold rounded-full hover:bg-emerald-700 transition"
+              className="inline-block px-8 py-3 bg-mint text-pine font-semibold rounded-full hover:bg-[#9BD5C8] transition"
             >
               Get Your Free Quote
             </Link>

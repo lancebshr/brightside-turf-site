@@ -45,6 +45,7 @@ type HeroProps = {
   phone?: string;
   starPlacement?: "top" | "aboveCta";
   compact?: boolean;
+  backgroundImage?: string;
 };
 
 export function Hero({
@@ -56,6 +57,7 @@ export function Hero({
   phone = "(402) 810-8692",
   starPlacement = "top",
   compact = false,
+  backgroundImage = "/testhero.jpg",
 }: HeroProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -193,7 +195,7 @@ export function Hero({
     >
       <div
         className="absolute inset-0 bg-cover bg-top bg-no-repeat"
-        style={{ backgroundImage: "url('/testhero.jpg')" }}
+        style={{ backgroundImage: `url('${backgroundImage}')` }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/15 to-black/30" />
 
