@@ -1,0 +1,22 @@
+{
+  "heroTitle": "Professional Lawn Care Services",
+  "heroSubtitle": "Transform your outdoor space with Brightside Turf's expert lawn care and landscaping services.",
+  "heroImage": "/images/uploads/hero-lawn.jpg",
+  "featuredServices": [
+    {
+      "name": "Lawn Mowing",
+      "description": "Professional weekly or bi-weekly mowing services",
+      "icon": "Scissors"
+    },
+    {
+      "name": "Fertilization",
+      "description": "Custom fertilization programs for a lush green lawn",
+      "icon": "Leaf"
+    },
+    {
+      "name": "Core Aeration",
+      "description": "Improve soil health and grass root development",
+      "icon": "Circle"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+backend:
+  name: github
+  repo: lancebshr/brightside-turf-site
+  branch: main
+  base_url: https://decap-oauth.netlify.app  # Free community OAuth proxy
+
+# Enable editorial workflow for draft/review/publish states
+publish_mode: editorial_workflow
+
+# Media files will be stored in public/images/uploads
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+# Site URL for previews
+site_url: https://brightsideturf.com
+display_url: https://brightsideturf.com
+
+collections:
+  # Blog posts collection
+  - name: blog
+    label: Blog Posts
+    folder: content/blog
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", required: true }
+      - { label: "Description", name: "description", widget: "text", hint: "Short description for blog listings and SEO" }
+      - { label: "Author", name: "author", widget: "string", default: "Brightside Turf Team" }
+      - { label: "Tags", name: "tags", widget: "list", hint: "Comma separated tags" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Site images/media management
+  - name: gallery
+    label: Image Gallery
+    folder: content/gallery
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Alt Text", name: "alt", widget: "string", hint: "Describe the image for accessibility" }
+      - { label: "Category", name: "category", widget: "select", options: ["Before & After", "Lawn Care", "Holiday Lighting", "Team", "Equipment", "Other"] }
+      - { label: "Description", name: "description", widget: "text", required: false }
+
+  # Homepage settings
+  - name: settings
+    label: Site Settings
+    files:
+      - name: homepage
+        label: Homepage
+        file: content/settings/homepage.json
+        fields:
+          - { label: "Hero Title", name: "heroTitle", widget: "string" }
+          - { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
+          - { label: "Hero Image", name: "heroImage", widget: "image" }
+          - label: "Featured Services"
+            name: "featuredServices"
+            widget: "list"
+            max: 6
+            fields:
+              - { label: "Service Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon", name: "icon", widget: "string", hint: "Lucide icon name" }
