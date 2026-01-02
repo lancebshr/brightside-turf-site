@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 
 export type Service = {
@@ -38,11 +39,12 @@ export function ServicesGrid({
                 href={`/services/${service.slug}`}
               className="gallery-5__tile focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
             >
-                <img
+                <Image
                   src={service.image}
                   alt={service.title}
                   className="gallery-5__image"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="gallery-5__overlay">
                   <div className="gallery-5__text">
