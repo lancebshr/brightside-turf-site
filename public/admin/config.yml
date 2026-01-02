@@ -2,7 +2,8 @@ backend:
   name: github
   repo: lancebshr/brightside-turf-site
   branch: main
-  base_url: https://decap-oauth.netlify.app  # Free community OAuth proxy
+  base_url: https://brightside-turf-site-8gfk.vercel.app
+  auth_endpoint: /api/auth
 
 # Enable editorial workflow for draft/review/publish states
 publish_mode: editorial_workflow
