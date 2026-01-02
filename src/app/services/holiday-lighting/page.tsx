@@ -7,29 +7,7 @@ import { NAV_LINKS } from "@/lib/nav-links";
 import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
-
-const FEATURE_CARDS = [
-  {
-    title: "Full Service",
-    description: "We handle everything from design and installation to in-season service, removal, and storage.",
-    image: "/lighting.webp",
-  },
-  {
-    title: "48 Hour Guarantee",
-    description: "If something goes out or needs adjustment, we fix it within 48 hours.",
-    image: "/team-truck.jpg",
-  },
-  {
-    title: "Professional Materials",
-    description: "We use commercial-grade lighting and materials designed to look good and hold up through the season.",
-    image: "/fertilization.JPG",
-  },
-  {
-    title: "Custom Design",
-    description: "Each lighting setup is designed to fit your home rather than using a one-size-fits-all layout.",
-    image: "/grasstop.jpeg",
-  },
-];
+import { getSiteImages } from "@/lib/site-images";
 
 const FAQ_ITEMS = [
   {
@@ -88,6 +66,32 @@ const REVIEWS: Review[] = [
 ];
 
 export default function HolidayLightingPage() {
+  const siteImages = getSiteImages();
+  const featureImages = siteImages.services.holidayLighting.featureGrid;
+
+  const FEATURE_CARDS = [
+    {
+      title: "Full Service",
+      description: "We handle everything from design and installation to in-season service, removal, and storage.",
+      image: featureImages.image1,
+    },
+    {
+      title: "48 Hour Guarantee",
+      description: "If something goes out or needs adjustment, we fix it within 48 hours.",
+      image: featureImages.image2,
+    },
+    {
+      title: "Professional Materials",
+      description: "We use commercial-grade lighting and materials designed to look good and hold up through the season.",
+      image: featureImages.image3,
+    },
+    {
+      title: "Custom Design",
+      description: "Each lighting setup is designed to fit your home rather than using a one-size-fits-all layout.",
+      image: featureImages.image4,
+    },
+  ];
+
   return (
     <div className="bg-background text-foreground">
       <Hero
@@ -97,6 +101,7 @@ export default function HolidayLightingPage() {
         primaryCta={{ href: "/get-quote", label: "Get Your Quote" }}
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
+        backgroundImage={siteImages.global.heroBackground}
       />
       <main>
         <FeatureGrid
@@ -107,7 +112,7 @@ export default function HolidayLightingPage() {
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#edf8f2] to-[#c7f0de]">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 lg:px-0">
           <section>
-            <CoreValues />
+            <CoreValues image={siteImages.aboutPage.coreValuesImage} />
           </section>
 
           <section className="space-y-4">

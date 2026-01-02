@@ -3,6 +3,7 @@ import { LeadForm } from "@/components/ui/lead-form";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { NAV_LINKS } from "@/lib/nav-links";
 import { BOLD_PLUS_HEADING, cn } from "@/lib/utils";
+import { getSiteImages } from "@/lib/site-images";
 
 const QUOTE_SERVICES = [
   "Fertilization and Weed Control",
@@ -14,11 +15,13 @@ const QUOTE_SERVICES = [
 ];
 
 export default function GetQuotePage() {
+  const siteImages = getSiteImages();
+
   return (
     <div className="flex min-h-screen flex-col bg-ink text-white">
       <section className="relative flex-1 overflow-hidden">
         <Image
-          src="/grasstop.jpeg"
+          src={siteImages.getQuotePage.backgroundImage}
           alt="Grass top view"
           fill
           className="object-cover"

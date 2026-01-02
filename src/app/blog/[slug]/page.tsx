@@ -4,7 +4,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Hero } from "@/components/ui/hero";
 import { SiteFooter } from "@/components/ui/site-footer";
+import { Button } from "@/components/ui/button";
 import { NAV_LINKS } from "@/lib/nav-links";
+import { GET_QUOTE_BUTTON_STYLE, GET_QUOTE_BUTTON_CLASSNAME, cn } from "@/lib/utils";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/blog";
 import { ArrowLeft } from "lucide-react";
 
@@ -101,12 +103,14 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
           <div className="mt-12 text-center">
             <h3 className="text-2xl font-bold mb-4">Ready to transform your lawn?</h3>
-            <Link
-              href="/get-quote"
-              className="inline-block px-8 py-3 bg-mint text-pine font-semibold rounded-full hover:bg-[#9BD5C8] transition"
+            <Button
+              asChild
+              size="lg"
+              style={GET_QUOTE_BUTTON_STYLE}
+              className={cn(GET_QUOTE_BUTTON_CLASSNAME, "px-12 py-7 text-xl")}
             >
-              Get Your Free Quote
-            </Link>
+              <Link href="/get-quote">GET YOUR QUOTE</Link>
+            </Button>
           </div>
         </div>
 

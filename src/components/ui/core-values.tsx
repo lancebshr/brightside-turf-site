@@ -3,7 +3,11 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { GET_QUOTE_BUTTON_CLASSNAME, GET_QUOTE_BUTTON_STYLE, cn } from '@/lib/utils'
 
-export function CoreValues() {
+type CoreValuesProps = {
+  image?: string;
+};
+
+export function CoreValues({ image = "/team-truck.jpg" }: CoreValuesProps) {
   const values = [
     {
       title: "The Little Things Aren't Little to Us",
@@ -35,7 +39,7 @@ export function CoreValues() {
         {/* Large Image */}
         <div className="relative mb-12 h-[240px] w-full overflow-hidden rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] md:h-[300px]">
           <Image
-            src="/team-truck.jpg"
+            src={image}
             alt="Brightside team"
             fill
             className="object-cover"

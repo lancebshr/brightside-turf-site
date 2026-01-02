@@ -8,29 +8,7 @@ import { NAV_LINKS } from "@/lib/nav-links";
 import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
-
-const FEATURE_CARDS = [
-  {
-    title: "Seasonal Fertilization",
-    description: "Timed applications that give your lawn the nutrients it needs to stay green and strong all year round.",
-    image: "/fertilization.JPG",
-  },
-  {
-    title: "Weed Control",
-    description: "Targeted treatments that knock out broadleaf and invasive weeds before they take over your lawn.",
-    image: "/grasstop.jpeg",
-  },
-  {
-    title: "Professional Products",
-    description: "We use high-quality granular materials hand-picked specifically for Nebraska lawns and soil conditions.",
-    image: "/team-truck.jpg",
-  },
-  {
-    title: "101% Satisfaction Guarantee",
-    description: "If weeds pop up between visits or something feels off, we come back and make it right at no extra cost.",
-    image: "/aeration.JPG",
-  },
-];
+import { getSiteImages } from "@/lib/site-images";
 
 const FAQ_ITEMS = [
   {
@@ -41,22 +19,22 @@ const FAQ_ITEMS = [
   {
     question: "Is it safe for kids and pets?",
     answer:
-      "Yes. Our granular products are completely safe once they’re applied. You don’t have to wait to enjoy your yard, just let us do our thing and you’re good to go.",
+      "Yes. Our granular products are completely safe once they're applied. You don't have to wait to enjoy your yard, just let us do our thing and you're good to go.",
   },
   {
-    question: "What if I’m not happy with the results?",
+    question: "What if I'm not happy with the results?",
     answer:
-      "You’re covered by our 101% Satisfaction Guarantee. If weeds pop up or something doesn’t look right, we’ll come back, re-treat, and make it right at no extra cost.",
+      "You're covered by our 101% Satisfaction Guarantee. If weeds pop up or something doesn't look right, we'll come back, re-treat, and make it right at no extra cost.",
   },
   {
     question: "Can you do one-time treatments or just full programs?",
     answer:
-      "We only offer full fertilizer programs. One-time services might seem convenient, but they don’t deliver the consistent, lasting results we stand behind. Our program is designed to build a healthy lawn that stays strong all season.",
+      "We only offer full fertilizer programs. One-time services might seem convenient, but they don't deliver the consistent, lasting results we stand behind. Our program is designed to build a healthy lawn that stays strong all season.",
   },
   {
     question: "Do I need to water before or after an application?",
     answer:
-      "We’ll give you simple watering instructions after each visit. Sometimes watering helps the product work better, and sometimes it’s best to wait. We’ll let you know exactly what’s needed each time.",
+      "We'll give you simple watering instructions after each visit. Sometimes watering helps the product work better, and sometimes it's best to wait. We'll let you know exactly what's needed each time.",
   },
 ];
 
@@ -79,16 +57,43 @@ const REVIEWS: Review[] = [
   {
     name: "Doug Adams",
     quote:
-      "Brightside Turf offers several services but I’ve only used them for aeration. Two friendly, clean-cut young men showed up and did a great job. Great communication and I was extremely satisfied.",
+      "Brightside Turf offers several services but I've only used them for aeration. Two friendly, clean-cut young men showed up and did a great job. Great communication and I was extremely satisfied.",
   },
   {
     name: "Nhung Nguyen",
     quote:
-      "I would recommend Brightside to anyone in Omaha. They’re a local company that does things right. When we noticed issues in our lawn they came back the next day to spot treat.",
+      "I would recommend Brightside to anyone in Omaha. They're a local company that does things right. When we noticed issues in our lawn they came back the next day to spot treat.",
   },
 ];
 
 export default function FertilizationAndWeedControlPage() {
+  const siteImages = getSiteImages();
+  const featureImages = siteImages.services.fertilization.featureGrid;
+  const galleryImages = siteImages.services.fertilization.gallery;
+
+  const FEATURE_CARDS = [
+    {
+      title: "Seasonal Fertilization",
+      description: "Timed applications that give your lawn the nutrients it needs to stay green and strong all year round.",
+      image: featureImages.image1,
+    },
+    {
+      title: "Weed Control",
+      description: "Targeted treatments that knock out broadleaf and invasive weeds before they take over your lawn.",
+      image: featureImages.image2,
+    },
+    {
+      title: "Professional Products",
+      description: "We use high-quality granular materials hand-picked specifically for Nebraska lawns and soil conditions.",
+      image: featureImages.image3,
+    },
+    {
+      title: "101% Satisfaction Guarantee",
+      description: "If weeds pop up between visits or something feels off, we come back and make it right at no extra cost.",
+      image: featureImages.image4,
+    },
+  ];
+
   return (
     <div className="bg-background text-foreground">
       <Hero
@@ -98,6 +103,7 @@ export default function FertilizationAndWeedControlPage() {
         primaryCta={{ href: "/get-quote", label: "Get Your Quote" }}
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
+        backgroundImage={siteImages.global.heroBackground}
       />
       <main>
         <FeatureGrid
@@ -108,7 +114,7 @@ export default function FertilizationAndWeedControlPage() {
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#edf8f2] to-[#c7f0de]">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 lg:px-0">
           <section>
-            <CoreValues />
+            <CoreValues image={siteImages.aboutPage.coreValuesImage} />
           </section>
 
           <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-pine py-16 text-white">
@@ -121,22 +127,22 @@ export default function FertilizationAndWeedControlPage() {
               <FadeInSection>
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
                   <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
-                    <Image src="/aeration.JPG" alt="Brightside technician aerating a lawn" fill className="object-cover transition duration-300 hover:scale-105" />
+                    <Image src={galleryImages.image1} alt="Brightside technician aerating a lawn" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
                   <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
-                    <Image src="/fertilization.JPG" alt="Fertilizer application across a green yard" fill className="object-cover transition duration-300 hover:scale-105" />
+                    <Image src={galleryImages.image2} alt="Fertilizer application across a green yard" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
                   <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
-                    <Image src="/overseeding.JPG" alt="Overseeding equipment in action" fill className="object-cover transition duration-300 hover:scale-105" />
+                    <Image src={galleryImages.image3} alt="Overseeding equipment in action" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
                   <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
-                    <Image src="/lighting.webp" alt="Holiday lighting installed by Brightside" fill className="object-cover transition duration-300 hover:scale-105" />
+                    <Image src={galleryImages.image4} alt="Holiday lighting installed by Brightside" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
                   <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
-                    <Image src="/team-truck.jpg" alt="Brightside Turf team truck" fill className="object-cover transition duration-300 hover:scale-105" />
+                    <Image src={galleryImages.image5} alt="Brightside Turf team truck" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
                   <div className="relative h-48 overflow-hidden rounded-2xl md:h-56">
-                    <Image src="/grasstop.jpeg" alt="Lush green lawn" fill className="object-cover transition duration-300 hover:scale-105" />
+                    <Image src={galleryImages.image6} alt="Lush green lawn" fill className="object-cover transition duration-300 hover:scale-105" />
                   </div>
                 </div>
               </FadeInSection>

@@ -7,29 +7,7 @@ import { NAV_LINKS } from "@/lib/nav-links";
 import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
-
-const FEATURE_CARDS = [
-  {
-    title: "Proper Fall Timing",
-    description: "Aeration and overseeding are performed during the fall growing window when lawns respond best.",
-    image: "/aeration.JPG",
-  },
-  {
-    title: "Mechanical Core Aeration",
-    description: "We mechanically remove soil cores to relieve compaction and open the ground for better results.",
-    image: "/overseeding.JPG",
-  },
-  {
-    title: "Quality Grass Seed",
-    description: "We use quality grass seed selected to establish well and blend with your existing lawn.",
-    image: "/grasstop.jpeg",
-  },
-  {
-    title: "Clear Expectations",
-    description: "We explain what to expect after service and how watering impacts results.",
-    image: "/team-truck.jpg",
-  },
-];
+import { getSiteImages } from "@/lib/site-images";
 
 const FAQ_ITEMS = [
   {
@@ -88,6 +66,32 @@ const REVIEWS: Review[] = [
 ];
 
 export default function CoreAerationPage() {
+  const siteImages = getSiteImages();
+  const featureImages = siteImages.services.coreAeration.featureGrid;
+
+  const FEATURE_CARDS = [
+    {
+      title: "Proper Fall Timing",
+      description: "Aeration and overseeding are performed during the fall growing window when lawns respond best.",
+      image: featureImages.image1,
+    },
+    {
+      title: "Mechanical Core Aeration",
+      description: "We mechanically remove soil cores to relieve compaction and open the ground for better results.",
+      image: featureImages.image2,
+    },
+    {
+      title: "Quality Grass Seed",
+      description: "We use quality grass seed selected to establish well and blend with your existing lawn.",
+      image: featureImages.image3,
+    },
+    {
+      title: "Clear Expectations",
+      description: "We explain what to expect after service and how watering impacts results.",
+      image: featureImages.image4,
+    },
+  ];
+
   return (
     <div className="bg-background text-foreground">
       <Hero
@@ -97,6 +101,7 @@ export default function CoreAerationPage() {
         primaryCta={{ href: "/get-quote", label: "Get Your Quote" }}
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
+        backgroundImage={siteImages.global.heroBackground}
       />
       <main>
         <FeatureGrid
@@ -107,7 +112,7 @@ export default function CoreAerationPage() {
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#edf8f2] to-[#c7f0de]">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 lg:px-0">
           <section>
-            <CoreValues />
+            <CoreValues image={siteImages.aboutPage.coreValuesImage} />
           </section>
 
           <section className="space-y-4">

@@ -26,41 +26,315 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image", required: true }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", required: true, hint: "This image appears as the hero background on the blog post page and as the thumbnail on the blog listing page" }
       - { label: "Description", name: "description", widget: "text", hint: "Short description for blog listings and SEO" }
       - { label: "Author", name: "author", widget: "string", default: "Brightside Turf Team" }
       - { label: "Tags", name: "tags", widget: "list", hint: "Comma separated tags" }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  # Site images/media management
-  - name: gallery
-    label: Image Gallery
-    folder: content/gallery
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Alt Text", name: "alt", widget: "string", hint: "Describe the image for accessibility" }
-      - { label: "Category", name: "category", widget: "select", options: ["Before & After", "Lawn Care", "Holiday Lighting", "Team", "Equipment", "Other"] }
-      - { label: "Description", name: "description", widget: "text", required: false }
-
-  # Homepage settings
+  # Site Images - All images used across the website
   - name: settings
     label: Site Settings
     files:
-      - name: homepage
-        label: Homepage
-        file: content/settings/homepage.json
+      - name: site-images
+        label: Site Images
+        file: content/settings/site-images.json
         fields:
-          - { label: "Hero Title", name: "heroTitle", widget: "string" }
-          - { label: "Hero Subtitle", name: "heroSubtitle", widget: "text" }
-          - { label: "Hero Image", name: "heroImage", widget: "image" }
-          - label: "Featured Services"
-            name: "featuredServices"
-            widget: "list"
-            max: 6
+          # ===== GLOBAL IMAGES =====
+          - label: "Global Images"
+            name: "global"
+            widget: "object"
+            collapsed: false
             fields:
-              - { label: "Service Name", name: "name", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Icon", name: "icon", widget: "string", hint: "Lucide icon name" }
+              - label: "Hero Background (Default)"
+                name: "heroBackground"
+                widget: "image"
+                hint: "The large background image that appears behind the text on the Homepage, About page, FAQs page, Reviews page, and all Service pages. This is the main hero image visitors see when they first land on any page. Recommended size: 1920x1080px or larger."
+
+              - label: "Company Logo"
+                name: "logo"
+                widget: "image"
+                hint: "The Brightside Turf logo that appears in the navigation bar at the top of every page and in the footer at the bottom of every page. This should be an SVG or PNG with transparent background."
+
+              - label: "Google Icon"
+                name: "googleIcon"
+                widget: "image"
+                hint: "The small Google 'G' icon that appears next to the star ratings and Google review mentions throughout the site (in the hero section and reviews carousel). Should be a small square image, around 48x48px."
+
+          # ===== HOMEPAGE IMAGES =====
+          - label: "Homepage"
+            name: "homepage"
+            widget: "object"
+            collapsed: false
+            fields:
+              - label: "How It Works Section Image"
+                name: "howItWorksImage"
+                widget: "image"
+                hint: "The large image that appears in the 'How It Works' section on the homepage, next to the 3 steps (Get Your Quote, We Show Up, Enjoy Your Lawn). This image is displayed on the right side of the section. Recommended size: 800x600px or larger."
+
+              - label: "Service Cards"
+                name: "serviceCards"
+                widget: "object"
+                hint: "These 6 images appear in the service grid on the homepage. Each card shows one of your services with an image, title, and description."
+                fields:
+                  - label: "Fertilization & Weed Control Card"
+                    name: "fertilization"
+                    widget: "image"
+                    hint: "Image for the 'Fertilization and Weed Control' service card on the homepage. Shows in a grid with other services. Should showcase fertilization work or a healthy green lawn. Recommended size: 600x400px."
+
+                  - label: "Lawn Mowing Card"
+                    name: "lawnMowing"
+                    widget: "image"
+                    hint: "Image for the 'Lawn Mowing' service card on the homepage. Should showcase freshly mowed lawn, mowing equipment, or clean lawn lines. Recommended size: 600x400px."
+
+                  - label: "Mulch Installation Card"
+                    name: "mulchInstallation"
+                    widget: "image"
+                    hint: "Image for the 'Mulch Installation' service card on the homepage. Should showcase mulch beds, mulch installation work, or landscaping. Recommended size: 600x400px."
+
+                  - label: "Core Aeration Card"
+                    name: "coreAeration"
+                    widget: "image"
+                    hint: "Image for the 'Core Aeration' service card on the homepage. Should showcase aeration equipment, aeration plugs on lawn, or the aeration process. Recommended size: 600x400px."
+
+                  - label: "Cleanups Card"
+                    name: "cleanups"
+                    widget: "image"
+                    hint: "Image for the 'Cleanups' service card on the homepage. Should showcase yard cleanup work, leaf removal, or before/after cleanup. Recommended size: 600x400px."
+
+                  - label: "Holiday Lighting Card"
+                    name: "holidayLighting"
+                    widget: "image"
+                    hint: "Image for the 'Holiday Lighting' service card on the homepage. Should showcase installed holiday lights on a home, roofline lighting, or festive display. Recommended size: 600x400px."
+
+          # ===== ABOUT PAGE =====
+          - label: "About Page"
+            name: "aboutPage"
+            widget: "object"
+            collapsed: false
+            fields:
+              - label: "Core Values Section Image"
+                name: "coreValuesImage"
+                widget: "image"
+                hint: "The image that appears in the 'Core Values' / 'What We Believe' section on the About page. This should showcase the team, truck, or represent the company culture. Recommended size: 800x600px."
+
+          # ===== GET QUOTE PAGE =====
+          - label: "Get Quote Page"
+            name: "getQuotePage"
+            widget: "object"
+            collapsed: false
+            fields:
+              - label: "Background Image"
+                name: "backgroundImage"
+                widget: "image"
+                hint: "The background image behind the quote request form on the Get Quote page. Should be a lawn or landscaping image that looks good with an overlay. Recommended size: 1920x1080px."
+
+          # ===== SERVICE AREA =====
+          - label: "Service Area Map"
+            name: "serviceAreaMap"
+            widget: "image"
+            hint: "The map image showing Brightside's service area (Omaha metro). Appears in the 'Proudly Serving the Omaha Metro' section on the homepage. Should clearly show the coverage area. Recommended size: 800x600px."
+
+          # ===== SERVICE PAGES =====
+          - label: "Service Pages"
+            name: "services"
+            widget: "object"
+            collapsed: true
+            hint: "Images used on individual service pages"
+            fields:
+              # Fertilization Service Page
+              - label: "Fertilization & Weed Control Page"
+                name: "fertilization"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - label: "Feature Grid Images"
+                    name: "featureGrid"
+                    widget: "object"
+                    hint: "The 4 images that appear in the feature/benefits grid on the Fertilization & Weed Control service page"
+                    fields:
+                      - label: "Feature Image 1 (Top Left)"
+                        name: "image1"
+                        widget: "image"
+                        hint: "First feature grid image on the Fertilization page - appears in the top-left position of the 2x2 grid"
+                      - label: "Feature Image 2 (Top Right)"
+                        name: "image2"
+                        widget: "image"
+                        hint: "Second feature grid image on the Fertilization page - appears in the top-right position of the 2x2 grid"
+                      - label: "Feature Image 3 (Bottom Left)"
+                        name: "image3"
+                        widget: "image"
+                        hint: "Third feature grid image on the Fertilization page - appears in the bottom-left position of the 2x2 grid"
+                      - label: "Feature Image 4 (Bottom Right)"
+                        name: "image4"
+                        widget: "image"
+                        hint: "Fourth feature grid image on the Fertilization page - appears in the bottom-right position of the 2x2 grid"
+                  - label: "Gallery Images"
+                    name: "gallery"
+                    widget: "object"
+                    hint: "The 6 images that appear in the photo gallery section at the bottom of the Fertilization & Weed Control page"
+                    fields:
+                      - label: "Gallery Image 1"
+                        name: "image1"
+                        widget: "image"
+                        hint: "First gallery image at the bottom of the Fertilization page"
+                      - label: "Gallery Image 2"
+                        name: "image2"
+                        widget: "image"
+                        hint: "Second gallery image at the bottom of the Fertilization page"
+                      - label: "Gallery Image 3"
+                        name: "image3"
+                        widget: "image"
+                        hint: "Third gallery image at the bottom of the Fertilization page"
+                      - label: "Gallery Image 4"
+                        name: "image4"
+                        widget: "image"
+                        hint: "Fourth gallery image at the bottom of the Fertilization page"
+                      - label: "Gallery Image 5"
+                        name: "image5"
+                        widget: "image"
+                        hint: "Fifth gallery image at the bottom of the Fertilization page"
+                      - label: "Gallery Image 6"
+                        name: "image6"
+                        widget: "image"
+                        hint: "Sixth gallery image at the bottom of the Fertilization page"
+
+              # Core Aeration Service Page
+              - label: "Core Aeration Page"
+                name: "coreAeration"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - label: "Feature Grid Images"
+                    name: "featureGrid"
+                    widget: "object"
+                    hint: "The 4 images that appear in the feature/benefits grid on the Core Aeration service page"
+                    fields:
+                      - label: "Feature Image 1 (Top Left)"
+                        name: "image1"
+                        widget: "image"
+                        hint: "First feature grid image on the Core Aeration page - appears in the top-left position"
+                      - label: "Feature Image 2 (Top Right)"
+                        name: "image2"
+                        widget: "image"
+                        hint: "Second feature grid image on the Core Aeration page - appears in the top-right position"
+                      - label: "Feature Image 3 (Bottom Left)"
+                        name: "image3"
+                        widget: "image"
+                        hint: "Third feature grid image on the Core Aeration page - appears in the bottom-left position"
+                      - label: "Feature Image 4 (Bottom Right)"
+                        name: "image4"
+                        widget: "image"
+                        hint: "Fourth feature grid image on the Core Aeration page - appears in the bottom-right position"
+
+              # Lawn Mowing Service Page
+              - label: "Lawn Mowing Page"
+                name: "lawnMowing"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - label: "Feature Grid Images"
+                    name: "featureGrid"
+                    widget: "object"
+                    hint: "The 4 images that appear in the feature/benefits grid on the Lawn Mowing service page"
+                    fields:
+                      - label: "Feature Image 1 (Top Left)"
+                        name: "image1"
+                        widget: "image"
+                        hint: "First feature grid image on the Lawn Mowing page - appears in the top-left position"
+                      - label: "Feature Image 2 (Top Right)"
+                        name: "image2"
+                        widget: "image"
+                        hint: "Second feature grid image on the Lawn Mowing page - appears in the top-right position"
+                      - label: "Feature Image 3 (Bottom Left)"
+                        name: "image3"
+                        widget: "image"
+                        hint: "Third feature grid image on the Lawn Mowing page - appears in the bottom-left position"
+                      - label: "Feature Image 4 (Bottom Right)"
+                        name: "image4"
+                        widget: "image"
+                        hint: "Fourth feature grid image on the Lawn Mowing page - appears in the bottom-right position"
+
+              # Holiday Lighting Service Page
+              - label: "Holiday Lighting Page"
+                name: "holidayLighting"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - label: "Feature Grid Images"
+                    name: "featureGrid"
+                    widget: "object"
+                    hint: "The 4 images that appear in the feature/benefits grid on the Holiday Lighting service page"
+                    fields:
+                      - label: "Feature Image 1 (Top Left)"
+                        name: "image1"
+                        widget: "image"
+                        hint: "First feature grid image on the Holiday Lighting page - appears in the top-left position"
+                      - label: "Feature Image 2 (Top Right)"
+                        name: "image2"
+                        widget: "image"
+                        hint: "Second feature grid image on the Holiday Lighting page - appears in the top-right position"
+                      - label: "Feature Image 3 (Bottom Left)"
+                        name: "image3"
+                        widget: "image"
+                        hint: "Third feature grid image on the Holiday Lighting page - appears in the bottom-left position"
+                      - label: "Feature Image 4 (Bottom Right)"
+                        name: "image4"
+                        widget: "image"
+                        hint: "Fourth feature grid image on the Holiday Lighting page - appears in the bottom-right position"
+
+              # Cleanups Service Page
+              - label: "Cleanups Page"
+                name: "cleanups"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - label: "Feature Grid Images"
+                    name: "featureGrid"
+                    widget: "object"
+                    hint: "The 4 images that appear in the feature/benefits grid on the Cleanups service page"
+                    fields:
+                      - label: "Feature Image 1 (Top Left)"
+                        name: "image1"
+                        widget: "image"
+                        hint: "First feature grid image on the Cleanups page - appears in the top-left position"
+                      - label: "Feature Image 2 (Top Right)"
+                        name: "image2"
+                        widget: "image"
+                        hint: "Second feature grid image on the Cleanups page - appears in the top-right position"
+                      - label: "Feature Image 3 (Bottom Left)"
+                        name: "image3"
+                        widget: "image"
+                        hint: "Third feature grid image on the Cleanups page - appears in the bottom-left position"
+                      - label: "Feature Image 4 (Bottom Right)"
+                        name: "image4"
+                        widget: "image"
+                        hint: "Fourth feature grid image on the Cleanups page - appears in the bottom-right position"
+
+              # Mulch Installation Service Page
+              - label: "Mulch Installation Page"
+                name: "mulchInstallation"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - label: "Feature Grid Images"
+                    name: "featureGrid"
+                    widget: "object"
+                    hint: "The 4 images that appear in the feature/benefits grid on the Mulch Installation service page"
+                    fields:
+                      - label: "Feature Image 1 (Top Left)"
+                        name: "image1"
+                        widget: "image"
+                        hint: "First feature grid image on the Mulch Installation page - appears in the top-left position"
+                      - label: "Feature Image 2 (Top Right)"
+                        name: "image2"
+                        widget: "image"
+                        hint: "Second feature grid image on the Mulch Installation page - appears in the top-right position"
+                      - label: "Feature Image 3 (Bottom Left)"
+                        name: "image3"
+                        widget: "image"
+                        hint: "Third feature grid image on the Mulch Installation page - appears in the bottom-left position"
+                      - label: "Feature Image 4 (Bottom Right)"
+                        name: "image4"
+                        widget: "image"
+                        hint: "Fourth feature grid image on the Mulch Installation page - appears in the bottom-right position"

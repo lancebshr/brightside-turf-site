@@ -7,29 +7,7 @@ import { NAV_LINKS } from "@/lib/nav-links";
 import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
-
-const FEATURE_CARDS = [
-  {
-    title: "Same-Day Weekly Service",
-    description: "We mow on the same scheduled day each week so you're not left guessing when your lawn will be done.",
-    image: "/grasstop.jpeg",
-  },
-  {
-    title: "Presentable Crews",
-    description: "Crews show up looking professional and treat your property with care while they're there.",
-    image: "/team-truck.jpg",
-  },
-  {
-    title: "Easy to Reach",
-    description: "Call or text us if you need to pause service, ask a question, or make a change.",
-    image: "/fertilization.JPG",
-  },
-  {
-    title: "Attention to Detail",
-    description: "We take care of the small things like edging, trimming, and cleaning up before we leave.",
-    image: "/aeration.JPG",
-  },
-];
+import { getSiteImages } from "@/lib/site-images";
 
 const FAQ_ITEMS = [
   {
@@ -88,6 +66,32 @@ const REVIEWS: Review[] = [
 ];
 
 export default function LawnMowingPage() {
+  const siteImages = getSiteImages();
+  const featureImages = siteImages.services.lawnMowing.featureGrid;
+
+  const FEATURE_CARDS = [
+    {
+      title: "Same-Day Weekly Service",
+      description: "We mow on the same scheduled day each week so you're not left guessing when your lawn will be done.",
+      image: featureImages.image1,
+    },
+    {
+      title: "Presentable Crews",
+      description: "Crews show up looking professional and treat your property with care while they're there.",
+      image: featureImages.image2,
+    },
+    {
+      title: "Easy to Reach",
+      description: "Call or text us if you need to pause service, ask a question, or make a change.",
+      image: featureImages.image3,
+    },
+    {
+      title: "Attention to Detail",
+      description: "We take care of the small things like edging, trimming, and cleaning up before we leave.",
+      image: featureImages.image4,
+    },
+  ];
+
   return (
     <div className="bg-background text-foreground">
       <Hero
@@ -97,6 +101,7 @@ export default function LawnMowingPage() {
         primaryCta={{ href: "/get-quote", label: "Get Your Quote" }}
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
+        backgroundImage={siteImages.global.heroBackground}
       />
       <main>
         <FeatureGrid
@@ -107,7 +112,7 @@ export default function LawnMowingPage() {
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#edf8f2] to-[#c7f0de]">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 lg:px-0">
           <section>
-            <CoreValues />
+            <CoreValues image={siteImages.aboutPage.coreValuesImage} />
           </section>
 
           <section className="space-y-4">

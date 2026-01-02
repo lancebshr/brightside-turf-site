@@ -3,8 +3,11 @@ import { ContactStrip } from "@/components/ui/contact-strip";
 import { SiteFooter } from "@/components/ui/site-footer";
 import { CoreValues } from "@/components/ui/core-values";
 import { NAV_LINKS } from "@/lib/nav-links";
+import { getSiteImages } from "@/lib/site-images";
 
 export default function AboutPage() {
+  const siteImages = getSiteImages();
+
   return (
     <div className="bg-background text-foreground">
       <div id="top">
@@ -15,6 +18,7 @@ export default function AboutPage() {
           primaryCta={{ label: "Get Your Quote", href: "#contact" }}
           navLinks={NAV_LINKS}
           starPlacement="aboveCta"
+          backgroundImage={siteImages.global.heroBackground}
         />
       </div>
 
@@ -80,7 +84,7 @@ export default function AboutPage() {
         </section>
 
         <section id="beliefs" className="scroll-mt-32">
-          <CoreValues />
+          <CoreValues image={siteImages.aboutPage.coreValuesImage} />
         </section>
       </main>
 

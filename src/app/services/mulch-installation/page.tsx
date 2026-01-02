@@ -7,29 +7,7 @@ import { NAV_LINKS } from "@/lib/nav-links";
 import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
-
-const FEATURE_CARDS = [
-  {
-    title: "Proper Mulch Depth",
-    description: "We install mulch at the right depth so beds look finished without burying plants.",
-    image: "/team-truck.jpg",
-  },
-  {
-    title: "Redefined Bed Edges",
-    description: "Edges are cleaned up and reshaped so beds look sharp and intentional.",
-    image: "/grasstop.jpeg",
-  },
-  {
-    title: "Beds Cleared First",
-    description: "Leaves, sticks, and loose debris are removed before mulch is installed.",
-    image: "/overseeding.JPG",
-  },
-  {
-    title: "Better Than We Found It",
-    description: "We leave the area cleaner and more orderly than when we arrived.",
-    image: "/fertilization.JPG",
-  },
-];
+import { getSiteImages } from "@/lib/site-images";
 
 const FAQ_ITEMS = [
   {
@@ -88,6 +66,32 @@ const REVIEWS: Review[] = [
 ];
 
 export default function MulchInstallationPage() {
+  const siteImages = getSiteImages();
+  const featureImages = siteImages.services.mulchInstallation.featureGrid;
+
+  const FEATURE_CARDS = [
+    {
+      title: "Proper Mulch Depth",
+      description: "We install mulch at the right depth so beds look finished without burying plants.",
+      image: featureImages.image1,
+    },
+    {
+      title: "Redefined Bed Edges",
+      description: "Edges are cleaned up and reshaped so beds look sharp and intentional.",
+      image: featureImages.image2,
+    },
+    {
+      title: "Beds Cleared First",
+      description: "Leaves, sticks, and loose debris are removed before mulch is installed.",
+      image: featureImages.image3,
+    },
+    {
+      title: "Better Than We Found It",
+      description: "We leave the area cleaner and more orderly than when we arrived.",
+      image: featureImages.image4,
+    },
+  ];
+
   return (
     <div className="bg-background text-foreground">
       <Hero
@@ -97,6 +101,7 @@ export default function MulchInstallationPage() {
         primaryCta={{ href: "/get-quote", label: "Get Your Quote" }}
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
+        backgroundImage={siteImages.global.heroBackground}
       />
       <main>
         <FeatureGrid
@@ -107,7 +112,7 @@ export default function MulchInstallationPage() {
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#edf8f2] to-[#c7f0de]">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 lg:px-0">
           <section>
-            <CoreValues />
+            <CoreValues image={siteImages.aboutPage.coreValuesImage} />
           </section>
 
           <section className="space-y-4">

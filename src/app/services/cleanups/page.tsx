@@ -7,29 +7,7 @@ import { NAV_LINKS } from "@/lib/nav-links";
 import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
-
-const FEATURE_CARDS = [
-  {
-    title: "Seasonal Debris Removal",
-    description: "We remove built-up leaves, sticks, and organic debris left behind from the season.",
-    image: "/overseeding.JPG",
-  },
-  {
-    title: "Reasonable Timing",
-    description: "Cleanups are scheduled within a reasonable seasonal window so your property isn't left waiting for weeks.",
-    image: "/team-truck.jpg",
-  },
-  {
-    title: "Clean Feel",
-    description: "We focus on leaving your property looking orderly and cleared of visible seasonal mess.",
-    image: "/grasstop.jpeg",
-  },
-  {
-    title: "Post-Service Checkup",
-    description: "Each cleanup is reviewed before we leave to make sure everything looks right.",
-    image: "/fertilization.JPG",
-  },
-];
+import { getSiteImages } from "@/lib/site-images";
 
 const FAQ_ITEMS = [
   {
@@ -88,6 +66,32 @@ const REVIEWS: Review[] = [
 ];
 
 export default function CleanupsPage() {
+  const siteImages = getSiteImages();
+  const featureImages = siteImages.services.cleanups.featureGrid;
+
+  const FEATURE_CARDS = [
+    {
+      title: "Seasonal Debris Removal",
+      description: "We remove built-up leaves, sticks, and organic debris left behind from the season.",
+      image: featureImages.image1,
+    },
+    {
+      title: "Reasonable Timing",
+      description: "Cleanups are scheduled within a reasonable seasonal window so your property isn't left waiting for weeks.",
+      image: featureImages.image2,
+    },
+    {
+      title: "Clean Feel",
+      description: "We focus on leaving your property looking orderly and cleared of visible seasonal mess.",
+      image: featureImages.image3,
+    },
+    {
+      title: "Post-Service Checkup",
+      description: "Each cleanup is reviewed before we leave to make sure everything looks right.",
+      image: featureImages.image4,
+    },
+  ];
+
   return (
     <div className="bg-background text-foreground">
       <Hero
@@ -97,6 +101,7 @@ export default function CleanupsPage() {
         primaryCta={{ href: "/get-quote", label: "Get Your Quote" }}
         navLinks={NAV_LINKS}
         starPlacement="aboveCta"
+        backgroundImage={siteImages.global.heroBackground}
       />
       <main>
         <FeatureGrid
@@ -107,7 +112,7 @@ export default function CleanupsPage() {
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#edf8f2] to-[#c7f0de]">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 lg:px-0">
           <section>
-            <CoreValues />
+            <CoreValues image={siteImages.aboutPage.coreValuesImage} />
           </section>
 
           <section className="space-y-4">

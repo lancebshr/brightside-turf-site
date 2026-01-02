@@ -10,45 +10,7 @@ import { ContactStrip } from "@/components/ui/contact-strip";
 import { Button } from "@/components/ui/button";
 import { NAV_LINKS } from "@/lib/nav-links";
 import { BOLD_PLUS_HEADING, GET_QUOTE_BUTTON_CLASSNAME, GET_QUOTE_BUTTON_STYLE, cn } from "@/lib/utils";
-
-const SERVICE_CARDS = [
-  {
-    title: "Fertilization and Weed Control",
-    description: "Healthy, green, weed-free lawns.",
-    image: "/fertilization.JPG",
-    slug: "fertilization-and-weed-control",
-  },
-  {
-    title: "Lawn Mowing",
-    description: "Consistent weekly cuts with clean edges.",
-    image: "/grasstop.jpeg",
-    slug: "lawn-mowing",
-  },
-  {
-    title: "Mulch Installation",
-    description: "Fresh mulch, clean beds, boosted curb appeal.",
-    image: "/team-truck.jpg",
-    slug: "mulch-installation",
-  },
-  {
-    title: "Core Aeration",
-    description: "Stronger roots and thicker grass.",
-    image: "/aeration.JPG",
-    slug: "core-aeration",
-  },
-  {
-    title: "Cleanups",
-    description: "Spring, fall, and yard debris cleanup.",
-    image: "/overseeding.JPG",
-    slug: "cleanups",
-  },
-  {
-    title: "Holiday Lighting",
-    description: "Professional design, install, and takedown.",
-    image: "/lighting.webp",
-    slug: "holiday-lighting",
-  },
-];
+import { getSiteImages } from "@/lib/site-images";
 
 const QUOTE_SERVICES = [
   "Fertilization and Weed Control",
@@ -78,7 +40,7 @@ const REVIEWS = [
   {
     name: "Doug Adams",
     quote:
-      "Brightside Turf offers several services but I’ve only used them for aeration. Two friendly, clean-cut young men showed up and did a great job. Great communication and I was extremely satisfied.",
+      "Brightside Turf offers several services but I've only used them for aeration. Two friendly, clean-cut young men showed up and did a great job. Great communication and I was extremely satisfied.",
   },
   {
     name: "David Fry",
@@ -88,7 +50,7 @@ const REVIEWS = [
   {
     name: "Nhung Nguyen",
     quote:
-      "I would recommend Brightside to anyone in Omaha. They’re a local company that does things right. When we noticed issues in our lawn they came back the next day to spot treat.",
+      "I would recommend Brightside to anyone in Omaha. They're a local company that does things right. When we noticed issues in our lawn they came back the next day to spot treat.",
   },
   {
     name: "Thomas Norway",
@@ -98,7 +60,7 @@ const REVIEWS = [
   {
     name: "Marlene Riva",
     quote:
-      "They did a very good aeration job at my house. Communication was great and even though they were running late, they kept me informed. I’ll definitely use them again next year!",
+      "They did a very good aeration job at my house. Communication was great and even though they were running late, they kept me informed. I'll definitely use them again next year!",
   },
   {
     name: "When In AZ",
@@ -118,12 +80,12 @@ const REVIEWS = [
   {
     name: "Jill Eli",
     quote:
-      "Brightside is amazing! They just aerated and overseeded my yard. Everyone was professional, prompt, and gracious—can’t wait to see it next spring!",
+      "Brightside is amazing! They just aerated and overseeded my yard. Everyone was professional, prompt, and gracious—can't wait to see it next spring!",
   },
   {
     name: "Anthony Podany",
     quote:
-      "Hired Brightside to handle fall aeration and was very impressed with the work and communication. Price was good and they’ve followed up twice to make sure I’m satisfied. Highly recommend.",
+      "Hired Brightside to handle fall aeration and was very impressed with the work and communication. Price was good and they've followed up twice to make sure I'm satisfied. Highly recommend.",
   },
 ];
 
@@ -156,16 +118,58 @@ const SERVICE_AREAS = [
 ];
 
 export default function Home() {
+  const siteImages = getSiteImages();
+
+  const SERVICE_CARDS = [
+    {
+      title: "Fertilization and Weed Control",
+      description: "Healthy, green, weed-free lawns.",
+      image: siteImages.homepage.serviceCards.fertilization,
+      slug: "fertilization-and-weed-control",
+    },
+    {
+      title: "Lawn Mowing",
+      description: "Consistent weekly cuts with clean edges.",
+      image: siteImages.homepage.serviceCards.lawnMowing,
+      slug: "lawn-mowing",
+    },
+    {
+      title: "Mulch Installation",
+      description: "Fresh mulch, clean beds, boosted curb appeal.",
+      image: siteImages.homepage.serviceCards.mulchInstallation,
+      slug: "mulch-installation",
+    },
+    {
+      title: "Core Aeration",
+      description: "Stronger roots and thicker grass.",
+      image: siteImages.homepage.serviceCards.coreAeration,
+      slug: "core-aeration",
+    },
+    {
+      title: "Cleanups",
+      description: "Spring, fall, and yard debris cleanup.",
+      image: siteImages.homepage.serviceCards.cleanups,
+      slug: "cleanups",
+    },
+    {
+      title: "Holiday Lighting",
+      description: "Professional design, install, and takedown.",
+      image: siteImages.homepage.serviceCards.holidayLighting,
+      slug: "holiday-lighting",
+    },
+  ];
+
   return (
     <div className="bg-background text-foreground">
       <div id="top">
         <Hero
           heading="Top-Rated Lawn Care Services"
-          subheading="Reliable lawn care in Omaha backed by 150+ five star reviews. We handle mowing, fertilization, aeration, mulch, cleanups, and more."
+          subheading="Reliable lawn care in Omaha backed by 150+ five star reviews. We handle mowing, fertilization, aeration, mulch, cleanups, and more."
           statLabel="5.0 stars on Google"
           primaryCta={{ label: "Get Your Quote", href: "/get-quote" }}
           navLinks={NAV_LINKS}
           starPlacement="aboveCta"
+          backgroundImage={siteImages.global.heroBackground}
         />
       </div>
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f6fbf8] to-[#c7f0de]">
@@ -208,7 +212,7 @@ export default function Home() {
             heading="How It Works"
             subheading=""
             steps={HOW_IT_WORKS_STEPS}
-            image="/newhero.png"
+            image={siteImages.homepage.howItWorksImage}
             cta={{ href: "/get-quote", label: "Get Your Quote" }}
           />
 
@@ -227,7 +231,7 @@ export default function Home() {
             <div className="text-center">
               <h2 className={BOLD_PLUS_HEADING}>Proudly Serving the Omaha Metro</h2>
             </div>
-            <ServiceArea areas={SERVICE_AREAS} />
+            <ServiceArea areas={SERVICE_AREAS} mapImage={siteImages.serviceAreaMap} />
           </div>
         </div>
 

@@ -5,9 +5,10 @@ type ServiceAreaProps = {
   title?: string;
   description?: string;
   areas?: string[];
+  mapImage?: string;
 };
 
-export function ServiceArea({ title, description, areas }: ServiceAreaProps) {
+export function ServiceArea({ title, description, areas, mapImage = "/brightsidemaps.webp" }: ServiceAreaProps) {
   return (
     <section className="mx-auto grid max-w-5xl gap-6 rounded-[2rem] border border-slate-200 bg-slate-50 px-3 py-8 shadow-[0_1px_4px_rgba(0,0,0,0.3)] md:grid-cols-2 md:px-6 md:py-10">
       <FadeInSection className="flex flex-col justify-center space-y-4">
@@ -31,7 +32,7 @@ export function ServiceArea({ title, description, areas }: ServiceAreaProps) {
       <FadeInSection className="flex items-center justify-center">
         <div className="relative w-full md:w-[118%] overflow-hidden rounded-3xl border border-slate-200 shadow-brand">
           <Image
-            src="/brightsidemaps.webp"
+            src={mapImage}
             alt="Brightside Turf service area map"
             width={600}
             height={420}
