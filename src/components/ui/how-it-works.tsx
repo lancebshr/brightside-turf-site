@@ -20,7 +20,7 @@ export function HowItWorks({
   image,
 }: HowItWorksProps) {
   return (
-    <section className="relative left-1/2 right-1/2 z-0 ml-[-50vw] mr-[-50vw] w-screen overflow-hidden px-4 md:px-8">
+    <section className="relative left-1/2 right-1/2 z-0 ml-[-50vw] mr-[-50vw] w-screen overflow-visible px-4 pb-6 md:px-8">
       <FadeInSection>
         <div className="mx-auto max-w-6xl">
           {/* Header */}
@@ -31,7 +31,7 @@ export function HowItWorks({
           </div>
 
           {/* Unified Card */}
-          <div className="overflow-hidden rounded-3xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+          <div className="overflow-hidden rounded-3xl bg-white/90 backdrop-blur-sm shadow-[0_6px_20px_rgba(0,0,0,0.2)]">
             <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
               {/* Left - Image */}
               <div className="relative min-h-[300px] lg:min-h-[480px]">

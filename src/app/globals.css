@@ -154,6 +154,7 @@ select {
   display: flex;
   border-radius: 1.5rem;
   overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-5__tile:nth-child(1) {

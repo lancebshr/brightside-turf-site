@@ -392,6 +392,14 @@ export function Hero({
                   {/* Scrollable nav links */}
                   <div className="flex-1 overflow-y-auto p-4 pb-2">
                     <div className="flex flex-col gap-2">
+                      <Link
+                        href="/"
+                        className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
+                        onClick={closeMobileMenu}
+                      >
+                        Home
+                      </Link>
+
                       {/* Services Dropdown */}
                       <details className="group rounded-xl bg-slate-100">
                         <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-bold text-pine">
@@ -412,26 +420,32 @@ export function Hero({
                         </div>
                       </details>
 
-                      <Link
-                        href="/about"
-                        className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
-                        onClick={closeMobileMenu}
-                      >
-                        About Us
-                      </Link>
+                      {/* About Us Dropdown */}
+                      <details className="group rounded-xl bg-slate-100">
+                        <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-bold text-pine">
+                          About Us
+                          <ChevronDown className="size-4 transition group-open:rotate-180" />
+                        </summary>
+                        <div className="flex flex-col gap-1 px-2 pb-2">
+                          {ABOUT_OPTIONS.map((option) => (
+                            <Link
+                              key={option.label}
+                              href={option.href}
+                              className="rounded-lg px-3 py-2 text-sm font-medium text-ink/80 transition hover:bg-white"
+                              onClick={closeMobileMenu}
+                            >
+                              {option.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </details>
+
                       <Link
                         href="/reviews"
                         className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
                         onClick={closeMobileMenu}
                       >
                         Reviews
-                      </Link>
-                      <Link
-                        href="/blog"
-                        className="rounded-xl bg-slate-100 px-4 py-3 text-sm font-bold text-pine transition hover:bg-slate-200"
-                        onClick={closeMobileMenu}
-                      >
-                        Blog
                       </Link>
                     </div>
                   </div>
