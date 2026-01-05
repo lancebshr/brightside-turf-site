@@ -17,21 +17,21 @@
     "mulchInstallation": "/testhero.jpg"
   },
   "homepage": {
-    "howItWorksImage": "/newhero.png",
+    "howItWorksImage": "/HomepageHowitworks.JPG",
     "serviceCards": {
       "fertilization": "/fertilization.JPG",
       "lawnMowing": "/grasstop.jpeg",
       "mulchInstallation": "/team-truck.jpg",
-      "coreAeration": "/images/uploads/overseeding.jpg",
+      "coreAeration": "/HomepageAeration.JPG",
       "cleanups": "/overseeding.JPG",
       "holidayLighting": "/lighting.webp"
     }
   },
   "aboutPage": {
-    "coreValuesImage": "/team-truck.jpg"
+    "coreValuesImage": "/OurServicesValues.JPG"
   },
   "getQuotePage": {
-    "backgroundImage": "/grasstop.jpeg"
+    "backgroundImage": "/OurServicesAeration.JPG"
   },
   "serviceAreaMap": "/brightsidemaps.webp",
   "services": {
@@ -53,10 +53,10 @@
     },
     "coreAeration": {
       "featureGrid": {
-        "image1": "/aeration.JPG",
-        "image2": "/overseeding.JPG",
-        "image3": "/grasstop.jpeg",
-        "image4": "/team-truck.jpg"
+        "image1": "/OurServicesAeration.JPG",
+        "image2": "/OurservicesAeration.JPEG",
+        "image3": "/OurservicesAeration1.JPEG",
+        "image4": "/overseeding.JPG"
       }
     },
     "lawnMowing": {
@@ -70,9 +70,9 @@
     "holidayLighting": {
       "featureGrid": {
         "image1": "/lighting.webp",
-        "image2": "/team-truck.jpg",
-        "image3": "/fertilization.JPG",
-        "image4": "/grasstop.jpeg"
+        "image2": "/OurservicesHolidayL.JPG",
+        "image3": "/OurservicesHolidayL1.JPG",
+        "image4": "/OurservicesHolidayL2.JPG"
       }
     },
     "cleanups": {

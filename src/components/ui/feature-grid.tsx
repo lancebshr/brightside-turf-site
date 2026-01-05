@@ -51,7 +51,7 @@ export function FeatureGrid({
                     src={feature.image}
                     alt={feature.imageAlt || feature.title}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     sizes="(min-width: 768px) 25vw, 100vw"
                   />
                 </div>

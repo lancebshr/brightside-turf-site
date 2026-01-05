@@ -37,12 +37,12 @@ export function CoreValues({ image = "/team-truck.jpg" }: CoreValuesProps) {
         </div>
 
         {/* Large Image */}
-        <div className="relative mb-12 h-[240px] w-full overflow-hidden rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] md:h-[300px]">
+        <div className="relative mb-12 h-[320px] w-full overflow-hidden rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] md:h-[400px]">
           <Image
             src={image}
             alt="Brightside team"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             sizes="100vw"
           />
         </div>

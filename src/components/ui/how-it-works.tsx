@@ -32,7 +32,7 @@ export function HowItWorks({
 
           {/* Unified Card */}
           <div className="overflow-hidden rounded-3xl bg-white/90 backdrop-blur-sm shadow-[0_6px_20px_rgba(0,0,0,0.2)]">
-            <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="grid lg:grid-cols-[1fr_1fr]">
               {/* Left - Image */}
               <div className="relative min-h-[300px] lg:min-h-[480px]">
                 <Image
@@ -40,7 +40,7 @@ export function HowItWorks({
                   alt="Brightside technician"
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
 
