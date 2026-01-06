@@ -15,13 +15,13 @@ export function ServiceArea({ title, description, areas, mapImage = "/brightside
         {title && <h2 className="text-5xl font-bold text-pine">{title}</h2>}
         {description && <p className="text-lg text-slate-600">{description}</p>}
         {areas && areas.length > 0 && (
-          <ul className="grid gap-x-6 gap-y-9 text-ink/90 sm:grid-cols-2">
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-4 text-ink/90 sm:gap-x-6 sm:gap-y-9">
             {areas.map((area) => (
               <li
                 key={area}
-                className="flex items-center gap-4 text-2xl font-bold text-pine"
+                className="flex items-center gap-2 text-base font-bold text-pine sm:gap-4 sm:text-2xl"
               >
-                <span className="inline-flex size-3 rounded-full bg-mint shadow-[0_0_12px_rgba(16,185,129,0.6)]" />
+                <span className="inline-flex size-2 sm:size-3 rounded-full bg-mint shadow-[0_0_12px_rgba(16,185,129,0.6)]" />
                 <span className="leading-tight">{area}</span>
               </li>
             ))}

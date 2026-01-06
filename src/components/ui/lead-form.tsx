@@ -23,6 +23,8 @@ const REFERRAL_SOURCES = [
   "Vehicles",
 ];
 
+const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/NC7jNFN6poW5MEcjBnjA/webhook-trigger/e3e3cd92-0d65-42a5-85f4-a0e81f1d88a2";
+
 export function LeadForm({
   services,
   whiteLabels = false,
@@ -38,7 +40,7 @@ export function LeadForm({
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const labelTone = whiteLabels ? "text-white" : undefined;
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (selectedServices.length === 0) {
       setServiceError(true);
@@ -48,10 +50,35 @@ export function LeadForm({
     setServiceError(false);
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const formData = new FormData(event.currentTarget);
+
+    const payload = {
+      first_name: formData.get("firstName") as string,
+      last_name: formData.get("lastName") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      address1: formData.get("address") as string,
+      city: formData.get("city") as string,
+      postal_code: formData.get("zip") as string,
+      lead_source: formData.get("referralSource") as string,
+      select_services: selectedServices.join(", "),
+    };
+
+    try {
+      await fetch(GHL_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify(payload),
+      });
+
       router.push(redirectPath);
-    }, 1000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -65,17 +92,32 @@ export function LeadForm({
       >
         <div className="grid gap-3 md:grid-cols-2">
           <div className="space-y-1.5">
-            <Label htmlFor="name" className={cn("text-base font-semibold text-ink", labelTone)}>
-              Name <span className={labelTone ? "text-white" : "text-pine"}>*</span>
+            <Label htmlFor="firstName" className={cn("text-base font-semibold text-ink", labelTone)}>
+              First Name <span className={labelTone ? "text-white" : "text-pine"}>*</span>
             </Label>
             <Input
-              id="name"
-              name="name"
-              placeholder="Name"
+              id="firstName"
+              name="firstName"
+              placeholder="First Name"
               required
               className={INPUT_STYLES}
             />
           </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="lastName" className={cn("text-base font-semibold text-ink", labelTone)}>
+              Last Name <span className={labelTone ? "text-white" : "text-pine"}>*</span>
+            </Label>
+            <Input
+              id="lastName"
+              name="lastName"
+              placeholder="Last Name"
+              required
+              className={INPUT_STYLES}
+            />
+          </div>
+        </div>
+
+        <div className="grid gap-3 md:grid-cols-2">
           <div className="space-y-1.5">
             <Label htmlFor="phone" className={cn("text-base font-semibold text-ink", labelTone)}>
               Phone <span className={labelTone ? "text-white" : "text-pine"}>*</span>
@@ -89,9 +131,6 @@ export function LeadForm({
               className={INPUT_STYLES}
             />
           </div>
-        </div>
-
-        <div className="grid gap-3 md:grid-cols-2">
           <div className="space-y-1.5">
             <Label htmlFor="email" className={cn("text-base font-semibold text-ink", labelTone)}>
               Email <span className={labelTone ? "text-white" : "text-pine"}>*</span>
@@ -105,18 +144,19 @@ export function LeadForm({
               className={INPUT_STYLES}
             />
           </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="address" className={cn("text-base font-semibold text-ink", labelTone)}>
-              Address <span className={labelTone ? "text-white" : "text-pine"}>*</span>
-            </Label>
-            <Input
-              id="address"
-              name="address"
-              placeholder="Address"
-              required
-              className={INPUT_STYLES}
-            />
-          </div>
+        </div>
+
+        <div className="space-y-1.5">
+          <Label htmlFor="address" className={cn("text-base font-semibold text-ink", labelTone)}>
+            Address <span className={labelTone ? "text-white" : "text-pine"}>*</span>
+          </Label>
+          <Input
+            id="address"
+            name="address"
+            placeholder="Address"
+            required
+            className={INPUT_STYLES}
+          />
         </div>
 
         <div className="grid gap-3 md:grid-cols-2">
