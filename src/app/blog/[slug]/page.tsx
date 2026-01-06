@@ -1,12 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Hero } from "@/components/ui/hero";
+import { BlogHeader } from "@/components/ui/blog-header";
 import { SiteFooter } from "@/components/ui/site-footer";
-import { Button } from "@/components/ui/button";
 import { NAV_LINKS } from "@/lib/nav-links";
-import { GET_QUOTE_BUTTON_STYLE, GET_QUOTE_BUTTON_CLASSNAME, cn } from "@/lib/utils";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/blog";
 import { ArrowLeft } from "lucide-react";
 
@@ -45,16 +44,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="bg-background text-foreground">
-      <Hero
-        heading={post.title}
-        subheading={post.description}
-        statLabel="5.0 stars on Google"
-        primaryCta={{ label: "Get Your Quote", href: "/get-quote" }}
-        navLinks={NAV_LINKS}
-        starPlacement="aboveCta"
-        compact
-        backgroundImage={post.thumbnail}
-      />
+      <BlogHeader navLinks={NAV_LINKS} />
 
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 bg-gradient-to-b from-white via-[#f5fbf7] to-[#c7f0de]">
         <div className="mx-auto max-w-4xl px-4 pb-16 pt-8 sm:px-6 lg:px-0">
@@ -67,7 +57,28 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
 
           <article className="bg-white rounded-3xl shadow-brand overflow-hidden">
+            {/* Post Header with Image */}
+            {post.thumbnail && (
+              <div className="relative w-full h-64 md:h-80">
+                <Image
+                  src={post.thumbnail}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
+
             <div className="p-6 md:p-10">
+              {/* Post Title and Description */}
+              <h1 className="text-3xl md:text-4xl font-black text-[#0B3352] mb-3">
+                {post.title}
+              </h1>
+              <p className="text-lg text-gray-600 mb-6">
+                {post.description}
+              </p>
+
               <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
                 <span>{post.author}</span>
                 <span>•</span>
@@ -93,6 +104,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 </div>
               )}
 
+              <hr className="border-gray-200 mb-8" />
+
               <div className="prose prose-lg prose-emerald max-w-none">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {post.content}
@@ -100,18 +113,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </div>
           </article>
-
-          <div className="mt-12 text-center">
-            <h3 className="text-2xl font-bold mb-4">Ready to transform your lawn?</h3>
-            <Button
-              asChild
-              size="lg"
-              style={GET_QUOTE_BUTTON_STYLE}
-              className={cn(GET_QUOTE_BUTTON_CLASSNAME, "px-12 py-7 text-xl")}
-            >
-              <Link href="/get-quote">GET YOUR QUOTE</Link>
-            </Button>
-          </div>
         </div>
 
         <SiteFooter

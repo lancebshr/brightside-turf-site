@@ -1,5 +1,17 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Lawn Fertilization & Weed Control in Omaha, NE",
+  description:
+    "Professional fertilization and weed control services in Omaha. Get a healthy, green, weed-free lawn with Brightside Turf. Free quotes available.",
+  openGraph: {
+    title: "Lawn Fertilization & Weed Control in Omaha, NE",
+    description:
+      "Professional fertilization and weed control services in Omaha. Get a healthy, green, weed-free lawn.",
+  },
+};
 import { FadeInSection } from "@/components/ui/fade-in-section";
 import { FeatureGrid } from "@/components/ui/feature-grid";
 import { ReviewsCarousel, type Review } from "@/components/ui/reviews-carousel";

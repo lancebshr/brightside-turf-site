@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ChevronDown } from "lucide-react";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 import { FeatureGrid } from "@/components/ui/feature-grid";
@@ -8,6 +9,17 @@ import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
 import { getSiteImages } from "@/lib/site-images";
+
+export const metadata: Metadata = {
+  title: "Mulch Installation Services in Omaha, NE",
+  description:
+    "Professional mulch installation in Omaha. Fresh mulch, clean beds, and boosted curb appeal. Quality materials and expert installation.",
+  openGraph: {
+    title: "Mulch Installation Services in Omaha, NE",
+    description:
+      "Professional mulch installation in Omaha. Fresh mulch, clean beds, and boosted curb appeal.",
+  },
+};
 
 const FAQ_ITEMS = [
   {

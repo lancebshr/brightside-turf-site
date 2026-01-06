@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ChevronDown } from "lucide-react";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 import { FeatureGrid } from "@/components/ui/feature-grid";
@@ -8,6 +9,17 @@ import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
 import { getSiteImages } from "@/lib/site-images";
+
+export const metadata: Metadata = {
+  title: "Holiday Lighting Installation in Omaha, NE",
+  description:
+    "Professional holiday lighting installation, maintenance, and removal in Omaha. Full-service Christmas lights with 48-hour service guarantee.",
+  openGraph: {
+    title: "Holiday Lighting Installation in Omaha, NE",
+    description:
+      "Professional holiday lighting installation in Omaha. Full-service Christmas lights with 48-hour service guarantee.",
+  },
+};
 
 const FAQ_ITEMS = [
   {

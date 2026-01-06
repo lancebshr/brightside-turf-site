@@ -1,4 +1,16 @@
+import type { Metadata } from "next";
 import { ChevronDown } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Core Aeration & Overseeding Services in Omaha, NE",
+  description:
+    "Professional lawn aeration and overseeding in Omaha. Reduce soil compaction, improve root growth, and thicken your lawn. Get a free quote today.",
+  openGraph: {
+    title: "Core Aeration & Overseeding Services in Omaha, NE",
+    description:
+      "Professional lawn aeration and overseeding in Omaha. Reduce soil compaction and thicken your lawn.",
+  },
+};
 import { FadeInSection } from "@/components/ui/fade-in-section";
 import { FeatureGrid } from "@/components/ui/feature-grid";
 import { ReviewsCarousel, type Review } from "@/components/ui/reviews-carousel";

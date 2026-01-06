@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ChevronDown } from "lucide-react";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 import { FeatureGrid } from "@/components/ui/feature-grid";
@@ -8,6 +9,17 @@ import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
 import { getSiteImages } from "@/lib/site-images";
+
+export const metadata: Metadata = {
+  title: "Spring & Fall Cleanups in Omaha, NE",
+  description:
+    "Professional spring and fall yard cleanups in Omaha. Leaf removal, debris cleanup, and bed preparation. Get your yard ready for the season.",
+  openGraph: {
+    title: "Spring & Fall Cleanups in Omaha, NE",
+    description:
+      "Professional spring and fall yard cleanups in Omaha. Leaf removal, debris cleanup, and bed preparation.",
+  },
+};
 
 const FAQ_ITEMS = [
   {

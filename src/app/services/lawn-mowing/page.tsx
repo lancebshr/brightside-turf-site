@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ChevronDown } from "lucide-react";
 import { FadeInSection } from "@/components/ui/fade-in-section";
 import { FeatureGrid } from "@/components/ui/feature-grid";
@@ -8,6 +9,17 @@ import { Hero } from "@/components/ui/hero";
 import { CoreValues } from "@/components/ui/core-values";
 import { CtaStrip } from "@/components/ui/cta-strip";
 import { getSiteImages } from "@/lib/site-images";
+
+export const metadata: Metadata = {
+  title: "Lawn Mowing Services in Omaha, NE",
+  description:
+    "Reliable weekly lawn mowing in Omaha. Consistent cuts, clean edges, and professional service. Get a free quote from Brightside Turf today.",
+  openGraph: {
+    title: "Lawn Mowing Services in Omaha, NE",
+    description:
+      "Reliable weekly lawn mowing in Omaha. Consistent cuts, clean edges, and professional service.",
+  },
+};
 
 const FAQ_ITEMS = [
   {
