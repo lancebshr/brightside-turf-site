@@ -23,7 +23,6 @@ const REFERRAL_SOURCES = [
   "Vehicles",
 ];
 
-const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/NC7jNFN6poW5MEcjBnjA/webhook-trigger/e3e3cd92-0d65-42a5-85f4-a0e81f1d88a2";
 
 export function LeadForm({
   services,
@@ -65,16 +64,20 @@ export function LeadForm({
     };
 
     try {
-      await fetch(GHL_WEBHOOK_URL, {
+      const response = await fetch("/api/lead", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        mode: "no-cors",
         body: JSON.stringify(payload),
       });
 
-      router.push(redirectPath);
+      if (response.ok) {
+        router.push(redirectPath);
+      } else {
+        console.error("Form submission failed");
+        setIsSubmitting(false);
+      }
     } catch (error) {
       console.error("Form submission error:", error);
       setIsSubmitting(false);
