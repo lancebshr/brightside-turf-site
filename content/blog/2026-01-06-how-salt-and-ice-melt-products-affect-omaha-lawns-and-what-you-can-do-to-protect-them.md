@@ -1,7 +1,7 @@
 ---
 title: How Salt and Ice Melt Products Affect Omaha Lawns and What You Can Do to
   Protect Them
-date: 2026-01-08T17:34:00.000-06:00
+date: 2026-01-06T17:34:00.000-06:00
 thumbnail: /images/uploads/overseeding.jpg
 description: >-
   Learn how salt and ice melt products affect Omaha lawns and discover practical
