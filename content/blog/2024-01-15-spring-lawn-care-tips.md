@@ -1,9 +1,10 @@
 ---
-title: "Spring Lawn Care Tips for a Lush Green Yard"
-date: 2024-01-15T10:00:00.000Z
+title: Spring Lawn Care Tips for a Lush Green Yard
+date: 2024-01-02T04:00:00.000-06:00
 thumbnail: /grasstopdown.jpeg
-description: "Get your lawn ready for spring with these essential lawn care tips from the experts at Brightside Turf."
-author: "Brightside Turf Team"
+description: Get your lawn ready for spring with these essential lawn care tips
+  from the experts at Brightside Turf.
+author: Brightside Turf Team
 tags:
   - lawn care
   - spring
