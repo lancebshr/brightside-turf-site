@@ -29,11 +29,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Brightside Turf" }],
   creator: "Brightside Turf",
-  metadataBase: new URL("https://brightsideturf.com"),
+  metadataBase: new URL("https://www.brightsidelawns.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://brightsideturf.com",
+    url: "https://www.brightsidelawns.com",
     siteName: "Brightside Turf",
     title: "Brightside Turf | Top-Rated Lawn Care in Omaha, NE",
     description:
@@ -75,9 +75,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Brightside Turf",
-  image: "https://brightsideturf.com/og-image.jpg",
-  "@id": "https://brightsideturf.com",
-  url: "https://brightsideturf.com",
+  image: "https://www.brightsidelawns.com/og-image.jpg",
+  "@id": "https://www.brightsidelawns.com",
+  url: "https://www.brightsidelawns.com",
   telephone: "(402) 810-8692",
   email: "hello@brightsideturf.com",
   address: {

@@ -2,7 +2,7 @@ backend:
   name: github
   repo: lancebshr/brightside-turf-site
   branch: main
-  base_url: https://brightside-turf-site-8gfk.vercel.app
+  base_url: https://www.brightsidelawns.com
   auth_endpoint: /api/auth
 
 # Enable editorial workflow for draft/review/publish states
@@ -13,8 +13,8 @@ media_folder: public/images/uploads
 public_folder: /images/uploads
 
 # Site URL for previews
-site_url: https://brightsideturf.com
-display_url: https://brightsideturf.com
+site_url: https://www.brightsidelawns.com
+display_url: https://www.brightsidelawns.com
 
 collections:
   # Blog posts collection
